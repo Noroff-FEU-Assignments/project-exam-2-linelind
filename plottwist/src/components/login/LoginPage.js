@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Heading from "../layout/Heading";
 
 const schema = yup.object().shape({
-  username: yup.string().required("Please enter your username"),
+  email: yup.string().required("Please enter your registered email").email("Please enter a valid email"),
   password: yup.string().required("Please enter your password"),
 });
 
@@ -30,9 +30,9 @@ export default function Login() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
-          Username
-          <input {...register("username")} />
-          {errors.username && <span>{errors.username.message}</span>}
+          User email
+          <input {...register("email")} />
+          {errors.email && <span>{errors.email.message}</span>}
         </label>
 
         <label>
