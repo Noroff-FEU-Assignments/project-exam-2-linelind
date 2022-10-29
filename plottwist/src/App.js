@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/layout/Nav";
-import Home from "./components/home/Home";
-import Login from "./components/login/Login";
+import Login from "./components/login/LoginPage";
+import RegisterUser from "./components/login/RegisterUser";
+import Feed from "./components/feed/FeedPage";
+import Profile from "./components/profile/ProfilePage";
 import "./App.css";
 
 function App() {
@@ -11,8 +13,10 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path='/' exact element={<Home />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/' exact element={<Login />} />
+        <Route path='/register' element={<RegisterUser />} />
+        <Route path='/feed' element={<Feed />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </Router>
   );

@@ -5,10 +5,13 @@ function NavBar() {
     <nav>
       <ul>
         <li>
-          <a href='/'>Home</a>
+          <a href='/'>Login</a>
         </li>
         <li>
-          <a href='/login'>Login</a>
+          <a href='/feed'>Feed</a>
+        </li>
+        <li>
+          <a href='/profile'>Profile</a>
         </li>
       </ul>
     </nav>
