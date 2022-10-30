@@ -32,13 +32,10 @@ export default function LoginForm() {
   async function onSubmit(data) {
     setSubmitting(true);
 
-    console.log(data);
-
     try {
       const response = await axios.post(url, data);
-      console.log("response", response.data);
-      setAuth(response.data);
-      /* history("/feed"); */
+      setAuth(response.data.accessToken);
+      history("/feed");
     } catch (error) {
       console.log("error", error);
     } finally {

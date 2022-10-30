@@ -1,11 +1,9 @@
 import Heading from "../layout/Heading";
-import ProfileInfo from "./ProfileInfo";
 
-export default function ProfilePage() {
+export default function ProfileInfo() {
   return (
     <div className='pageContainer'>
       <Heading title='Profile' />
-      <ProfileInfo />
     </div>
   );
 }
