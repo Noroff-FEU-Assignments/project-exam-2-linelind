@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -66,7 +65,7 @@ export default function RegisterForm() {
       </label>
       <label>
         Password*
-        <input {...register("password")} />
+        <input {...register("password")} type='password' />
         {errors.password && <span>{errors.password.message}</span>}
       </label>
       <label>

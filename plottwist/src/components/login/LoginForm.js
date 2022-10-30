@@ -1,7 +1,13 @@
-import React from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+import { API_BASE } from "../../constant/api";
+import AuthContext from "../../context/AuthContext";
+
+const url = API_BASE + "/social/auth/login";
 
 const schema = yup.object().shape({
   email: yup.string().required("Please enter your registered email").email("Please enter a valid email"),
@@ -9,6 +15,10 @@ const schema = yup.object().shape({
 });
 
 export default function LoginForm() {
+  const [submitting, setSubmitting] = useState(false);
+
+  const history = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -17,16 +27,29 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
-    console.log(data);
-  }
+  const [auth, setAuth] = useContext(AuthContext);
 
-  console.log(errors);
+  async function onSubmit(data) {
+    setSubmitting(true);
+
+    console.log(data);
+
+    try {
+      const response = await axios.post(url, data);
+      console.log("response", response.data);
+      setAuth(response.data);
+      /* history("/feed"); */
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>
-        User email
+        Email
         <input {...register("email")} />
         {errors.email && <span>{errors.email.message}</span>}
       </label>
