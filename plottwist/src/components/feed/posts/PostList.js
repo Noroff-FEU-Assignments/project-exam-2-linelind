@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+import moment from "moment";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -8,32 +10,39 @@ export default function PostList() {
 
   const urlPosts = useAxios();
 
-  useEffect(
-    function () {
-      async function getPosts() {
-        try {
-          const response = await urlPosts.get("/social/posts");
-          console.log("response", response);
-          setPosts(response);
-        } catch (error) {
-          setError(error.toString());
-        } finally {
-          setLoading(false);
-        }
+  useEffect(function () {
+    async function getPosts() {
+      try {
+        const response = await urlPosts.get("/social/posts");
+        setPosts(response.data);
+      } catch (error) {
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
-      getPosts();
-    },
-    [urlPosts]
-  );
+    }
+    getPosts();
+  }, []);
 
   if (loading) return <div>Loading posts...</div>;
 
   if (error) return <div>{error}</div>;
 
+  const date = posts.created;
+  const formatDate = moment(date).startOf("hour").fromNow();
+
   return (
     <div>
       {posts.map((post) => {
-        return <p key={post.id}>{post.title}</p>;
+        return (
+          <Link to={`/feed/${post.id}`} key={post.id}>
+            <div>
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+              <p>{formatDate}</p>
+            </div>
+          </Link>
+        );
       })}
     </div>
   );
