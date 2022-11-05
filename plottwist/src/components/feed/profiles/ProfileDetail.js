@@ -16,24 +16,23 @@ export default function ProfileDetail() {
     history("/feed");
   }
 
-  const urlAxios = useAxios();
-  const urlProfile = "/social/profiles/" + name;
+  const urlProfileDetail = useAxios();
 
   useEffect(function () {
-    async function getProfile() {
+    async function getProfileDetail() {
       try {
-        const response = await urlAxios.get(urlProfile);
-        setProfiledetail(response.data);
+        const result = await urlProfileDetail.get(`/social/profiles/${name}`);
+        setProfiledetail(result);
       } catch (error) {
         setError(error.toString());
       } finally {
         setLoading(false);
       }
     }
-    getProfile();
+    getProfileDetail();
   }, []);
 
-  if (loading) return <div>Loading profiles...</div>;
+  if (loading) return <div>Loading profile info...</div>;
 
   if (error) return <div>{error}</div>;
 
