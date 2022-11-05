@@ -2,15 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
-import { API_BASE } from "../../../constant/api";
+import useAxios from "../../../hooks/useAxios";
 
-const urlCreatePost = API_BASE + "/social/posts";
+/* const urlCreatePost = API_BASE + "/social/posts"; */
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
-
   media: yup.string(),
 });
 
@@ -26,10 +24,12 @@ export default function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
+  /* function onSubmit(data) {
     setCreated(true);
     reset();
-  }
+  } */
+
+  const urlCreatePost = useAxios();
 
   async function onSubmit(data) {
     setCreated(true);
@@ -41,13 +41,16 @@ export default function RegisterForm() {
     }
 
     try {
-      const response = await axios.post(urlCreatePost, data);
+      const response = await urlCreatePost.post("/social/posts", data);
       console.log("response", response.data);
     } catch (error) {
       console.log("error", error);
     } finally {
       setCreated(false);
     }
+
+    setCreated(true);
+    reset();
   }
 
   return (

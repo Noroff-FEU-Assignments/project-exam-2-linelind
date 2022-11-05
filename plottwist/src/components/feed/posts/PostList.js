@@ -15,6 +15,7 @@ export default function PostList() {
       try {
         const response = await urlPosts.get("/social/posts");
         setPosts(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -33,15 +34,20 @@ export default function PostList() {
 
   return (
     <div>
-      {posts.map((post) => {
+      {posts.slice(0, 15).map((post) => {
         return (
-          <Link to={`/feed/${post.id}`} key={post.id}>
-            <div>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-              <p>{formatDate}</p>
-            </div>
-          </Link>
+          <div key={post.id}>
+            <Link to={`/feed/edit/${post.id}`}>
+              <button>Edit post</button>
+            </Link>
+            <Link to={`/feed/${post.id}`}>
+              <div>
+                <h3>{post.title}</h3>
+                <p>{post.body}</p>
+                <p>{formatDate}</p>
+              </div>
+            </Link>
+          </div>
         );
       })}
     </div>
