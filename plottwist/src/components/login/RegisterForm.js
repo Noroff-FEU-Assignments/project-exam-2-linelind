@@ -13,7 +13,10 @@ const schema = yup.object().shape({
     .required("Please enter your name")
     .min(3, "You must enter at least 3 characters")
     .matches(/^[a-zA-Z0-9_]+$/, "Special caracters not allowed"),
-  email: yup.string().required("Please enter an email address").email("Please enter a valid email"),
+  email: yup
+    .string()
+    .required("Please enter an email address")
+    .matches(/^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bstud.noroff.no)$/, "Please enter a valid email"),
   password: yup.string().required("Please enter your first name").min(8, "You must enter at least 8 characters"),
   avatar: yup.string(),
   banner: yup.string(),
