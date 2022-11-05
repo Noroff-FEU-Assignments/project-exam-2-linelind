@@ -12,11 +12,15 @@ export default function DeletePostButton({ id }) {
   const url = `/social/posts/${id}`;
 
   async function handleDelete() {
-    try {
-      await http.delete(url);
-      history("/feed");
-    } catch (error) {
-      setError(error);
+    const confirmDelete = window.confirm("Delete this post?");
+
+    if (confirmDelete) {
+      try {
+        await http.delete(url);
+        history("/feed");
+      } catch (error) {
+        setError(error);
+      }
     }
   }
 
