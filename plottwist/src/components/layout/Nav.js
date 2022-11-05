@@ -1,19 +1,27 @@
 import React from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 function NavBar() {
+  const [auth, setAuth] = useContext(AuthContext);
+
+  function logout() {
+    setAuth(null);
+    window.location.reload();
+  }
+
   return (
     <nav>
-      <ul>
-        <li>
-          <a href='/'>Login</a>
-        </li>
-        <li>
-          <a href='/feed'>Feed</a>
-        </li>
-        <li>
-          <a href='/profile'>Profile</a>
-        </li>
-      </ul>
+      <Link to='/feed'>Feed</Link>
+
+      {auth ? (
+        <>
+          <button onClick={logout}>Log out</button>
+        </>
+      ) : (
+        <Link to='/'>Login</Link>
+      )}
     </nav>
   );
 }

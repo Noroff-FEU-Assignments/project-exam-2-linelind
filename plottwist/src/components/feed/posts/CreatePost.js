@@ -4,8 +4,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../../hooks/useAxios";
 
-/* const urlCreatePost = API_BASE + "/social/posts"; */
-
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
@@ -26,7 +24,7 @@ export default function RegisterForm() {
 
   function onSubmit(data) {
     setCreated(true);
-    reset();
+    window.location.reload();
   }
 
   const urlCreatePost = useAxios();
@@ -41,7 +39,6 @@ export default function RegisterForm() {
     try {
       const response = await urlCreatePost.post("/social/posts", data);
       setCreated(true);
-      window.location.reload();
     } catch (error) {
       console.log("error", error);
     } finally {

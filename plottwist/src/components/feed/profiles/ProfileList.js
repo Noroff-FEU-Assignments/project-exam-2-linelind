@@ -35,7 +35,7 @@ export default function ProfileList() {
 
   return (
     <div>
-      <Heading title='Profiles' />
+      <Heading size='2' title='Profiles' />
 
       {profiles.slice(0, 5).map((profile) => {
         return (
