@@ -1,12 +1,10 @@
 import Heading from "../layout/Heading";
-import CreatePost from "./posts/CreatePost";
-import PostList from "./posts/PostList";
-import ProfileList from "./profiles/ProfileList";
+import ProfileInfo from "./ProfileInfo";
 import LoginPage from "../login/LoginPage";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 
-export default function FeedPage() {
+export default function ProfilePage() {
   const [auth] = useContext(AuthContext);
 
   if (!auth) {
@@ -14,10 +12,8 @@ export default function FeedPage() {
   } else {
     return (
       <div className='pageContainer'>
-        <Heading title='Feed' />
-        <CreatePost />
-        <PostList />
-        <ProfileList />
+        <Heading title='Profile' />
+        <ProfileInfo />
       </div>
     );
   }

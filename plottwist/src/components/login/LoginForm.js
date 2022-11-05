@@ -34,7 +34,7 @@ export default function LoginForm() {
 
     try {
       const response = await axios.post(url, data);
-      setAuth(response.data.accessToken);
+      setAuth(response.data);
       history("/feed");
     } catch (error) {
       console.log("error", error);
@@ -50,13 +50,11 @@ export default function LoginForm() {
         <input {...register("email")} />
         {errors.email && <span>{errors.email.message}</span>}
       </label>
-
       <label>
         Password
         <input {...register("password")} type='password' />
         {errors.password && <span>{errors.password.message}</span>}
       </label>
-
       <button>Log in</button>
       <a href='/register'>Create new account</a>
     </form>

@@ -48,7 +48,6 @@ export default function EditPost() {
         setPost(response.data);
       } catch (error) {
         setFetchError(error.toString());
-        console.log(error);
       } finally {
         setFetchingPost(false);
       }
@@ -68,7 +67,6 @@ export default function EditPost() {
 
     try {
       const response = await http.put(url, data);
-      console.log("response", response.data);
       setUpdated(true);
     } catch (error) {
       setUpdateError(error.toString());

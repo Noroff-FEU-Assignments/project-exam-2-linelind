@@ -79,7 +79,7 @@ export default function RegisterForm() {
         {errors.banner && <span>{errors.banner.message}</span>}
       </label>
 
-      <button>Send</button>
+      <button>Register</button>
     </form>
   );
 }

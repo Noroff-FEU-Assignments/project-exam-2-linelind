@@ -24,17 +24,15 @@ export default function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
-  /* function onSubmit(data) {
+  function onSubmit(data) {
     setCreated(true);
     reset();
-  } */
+  }
 
   const urlCreatePost = useAxios();
 
   async function onSubmit(data) {
     setCreated(true);
-
-    console.log(data);
 
     if (data.media === "") {
       data.media = null;
@@ -42,15 +40,13 @@ export default function RegisterForm() {
 
     try {
       const response = await urlCreatePost.post("/social/posts", data);
-      console.log("response", response.data);
+      setCreated(true);
+      window.location.reload();
     } catch (error) {
       console.log("error", error);
     } finally {
       setCreated(false);
     }
-
-    setCreated(true);
-    reset();
   }
 
   return (
