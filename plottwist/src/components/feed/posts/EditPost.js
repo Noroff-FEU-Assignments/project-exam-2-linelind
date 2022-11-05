@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../../hooks/useAxios";
 import Heading from "../../layout/Heading";
+import DeletePostButton from "./DeletePostButton";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
@@ -100,6 +101,8 @@ export default function EditPost() {
           <input {...register("media")} defaultValue={post.media} />
         </label>
         <button>Update</button>
+        <hr />
+        <DeletePostButton id={post.id} />
       </form>
     </div>
   );
