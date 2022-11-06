@@ -42,9 +42,11 @@ export default function PostList() {
         if (post.author.email !== auth.email) {
           return (
             <div key={post.id}>
-              <div>
-                <h2>{post.author.name}</h2>
-              </div>
+              <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
+                <div>
+                  <h2>{post.author.name}</h2>
+                </div>
+              </Link>
               <FollowButton name={post.author.name} />
               <UnfollowButton name={post.author.name} />
               <Link to={`/feed/post/${post.id}`}>
@@ -59,9 +61,11 @@ export default function PostList() {
         } else {
           return (
             <div key={post.id}>
-              <div>
-                <h2>{post.author.name}</h2>
-              </div>
+              <Link to={`/myprofile`}>
+                <div>
+                  <h2>{post.author.name}</h2>
+                </div>
+              </Link>
               <Link to={`/feed/post/edit/${post.id}`}>
                 <button>Edit post</button>
               </Link>

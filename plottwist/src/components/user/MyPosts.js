@@ -40,6 +40,11 @@ export default function MyPosts() {
         if (post.author.email === auth.email) {
           return (
             <div key={post.id}>
+              <Link to={`/myprofile`}>
+                <div>
+                  <h2>{post.author.name}</h2>
+                </div>
+              </Link>
               <Link to={`/feed/post/edit/${post.id}`}>
                 <button>Edit post</button>
               </Link>

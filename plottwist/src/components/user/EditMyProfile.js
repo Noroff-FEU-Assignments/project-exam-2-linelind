@@ -7,8 +7,8 @@ import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 
 const schema = yup.object().shape({
-  banner: yup.string().matches(/(http[s]?:\/\/.*\.)/i, "Please enter a valid image url"),
-  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)/i, "Please enter a valid image url"),
+  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
+  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
 });
 
 export default function EditMyProfile() {

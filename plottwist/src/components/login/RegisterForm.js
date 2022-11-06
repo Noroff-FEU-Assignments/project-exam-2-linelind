@@ -18,8 +18,8 @@ const schema = yup.object().shape({
     .required("Please enter an email address")
     .matches(/^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bstud.noroff.no)$/, "Please enter a valid email"),
   password: yup.string().required("Please enter your first name").min(8, "You must enter at least 8 characters"),
-  avatar: yup.string(),
-  banner: yup.string(),
+  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
+  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
 });
 
 export default function RegisterForm() {

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+import ProfilePosts from "./ProfilePosts";
 import Heading from "../../layout/Heading";
 
 export default function ProfileDetail() {
@@ -39,11 +40,11 @@ export default function ProfileDetail() {
 
   return (
     <div key={profiledetail.name}>
-      <Heading size='2' title='Profiles detail' />
       <div>
-        <h3>{profiledetail.name}</h3>
+        <h1>{profiledetail.name}</h1>
         <p>{profiledetail.email}</p>
       </div>
+      <ProfilePosts />
     </div>
   );
 }
