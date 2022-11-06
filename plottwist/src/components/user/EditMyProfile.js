@@ -7,9 +7,8 @@ import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
 
 const schema = yup.object().shape({
-  name: yup.string().required("This field is required"),
-  avatar: yup.string(),
-  banner: yup.string(),
+  banner: yup.string().matches(/(http[s]?:\/\/.*\.)/i, "Please enter a valid image url"),
+  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)/i, "Please enter a valid image url"),
 });
 
 export default function EditMyProfile() {
@@ -59,7 +58,7 @@ export default function EditMyProfile() {
     getMedia();
   }, []);
 
-  const MyMediaurl = "/social/profiles/" + name + "/media";
+  const MyMediaUrl = "/social/profiles/" + name + "/media";
 
   async function onSubmit(data) {
     setUpdatingMedia(true);
@@ -75,7 +74,8 @@ export default function EditMyProfile() {
     }
 
     try {
-      const response = await axiosUrl.put(MyMediaurl, data);
+      const response = await axiosUrl.put(MyMediaUrl, data);
+
       setUpdated(true);
     } catch (error) {
       setUpdateError(error.toString());
@@ -97,13 +97,13 @@ export default function EditMyProfile() {
         <label>
           Banner
           <input {...register("banner")} defaultValue={profilemedia.banner} />
+          {errors.banner && <span>{errors.banner.message}</span>}
         </label>
-
         <label>
           Avatar
           <input {...register("avatar")} defaultValue={profilemedia.avatar} />
+          {errors.avatar && <span>{errors.avatar.message}</span>}
         </label>
-
         <button>Update profile</button>
       </form>
     </div>
