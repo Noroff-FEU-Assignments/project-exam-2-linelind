@@ -40,7 +40,7 @@ export default function PostList() {
         if (post.author.email !== auth.email) {
           return (
             <div key={post.id}>
-              <Link to={`/feed/${post.id}`}>
+              <Link to={`/feed/post/${post.id}`}>
                 <div>
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
@@ -52,10 +52,10 @@ export default function PostList() {
         } else {
           return (
             <div key={post.id}>
-              <Link to={`/feed/edit/${post.id}`}>
+              <Link to={`/feed/post/edit/${post.id}`}>
                 <button>Edit post</button>
               </Link>
-              <Link to={`/feed/${post.id}`}>
+              <Link to={`/feed/post/${post.id}`}>
                 <div>
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>

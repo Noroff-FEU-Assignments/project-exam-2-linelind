@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+import Heading from "../../layout/Heading";
 
 export default function ProfileDetail() {
   const [profiledetail, setProfiledetail] = useState(null);
@@ -21,8 +22,8 @@ export default function ProfileDetail() {
   useEffect(function () {
     async function getProfileDetail() {
       try {
-        const result = await urlProfileDetail.get(`/social/profiles/${name}`);
-        setProfiledetail(result);
+        const result = await urlProfileDetail.get("/social/profiles/" + name);
+        setProfiledetail(result.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -38,8 +39,11 @@ export default function ProfileDetail() {
 
   return (
     <div key={profiledetail.name}>
-      <h3>{profiledetail.name}</h3>
-      <p>{profiledetail.email}</p>
+      <Heading size='2' title='Profiles detail' />
+      <div>
+        <h3>{profiledetail.name}</h3>
+        <p>{profiledetail.email}</p>
+      </div>
     </div>
   );
 }

@@ -13,15 +13,19 @@ function NavBar() {
 
   return (
     <nav>
-      <Link to='/feed'>Feed</Link>
-
-      {auth ? (
-        <>
-          <button onClick={logout}>Log out</button>
-        </>
-      ) : (
-        <Link to='/'>Login</Link>
-      )}
+      <div>
+        <Link to='/feed'>Feed</Link>
+      </div>
+      <div>
+        {auth ? (
+          <>
+            <button onClick={logout}>Log out</button>
+          </>
+        ) : (
+          <Link to='/'>Login</Link>
+        )}
+        <Link to='/myprofile'>My profile</Link>
+      </div>
     </nav>
   );
 }

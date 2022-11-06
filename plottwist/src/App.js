@@ -7,7 +7,7 @@ import FeedPage from "./components/feed/FeedPage";
 import PostDetail from "./components/feed/posts/PostDetail";
 import EditPost from "./components/feed/posts/EditPost";
 import ProfileDetail from "./components/feed/profiles/ProfileDetail";
-import ProfilePage from "./components/user/ProfilePage";
+import MyProfilePage from "./components/user/MyProfilePage";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 
@@ -21,10 +21,10 @@ function App() {
           <Route path='/' exact element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/feed' element={<FeedPage />} />
-          <Route path='/feed/:id' element={<PostDetail />} />
-          <Route path='/feed/edit/:id' element={<EditPost />} />
-          <Route path='/feed/:name' element={<ProfileDetail />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/feed/post/:id' element={<PostDetail />} />
+          <Route path='/feed/post/edit/:id' element={<EditPost />} />
+          <Route path='/feed/profile/:name' element={<ProfileDetail />} />
+          <Route path='/myprofile' element={<MyProfilePage />} />
         </Routes>
       </Router>
     </AuthProvider>
