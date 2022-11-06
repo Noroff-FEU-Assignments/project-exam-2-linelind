@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
+import FollowButton from "../../follow/FollowButton";
+import UnfollowButton from "../../follow/UnfollowButton";
 import moment from "moment";
 
 export default function PostList() {
@@ -40,6 +42,11 @@ export default function PostList() {
         if (post.author.email !== auth.email) {
           return (
             <div key={post.id}>
+              <div>
+                <h2>{post.author.name}</h2>
+              </div>
+              <FollowButton name={post.author.name} />
+              <UnfollowButton name={post.author.name} />
               <Link to={`/feed/post/${post.id}`}>
                 <div>
                   <h3>{post.title}</h3>
@@ -52,6 +59,9 @@ export default function PostList() {
         } else {
           return (
             <div key={post.id}>
+              <div>
+                <h2>{post.author.name}</h2>
+              </div>
               <Link to={`/feed/post/edit/${post.id}`}>
                 <button>Edit post</button>
               </Link>
