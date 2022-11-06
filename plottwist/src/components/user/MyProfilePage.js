@@ -2,7 +2,7 @@ import ProfileInfo from "./MyProfileInfo";
 import LoginPage from "../login/LoginPage";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import Heading from "../layout/Heading";
+import MyPosts from "./MyPosts";
 
 export default function ProfilePage() {
   const [auth] = useContext(AuthContext);
@@ -12,8 +12,8 @@ export default function ProfilePage() {
   } else {
     return (
       <div className='pageContainer'>
-        <Heading title='My profile' />
         <ProfileInfo />
+        <MyPosts />
       </div>
     );
   }
