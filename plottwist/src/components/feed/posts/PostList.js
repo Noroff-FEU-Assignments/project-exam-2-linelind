@@ -5,7 +5,6 @@ import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
 import FollowButton from "../../follow/FollowButton";
 import UnfollowButton from "../../follow/UnfollowButton";
-import ReactButton from "./ReactButton";
 import moment from "moment";
 
 export default function PostList() {
@@ -58,10 +57,6 @@ export default function PostList() {
                   <p>{formatDate}</p>
                 </div>
               </Link>
-              <div>
-                <ReactButton />
-                <p>{post._count.reactions}</p>
-              </div>
             </div>
           );
         } else {
@@ -82,10 +77,6 @@ export default function PostList() {
                   <p>{formatDate}</p>
                 </div>
               </Link>
-              <div>
-                <ReactButton />
-                <p>{post._count.reactions}</p>
-              </div>
             </div>
           );
         }

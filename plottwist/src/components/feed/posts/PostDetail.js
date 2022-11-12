@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+import ReactButton from "./ReactButton";
 import moment from "moment";
 
 export default function PostDetail() {
@@ -18,7 +19,7 @@ export default function PostDetail() {
   }
 
   const urlAxios = useAxios();
-  const urlPostDetail = "/social/posts/" + id;
+  const urlPostDetail = "/social/posts/" + id + "?_author=true";
 
   useEffect(function () {
     async function getPostDetail() {
@@ -42,9 +43,18 @@ export default function PostDetail() {
   const formatDate = moment(date).startOf("hour").fromNow();
 
   return (
-    <div key={postdetail.id}>
-      <h3>{postdetail.title}</h3>
-      <p>{postdetail.body}</p>
+    <div className='pageContainer'>
+      <div className='postCard'>
+        <div key={postdetail.id}>
+          <h2>{postdetail.author.name}</h2>
+          <h3>{postdetail.title}</h3>
+          <p>{postdetail.body}</p>
+        </div>
+        <div className='reactionSymbols'>
+          <ReactButton />
+          <p>{postdetail._count.reactions}</p>
+        </div>
+      </div>
     </div>
   );
 }

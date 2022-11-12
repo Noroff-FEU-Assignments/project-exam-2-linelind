@@ -10,24 +10,22 @@ const schema = yup.object().shape({
 });
 
 export default function ReactButton() {
-  const [reaction, setReaction] = useState();
   const [error, setError] = useState(null);
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  let { id } = useParams();
-  let { symbol } = reaction;
-
   const http = useAxios();
+  let { id } = useParams();
+  let symbol = "🔥";
+
   const urlReact = `/social/posts/${id}/react/${symbol}`;
 
   async function handleReact(data) {
     try {
       const response = await http.put(urlReact, data);
-      console.log("response", response);
-      setReaction("🔥");
+      window.location.reload();
     } catch (error) {
       setError(error.toString());
     }
@@ -35,10 +33,8 @@ export default function ReactButton() {
 
   return (
     <form onSubmit={handleSubmit(handleReact)}>
-      <label>
-        <input type='hidden' {...register("symbol")} value={"🔥"} />
-      </label>
-      <button>🔥</button>
+      <input type='hidden' {...register("symbol")} value={"🔥"} />
+      <button className='btnReact'>🔥</button>
     </form>
   );
 }

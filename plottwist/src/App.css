@@ -39,5 +39,13 @@ button.btnReact {
   background: none;
   padding: 5px;
   font-size: 23px;
+  margin: 0;
   cursor: pointer;
+  text-align: left;
+  width: fit-content;
+}
+
+.reactionSymbols {
+  width: 50px;
+  display: flex;
 }
