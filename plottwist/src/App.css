@@ -26,3 +26,18 @@ label {
 label {
   margin-bottom: 20px;
 }
+
+.postCard,
+.profileCard {
+  border: 1px solid black;
+  margin: 20px;
+  padding: 10px;
+}
+
+button.btnReact {
+  border: 0;
+  background: none;
+  padding: 5px;
+  font-size: 23px;
+  cursor: pointer;
+}

@@ -8,7 +8,7 @@ const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
   media: yup.string(),
-  tags: yup.mixed(),
+  tags: yup.string(),
 });
 
 export default function RegisterForm() {
@@ -27,10 +27,12 @@ export default function RegisterForm() {
   const urlCreatePost = useAxios();
 
   async function onSubmit(data) {
-    setCreated(true);
-
     if (data.media === "") {
       data.media = null;
+    }
+
+    if (data.tags === "") {
+      data.tags = [];
     }
 
     try {
@@ -62,7 +64,7 @@ export default function RegisterForm() {
       </label>
       <label>
         Tags
-        <input {...register("tags")} placeholder='Separate with comma' />
+        <input {...register("tags")} />
       </label>
       <button>Post</button>
     </form>

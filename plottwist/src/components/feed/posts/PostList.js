@@ -5,6 +5,7 @@ import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
 import FollowButton from "../../follow/FollowButton";
 import UnfollowButton from "../../follow/UnfollowButton";
+import ReactButton from "./ReactButton";
 import moment from "moment";
 
 export default function PostList() {
@@ -18,7 +19,8 @@ export default function PostList() {
   useEffect(function () {
     async function getPosts() {
       try {
-        const response = await urlPosts.get("/social/posts?_author=true");
+        const response = await urlPosts.get("/social/posts?_author=true&_comments=true&_reactions=true");
+        console.log(response.data);
         setPosts(response.data);
       } catch (error) {
         setError(error.toString());
@@ -41,7 +43,7 @@ export default function PostList() {
       {posts.slice(0, 15).map((post) => {
         if (post.author.email !== auth.email) {
           return (
-            <div key={post.id}>
+            <div key={post.id} className='postCard'>
               <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
                 <div>
                   <h2>{post.author.name}</h2>
@@ -56,11 +58,15 @@ export default function PostList() {
                   <p>{formatDate}</p>
                 </div>
               </Link>
+              <div>
+                <ReactButton />
+                <p>{post._count.reactions}</p>
+              </div>
             </div>
           );
         } else {
           return (
-            <div key={post.id}>
+            <div key={post.id} className='postCard'>
               <Link to={`/myprofile`}>
                 <div>
                   <h2>{post.author.name}</h2>
@@ -76,6 +82,10 @@ export default function PostList() {
                   <p>{formatDate}</p>
                 </div>
               </Link>
+              <div>
+                <ReactButton />
+                <p>{post._count.reactions}</p>
+              </div>
             </div>
           );
         }

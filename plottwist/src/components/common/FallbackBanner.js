@@ -1,5 +1,9 @@
-import defaultBanner from "../../../assets/images/fallbackbanner.jpg";
+import fallbackBanner from "../../../assets/images/fallbackbanner.jpg";
 
-export default function Banner(props) {
-  return <div style={{ backgroundImage: `url(${props.image !== "" && props.image !== null ? props.image : defaultBanner})` }}>{props.children}</div>;
+export default function FallbackBanner(image) {
+  if(image.image === "" || image.image === null) {
+    return (
+      <div style={backgroundImage: `url(${fallbackBanner})`}></div>;
+    )
+  }
 }

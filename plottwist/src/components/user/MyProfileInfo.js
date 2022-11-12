@@ -26,7 +26,7 @@ export default function ProfileInfo() {
     getProfile();
   }, []);
 
-  if (loading) return <div>Loading posts...</div>;
+  if (loading) return <div>Loading info...</div>;
 
   if (error) return <div>{error}</div>;
 

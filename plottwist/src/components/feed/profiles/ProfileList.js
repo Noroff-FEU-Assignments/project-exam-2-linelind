@@ -40,7 +40,7 @@ export default function ProfileList() {
       {profiles.slice(0, 5).map((profile) => {
         return (
           <Link to={`/feed/profile/${profile.name}`} key={profile.name}>
-            <div>
+            <div className='profileCard'>
               <h3>{profile.name}</h3>
               <p>{profile.email}</p>
             </div>
