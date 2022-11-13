@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
-import ReactButton from "./ReactButton";
+import ReactButton from "./reactions/ReactButton";
+import CommentButton from "./comments/CommentButton";
 import moment from "moment";
 
 export default function PostDetail() {
@@ -19,7 +20,7 @@ export default function PostDetail() {
   }
 
   const urlAxios = useAxios();
-  const urlPostDetail = "/social/posts/" + id + "?_author=true";
+  const urlPostDetail = "/social/posts/" + id + "?_author=true&_comments=true&_reactions=true";
 
   useEffect(function () {
     async function getPostDetail() {
@@ -44,15 +45,32 @@ export default function PostDetail() {
 
   return (
     <div className='pageContainer'>
-      <div className='postCard'>
-        <div key={postdetail.id}>
+      <div className='postCard' key={postdetail.id}>
+        <div>
           <h2>{postdetail.author.name}</h2>
           <h3>{postdetail.title}</h3>
           <p>{postdetail.body}</p>
         </div>
-        <div className='reactionSymbols'>
-          <ReactButton />
-          <p>{postdetail._count.reactions}</p>
+        <div>
+          <div className='reactionSymbols'>
+            <ReactButton />
+            <p>{postdetail._count.reactions}</p>
+          </div>
+          <div>
+            <CommentButton />
+          </div>
+        </div>
+        <div>
+          {postdetail.comments.map((comment) => {
+            const formatCreated = moment(comment.created).startOf("hour").fromNow();
+            return (
+              <div>
+                <p>{comment.body}</p>
+                <p>{comment.owner}</p>
+                <p>{formatCreated}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

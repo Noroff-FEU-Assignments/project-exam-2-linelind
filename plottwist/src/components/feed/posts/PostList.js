@@ -19,7 +19,6 @@ export default function PostList() {
     async function getPosts() {
       try {
         const response = await urlPosts.get("/social/posts?_author=true&_comments=true&_reactions=true");
-        console.log(response.data);
         setPosts(response.data);
       } catch (error) {
         setError(error.toString());
