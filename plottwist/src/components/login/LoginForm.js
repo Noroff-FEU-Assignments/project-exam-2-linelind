@@ -44,7 +44,7 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className='form'>
       <label>
         Email
         <input {...register("email")} />

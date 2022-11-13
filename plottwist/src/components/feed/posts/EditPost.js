@@ -86,7 +86,7 @@ export default function EditPost() {
     <div className='pageContainer'>
       <Heading title='Edit post' />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className='form'>
         {updated && <div>The post was updated</div>}
         <label>
           Title

@@ -38,7 +38,7 @@ export default function CommentButton() {
   return (
     <form onSubmit={handleSubmit(handleComment)}>
       <label>
-        <input {...register("body")} />
+        <textarea {...register("body")} />
         {errors.body && <span>{errors.body.message}</span>}
       </label>
       <button>Comment</button>

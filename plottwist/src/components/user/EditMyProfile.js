@@ -92,7 +92,7 @@ export default function EditMyProfile() {
     <div className='pageContainer'>
       <Heading title='Edit media' />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className='form'>
         {updated && <div>Your profile was updated</div>}
         <label>
           Banner

@@ -16,7 +16,9 @@ export default function PostList() {
   const urlAxios = useAxios();
   const [auth] = useContext(AuthContext);
 
-  const postUrl = "/social/posts?_author=true&_comments=true&_reactions=true";
+  let count = 5;
+
+  const postUrl = `/social/posts?_author=true&_comments=true&_reactions=true&limit=${count}`;
 
   useEffect(function () {
     async function getPosts() {
@@ -31,6 +33,11 @@ export default function PostList() {
     }
     getPosts();
   }, []);
+
+  function getMorePosts() {
+    count = count + 5;
+    console.log(count);
+  }
 
   const checkUrl = `/social/profiles/${auth.name}?_following=true`;
 
@@ -49,13 +56,6 @@ export default function PostList() {
 
   if (loading) return <div>Loading posts...</div>;
   if (error) return <div>{error}</div>;
-
-  /*  let count = 5;
-
-  function handleViewMore() {
-    count = count + 5;
-    console.log(count);
-  } */
 
   const date = posts.created;
   const formatDate = moment(date).startOf("hour").fromNow();
@@ -111,7 +111,7 @@ export default function PostList() {
           );
         }
       })}
-      {/* <button onClick={handleViewMore}>View more</button> */}
+      <button onClick={getMorePosts}>View more</button>
     </div>
   );
 }

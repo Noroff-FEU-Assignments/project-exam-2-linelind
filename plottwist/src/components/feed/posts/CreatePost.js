@@ -47,7 +47,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className='form'>
       {postError && <div>{postError}</div>}
       <label>
         Title

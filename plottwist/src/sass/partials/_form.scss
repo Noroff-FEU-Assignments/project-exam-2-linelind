@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  margin: 20px;
+  border: $border;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 20px;
+}

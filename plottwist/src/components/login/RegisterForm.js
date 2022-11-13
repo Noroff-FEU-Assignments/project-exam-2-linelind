@@ -55,7 +55,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className='form'>
       <label>
         Name*
         <input {...register("name")} />
