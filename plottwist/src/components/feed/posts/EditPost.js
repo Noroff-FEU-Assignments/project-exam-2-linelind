@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../../hooks/useAxios";
@@ -29,6 +30,8 @@ export default function EditPost() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const history = useNavigate();
 
   const http = useAxios();
 
@@ -72,11 +75,11 @@ export default function EditPost() {
       setUpdateError(error.toString());
     } finally {
       setUpdatingPost(false);
+      history(`/feed/post/${id}`);
     }
   }
 
   if (fetchingPost) return <div>Loading...</div>;
-
   if (fetchError) return <div>{fetchError}</div>;
 
   return (

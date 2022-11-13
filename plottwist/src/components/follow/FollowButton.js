@@ -11,13 +11,14 @@ export default function FollowButton({ name }) {
   async function handleFollow() {
     try {
       const result = await urlAxios.put(followUrl);
+      window.location.reload();
     } catch (error) {
       setError(error);
     }
   }
 
   return (
-    <button type='button' className='follow' onClick={handleFollow}>
+    <button type='button' onClick={handleFollow}>
       {error ? "Error" : "Follow"}
     </button>
   );

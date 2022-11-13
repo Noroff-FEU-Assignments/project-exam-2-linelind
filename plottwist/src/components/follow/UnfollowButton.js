@@ -11,13 +11,14 @@ export default function UnfollowButton({ name }) {
   async function handleUnfollow() {
     try {
       const result = await urlAxios.put(unfollowUrl);
+      window.location.reload();
     } catch (error) {
       setError(error);
     }
   }
 
   return (
-    <button type='button' className='follow' onClick={handleUnfollow}>
+    <button type='button' onClick={handleUnfollow}>
       {error ? "Error" : "Unfollow"}
     </button>
   );
