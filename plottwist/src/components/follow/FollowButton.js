@@ -18,7 +18,7 @@ export default function FollowButton({ name }) {
   }
 
   return (
-    <button type='button' onClick={handleFollow}>
+    <button type='button' onClick={handleFollow} className='followBtn'>
       {error ? "Error" : "Follow"}
     </button>
   );

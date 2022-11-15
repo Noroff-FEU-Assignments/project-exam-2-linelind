@@ -37,22 +37,50 @@ export default function MyPosts() {
 
   return (
     <div className='postContainer'>
-      {myposts.slice(0, 15).map((mypost) => {
+      {myposts.slice(0, 15).map((post) => {
         return (
-          <div key={mypost.id} className='postCard'>
-            <Link to={`/myprofile`}>
+          <div key={post.id} className='postCard'>
+            <div className='postHeader'>
+              <Link to={`/feed/post/edit/${post.id}`}>
+                <button className='editBtn'>Edit post</button>
+              </Link>
+              <Link to={`/myprofile`}>
+                <div>
+                  <h2>{auth.name}</h2>
+                  <p>{formatDate}</p>
+                </div>
+              </Link>
+            </div>
+            <Link to={`/feed/post/${post.id}`}>
               <div>
-                <h2>{auth.name}</h2>
+                <h3>{post.title}</h3>
+                <p>{post.body}</p>
               </div>
-            </Link>
-            <Link to={`/feed/post/edit/${mypost.id}`}>
-              <button>Edit post</button>
-            </Link>
-            <Link to={`/feed/post/${mypost.id}`}>
-              <div>
-                <h3>{mypost.title}</h3>
-                <p>{mypost.body}</p>
-                <p>{formatDate}</p>
+              {(() => {
+                if (post.image !== null) {
+                  return <img src={post.media} className='postCardImage' />;
+                } else {
+                  return null;
+                }
+              })()}
+              <div className='tagsContainer'>
+                {post.tags.map((tag) => {
+                  return <p className='tagItem'>{tag}</p>;
+                })}
+              </div>
+              <div className='iconContainer'>
+                {(() => {
+                  if (post._count.comments !== 0) {
+                    return <i className='fa-regular fa-comment-dots '></i>;
+                  }
+                  return null;
+                })()}
+                {(() => {
+                  if (post._count.reactions !== 0) {
+                    return <i className='fa-regular fa-heart '></i>;
+                  }
+                  return null;
+                })()}
               </div>
             </Link>
           </div>

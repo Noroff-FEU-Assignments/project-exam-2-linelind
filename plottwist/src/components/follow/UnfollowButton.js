@@ -18,7 +18,7 @@ export default function UnfollowButton({ name }) {
   }
 
   return (
-    <button type='button' onClick={handleUnfollow}>
+    <button type='button' onClick={handleUnfollow} className='followBtn'>
       {error ? "Error" : "Unfollow"}
     </button>
   );

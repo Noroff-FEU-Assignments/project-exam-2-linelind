@@ -11,6 +11,7 @@ const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
   media: yup.string(),
+  tags: yup.string(),
 });
 
 function displayImage() {
@@ -38,25 +39,23 @@ export default function RegisterForm() {
   const urlCreatePost = useAxios();
 
   async function createPost(data) {
-    const CreateTitle = data.title;
-    const CreateMessage = data.body;
-    const CreateMedia = data.media;
-    const CreateTags = [];
-    CreateTags.push(data.tags);
+    const tagsArray = [];
+    tagsArray.push(data.tags);
 
     if (data.media === "") {
       data.media = null;
     }
 
     const formData = {
-      title: CreateTitle,
-      body: CreateMessage,
-      media: CreateMedia,
-      tags: CreateTags,
+      title: data.title,
+      body: data.body,
+      media: data.media,
+      tags: tagsArray,
     };
 
     try {
       const response = await urlCreatePost.post("/social/posts", formData);
+
       setCreated(true);
       window.location.reload();
     } catch (error) {
@@ -76,7 +75,7 @@ export default function RegisterForm() {
         </div>
       </Link>
 
-      <form>
+      <form onSubmit={handleSubmit(createPost)}>
         {postError && <div>{postError}</div>}
         <label>
           <input {...register("title")} placeholder='title' />
@@ -91,16 +90,14 @@ export default function RegisterForm() {
         <label className='isHidden' id='tagsLabel'>
           <input {...register("tags")} placeholder='tags' />
         </label>
-        <div class='createBtnContainer'>
+        <div className='createBtnContainer'>
           <div className='addImageBtn' onClick={displayImage}>
             Add image
           </div>
           <div className='addTagsBtn' onClick={displayTags}>
             Add tags
           </div>
-          <button className='createPostBtn' onSubmit={handleSubmit(createPost)}>
-            Post
-          </button>
+          <button className='createPostBtn'>Post</button>
         </div>
       </form>
     </div>

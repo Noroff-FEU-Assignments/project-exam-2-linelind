@@ -56,6 +56,10 @@ export default function PostList() {
   if (loading) return <div>Loading posts...</div>;
   if (error) return <div>{error}</div>;
 
+  if (posts.media === "") {
+    posts.media = null;
+  }
+
   const date = posts.created;
   const formatDate = moment(date).startOf("hour").fromNow();
 
@@ -78,6 +82,7 @@ export default function PostList() {
                 <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
                   <div>
                     <h2>{post.author.name}</h2>
+                    <p>{formatDate}</p>
                   </div>
                 </Link>
               </div>
@@ -85,8 +90,14 @@ export default function PostList() {
                 <div>
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
-                  <p>{formatDate}</p>
                 </div>
+                {(() => {
+                  if (post.image !== null) {
+                    return <img src={post.media} className='postCardImage' />;
+                  } else {
+                    return null;
+                  }
+                })()}
                 <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     if (tag !== "") {
@@ -94,21 +105,21 @@ export default function PostList() {
                     }
                   })}
                 </div>
+                <div className='iconContainer'>
+                  {(() => {
+                    if (post._count.comments !== 0) {
+                      return <i className='fa-regular fa-comment-dots '></i>;
+                    }
+                    return null;
+                  })()}
+                  {(() => {
+                    if (post._count.reactions !== 0) {
+                      return <i className='fa-regular fa-heart '></i>;
+                    }
+                    return null;
+                  })()}
+                </div>
               </Link>
-              <div className='iconContainer'>
-                {(() => {
-                  if (post._count.comments !== 0) {
-                    return <i className='fa-regular fa-comment-dots '></i>;
-                  }
-                  return null;
-                })()}
-                {(() => {
-                  if (post._count.reactions !== 0) {
-                    return <i className='fa-regular fa-heart '></i>;
-                  }
-                  return null;
-                })()}
-              </div>
             </div>
           );
         } else {
@@ -116,11 +127,12 @@ export default function PostList() {
             <div key={post.id} className='postCard'>
               <div className='postHeader'>
                 <Link to={`/feed/post/edit/${post.id}`}>
-                  <button>Edit post</button>
+                  <button className='editBtn'>Edit post</button>
                 </Link>
                 <Link to={`/myprofile`}>
                   <div>
                     <h2>{post.author.name}</h2>
+                    <p>{formatDate}</p>
                   </div>
                 </Link>
               </div>
@@ -128,28 +140,34 @@ export default function PostList() {
                 <div>
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
-                  <p>{formatDate}</p>
                 </div>
+                {(() => {
+                  if (post.image !== null) {
+                    return <img src={post.media} className='postCardImage' />;
+                  } else {
+                    return null;
+                  }
+                })()}
                 <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     return <p className='tagItem'>{tag}</p>;
                   })}
                 </div>
+                <div className='iconContainer'>
+                  {(() => {
+                    if (post._count.comments !== 0) {
+                      return <i className='fa-regular fa-comment-dots '></i>;
+                    }
+                    return null;
+                  })()}
+                  {(() => {
+                    if (post._count.reactions !== 0) {
+                      return <i className='fa-regular fa-heart '></i>;
+                    }
+                    return null;
+                  })()}
+                </div>
               </Link>
-              <div className='iconContainer'>
-                {(() => {
-                  if (post._count.comments !== 0) {
-                    return <i className='fa-regular fa-comment-dots '></i>;
-                  }
-                  return null;
-                })()}
-                {(() => {
-                  if (post._count.reactions !== 0) {
-                    return <i className='fa-regular fa-heart '></i>;
-                  }
-                  return null;
-                })()}
-              </div>
             </div>
           );
         }

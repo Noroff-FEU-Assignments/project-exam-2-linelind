@@ -53,7 +53,7 @@ export default function PostDetail() {
       <div className='pageContainer'>
         <div className='postCard' key={postdetail.id}>
           <Link to={`/feed/post/edit/${postdetail.id}`}>
-            <button>Edit post</button>
+            <button className='editBtn'>Edit post</button>
           </Link>
           <div>
             <h2>{postdetail.author.name}</h2>

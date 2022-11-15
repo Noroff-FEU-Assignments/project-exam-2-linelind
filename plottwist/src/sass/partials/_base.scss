@@ -57,3 +57,18 @@ footer {
 .isHidden {
   display: none;
 }
+
+.followBtn {
+  border: $border;
+  background-color: getColour(white);
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: getColour(green);
+}
+
+.editBtn {
+  background-color: #aecdc4;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
