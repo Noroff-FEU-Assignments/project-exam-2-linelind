@@ -45,3 +45,15 @@ footer {
     flex-direction: column;
   }
 }
+
+.avatarImage {
+  height: 70px;
+  width: 70px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 100%;
+}
+
+.isHidden {
+  display: none;
+}

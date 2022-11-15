@@ -14,7 +14,7 @@ export default function FeedPage() {
   } else {
     return (
       <div className='pageContainer'>
-        <Heading title='Feed' />
+        <h1>How's it going {auth.name}?</h1>
         <CreatePost />
         <PostList />
         <ProfileList />

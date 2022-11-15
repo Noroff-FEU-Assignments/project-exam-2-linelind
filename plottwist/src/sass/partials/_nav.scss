@@ -1,0 +1,35 @@
+nav {
+  background-color: getColour(white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  box-shadow: $shadow;
+  position: sticky;
+  top: 0;
+
+  .logo {
+    font-family: $font-logo;
+    font-size: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: getColour(black);
+  }
+
+  .logOutBtn,
+  .logInBtn {
+    margin-right: 20px;
+    border: none;
+    background-color: getColour(green);
+    color: getColour(white);
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 2px;
+  }
+
+  .fa-user {
+    font-size: 25px;
+  }
+}

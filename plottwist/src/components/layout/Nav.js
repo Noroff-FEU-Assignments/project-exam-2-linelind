@@ -14,17 +14,25 @@ function NavBar() {
   return (
     <nav>
       <div>
-        <Link to='/feed'>Feed</Link>
+        <Link to='/feed' className='logo'>
+          PlotTwist
+        </Link>
       </div>
       <div>
         {auth ? (
           <>
-            <button onClick={logout}>Log out</button>
+            <button onClick={logout} className='logOutBtn'>
+              Log out
+            </button>
           </>
         ) : (
-          <Link to='/'>Login</Link>
+          <Link to='/' className='logInBtn'>
+            Login
+          </Link>
         )}
-        <Link to='/myprofile'>My profile</Link>
+        <Link to='/myprofile'>
+          <i className='fa-solid fa-user'></i>
+        </Link>
       </div>
     </nav>
   );

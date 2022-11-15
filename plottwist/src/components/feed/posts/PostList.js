@@ -65,19 +65,21 @@ export default function PostList() {
         if (post.author.email !== auth.email) {
           return (
             <div key={post.id} className='postCard'>
-              <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
+              <div className='postHeader'>
                 <div>
-                  <h2>{post.author.name}</h2>
+                  {followings.map((following) => {
+                    if (following.name === post.author.name) {
+                      return <UnfollowButton name={post.author.name} />;
+                    } else {
+                      return <FollowButton name={post.author.name} />;
+                    }
+                  })}
                 </div>
-              </Link>
-              <div>
-                {followings.map((following) => {
-                  if (following.name === post.author.name) {
-                    return <UnfollowButton name={post.author.name} />;
-                  } else {
-                    return <FollowButton name={post.author.name} />;
-                  }
-                })}
+                <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
+                  <div>
+                    <h2>{post.author.name}</h2>
+                  </div>
+                </Link>
               </div>
               <Link to={`/feed/post/${post.id}`}>
                 <div>
@@ -93,19 +95,22 @@ export default function PostList() {
                   })}
                 </div>
               </Link>
+              <div></div>
             </div>
           );
         } else {
           return (
             <div key={post.id} className='postCard'>
-              <Link to={`/myprofile`}>
-                <div>
-                  <h2>{post.author.name}</h2>
-                </div>
-              </Link>
-              <Link to={`/feed/post/edit/${post.id}`}>
-                <button>Edit post</button>
-              </Link>
+              <div className='postHeader'>
+                <Link to={`/feed/post/edit/${post.id}`}>
+                  <button>Edit post</button>
+                </Link>
+                <Link to={`/myprofile`}>
+                  <div>
+                    <h2>{post.author.name}</h2>
+                  </div>
+                </Link>
+              </div>
               <Link to={`/feed/post/${post.id}`}>
                 <div>
                   <h3>{post.title}</h3>

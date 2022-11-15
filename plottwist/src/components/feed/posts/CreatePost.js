@@ -1,14 +1,27 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../../hooks/useAxios";
+import AuthContext from "../../../context/AuthContext";
+import { useContext } from "react";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
   media: yup.string(),
 });
+
+function displayImage() {
+  const imageLabel = document.querySelector("#imageLabel");
+  imageLabel.classList.toggle("isHidden");
+}
+
+function displayTags() {
+  const tagsLabel = document.querySelector("#tagsLabel");
+  tagsLabel.classList.toggle("isHidden");
+}
 
 export default function RegisterForm() {
   const [created, setCreated] = useState(false);
@@ -53,27 +66,43 @@ export default function RegisterForm() {
     }
   }
 
+  const [auth] = useContext(AuthContext);
+
   return (
-    <form onSubmit={handleSubmit(createPost)} className='form'>
-      {postError && <div>{postError}</div>}
-      <label>
-        Title
-        <input {...register("title")} />
-        {errors.title && <span>{errors.title.message}</span>}
-      </label>
-      <label>
-        Body
-        <textarea {...register("body")} />
-      </label>
-      <label>
-        Media
-        <input {...register("media")} />
-      </label>
-      <label>
-        Tags
-        <input {...register("tags")} />
-      </label>
-      <button>Post</button>
-    </form>
+    <div className='form createForm'>
+      <Link to={`/myprofile`} className='userImageContainer'>
+        <div>
+          <img src={auth.avatar} alt='Go to profile' className='avatarImage' />
+        </div>
+      </Link>
+
+      <form>
+        {postError && <div>{postError}</div>}
+        <label>
+          <input {...register("title")} placeholder='title' />
+          {errors.title && <span>{errors.title.message}</span>}
+        </label>
+        <label>
+          <textarea {...register("body")} placeholder='body' />
+        </label>
+        <label className='isHidden' id='imageLabel'>
+          <input {...register("media")} placeholder='media' />
+        </label>
+        <label className='isHidden' id='tagsLabel'>
+          <input {...register("tags")} placeholder='tags' />
+        </label>
+        <div class='createBtnContainer'>
+          <div className='addImageBtn' onClick={displayImage}>
+            Add image
+          </div>
+          <div className='addTagsBtn' onClick={displayTags}>
+            Add tags
+          </div>
+          <button className='createPostBtn' onSubmit={handleSubmit(createPost)}>
+            Post
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

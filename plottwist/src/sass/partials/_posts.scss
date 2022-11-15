@@ -1,8 +1,14 @@
 .postCard,
 .profileCard {
   border: $border;
+  background-color: getColour(white);
   margin: 20px;
   padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: getColour(black);
 }
 
 button.btnReact {
@@ -27,9 +33,15 @@ button.btnReact {
 }
 
 .tagItem {
-  background-color: getColour(white);
-  padding: 5px;
-  border-radius: 2px;
-  border: $border;
+  color: getColour(green);
+  text-transform: uppercase;
   margin-right: 10px;
+}
+
+.postHeader {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid getColour(green);
 }
