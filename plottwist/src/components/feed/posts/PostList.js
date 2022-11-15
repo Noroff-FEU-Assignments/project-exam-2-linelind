@@ -95,7 +95,20 @@ export default function PostList() {
                   })}
                 </div>
               </Link>
-              <div></div>
+              <div className='iconContainer'>
+                {(() => {
+                  if (post._count.comments !== 0) {
+                    return <i className='fa-regular fa-comment-dots '></i>;
+                  }
+                  return null;
+                })()}
+                {(() => {
+                  if (post._count.reactions !== 0) {
+                    return <i className='fa-regular fa-heart '></i>;
+                  }
+                  return null;
+                })()}
+              </div>
             </div>
           );
         } else {
@@ -123,6 +136,20 @@ export default function PostList() {
                   })}
                 </div>
               </Link>
+              <div className='iconContainer'>
+                {(() => {
+                  if (post._count.comments !== 0) {
+                    return <i className='fa-regular fa-comment-dots '></i>;
+                  }
+                  return null;
+                })()}
+                {(() => {
+                  if (post._count.reactions !== 0) {
+                    return <i className='fa-regular fa-heart '></i>;
+                  }
+                  return null;
+                })()}
+              </div>
             </div>
           );
         }
