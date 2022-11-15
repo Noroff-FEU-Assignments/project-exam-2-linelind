@@ -3,7 +3,8 @@
   border: $border;
   background-color: getColour(white);
   margin: 20px;
-  padding: 10px;
+  max-width: 500px;
+  padding: 10px 15px;
 }
 
 a {
@@ -34,7 +35,6 @@ button.btnReact {
 
 .tagItem {
   color: getColour(green);
-  text-transform: uppercase;
   margin-right: 10px;
 }
 
@@ -59,5 +59,5 @@ button.btnReact {
 }
 
 .postCardImage {
-  max-width: 100%;
+  width: 100%;
 }

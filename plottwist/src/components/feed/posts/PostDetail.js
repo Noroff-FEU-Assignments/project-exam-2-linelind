@@ -60,6 +60,15 @@ export default function PostDetail() {
             <h3>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
+
+          {(() => {
+            if (postdetail.media !== null) {
+              return <img src={postdetail.media} className='postCardImage' />;
+            } else {
+              return null;
+            }
+          })()}
+
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
@@ -100,6 +109,13 @@ export default function PostDetail() {
             <h3>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
+          {(() => {
+            if (postdetail.media !== null) {
+              return <img src={postdetail.media} className='postCardImage' />;
+            } else {
+              return null;
+            }
+          })()}
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {

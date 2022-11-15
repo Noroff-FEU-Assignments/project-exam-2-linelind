@@ -5,14 +5,15 @@ import useAxios from "../../hooks/useAxios";
 export default function UnfollowButton({ name }) {
   const [error, setError] = useState(null);
 
-  const urlAxios = useAxios();
-  const unfollowUrl = `/social/profiles/${name}/unfollow`;
+  const http = useAxios();
 
   async function handleUnfollow() {
     try {
-      const result = await urlAxios.put(unfollowUrl);
+      const response = await http.put(`/social/profiles/${name}/unfollow`);
+      console.log(response);
       window.location.reload();
     } catch (error) {
+      console.log(error);
       setError(error);
     }
   }

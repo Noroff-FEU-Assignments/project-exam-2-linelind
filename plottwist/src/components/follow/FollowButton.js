@@ -5,12 +5,12 @@ import useAxios from "../../hooks/useAxios";
 export default function FollowButton({ name }) {
   const [error, setError] = useState(null);
 
-  const urlAxios = useAxios();
-  const followUrl = `/social/profiles/${name}/follow`;
+  const http = useAxios();
 
   async function handleFollow() {
     try {
-      const result = await urlAxios.put(followUrl);
+      const response = await http.put(`/social/profiles/${name}/follow`);
+      console.log(response);
       window.location.reload();
     } catch (error) {
       setError(error);
@@ -18,7 +18,7 @@ export default function FollowButton({ name }) {
   }
 
   return (
-    <button type='button' onClick={handleFollow} className='followBtn'>
+    <button onClick={handleFollow} className='followBtn'>
       {error ? "Error" : "Follow"}
     </button>
   );

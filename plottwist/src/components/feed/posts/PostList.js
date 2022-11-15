@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
-import FollowButton from "../../follow/FollowButton";
-import UnfollowButton from "../../follow/UnfollowButton";
+import FollowUnfollow from "../../follow/FollowUnfollow";
 import moment from "moment";
 
 export default function PostList() {
@@ -71,18 +70,12 @@ export default function PostList() {
             <div key={post.id} className='postCard'>
               <div className='postHeader'>
                 <div>
-                  {followings.map((following) => {
-                    if (following.name === post.author.name) {
-                      return <UnfollowButton name={post.author.name} />;
-                    } else {
-                      return <FollowButton name={post.author.name} />;
-                    }
-                  })}
+                  <FollowUnfollow followings={followings} authorName={post.author.name} />
                 </div>
                 <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
                   <div>
                     <h2>{post.author.name}</h2>
-                    <p>{formatDate}</p>
+                    <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
               </div>
@@ -92,7 +85,7 @@ export default function PostList() {
                   <p>{post.body}</p>
                 </div>
                 {(() => {
-                  if (post.image !== null) {
+                  if (post.media !== null) {
                     return <img src={post.media} className='postCardImage' />;
                   } else {
                     return null;
@@ -132,7 +125,7 @@ export default function PostList() {
                 <Link to={`/myprofile`}>
                   <div>
                     <h2>{post.author.name}</h2>
-                    <p>{formatDate}</p>
+                    <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
               </div>
