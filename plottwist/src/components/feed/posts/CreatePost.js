@@ -8,7 +8,6 @@ const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
   media: yup.string(),
-  tags: yup.string(),
 });
 
 export default function RegisterForm() {
@@ -18,7 +17,6 @@ export default function RegisterForm() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -26,17 +24,26 @@ export default function RegisterForm() {
 
   const urlCreatePost = useAxios();
 
-  async function onSubmit(data) {
+  async function createPost(data) {
+    const CreateTitle = data.title;
+    const CreateMessage = data.body;
+    const CreateMedia = data.media;
+    const CreateTags = [];
+    CreateTags.push(data.tags);
+
     if (data.media === "") {
       data.media = null;
     }
 
-    if (data.tags === "") {
-      data.tags = [];
-    }
+    const formData = {
+      title: CreateTitle,
+      body: CreateMessage,
+      media: CreateMedia,
+      tags: CreateTags,
+    };
 
     try {
-      const response = await urlCreatePost.post("/social/posts", data);
+      const response = await urlCreatePost.post("/social/posts", formData);
       setCreated(true);
       window.location.reload();
     } catch (error) {
@@ -47,7 +54,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+    <form onSubmit={handleSubmit(createPost)} className='form'>
       {postError && <div>{postError}</div>}
       <label>
         Title

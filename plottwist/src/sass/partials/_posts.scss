@@ -20,3 +20,16 @@ button.btnReact {
   width: 50px;
   display: flex;
 }
+
+.tagsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.tagItem {
+  background-color: getColour(white);
+  padding: 5px;
+  border-radius: 2px;
+  border: $border;
+  margin-right: 10px;
+}

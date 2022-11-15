@@ -16,7 +16,7 @@ export default function PostList() {
   const urlAxios = useAxios();
   const [auth] = useContext(AuthContext);
 
-  let count = 5;
+  let count = 50;
 
   const postUrl = `/social/posts?_author=true&_comments=true&_reactions=true&limit=${count}`;
 
@@ -35,7 +35,7 @@ export default function PostList() {
   }, []);
 
   function getMorePosts() {
-    count = count + 5;
+    count = count + 50;
     console.log(count);
   }
 
@@ -45,7 +45,6 @@ export default function PostList() {
     async function getFollowing() {
       try {
         const response = await urlAxios.get(checkUrl);
-        console.log(response.data.following);
         setFollowings(response.data.following);
       } catch (error) {
         setError(error);
@@ -62,7 +61,7 @@ export default function PostList() {
 
   return (
     <div>
-      {posts.slice(0, 30).map((post) => {
+      {posts.map((post) => {
         if (post.author.email !== auth.email) {
           return (
             <div key={post.id} className='postCard'>
@@ -86,6 +85,13 @@ export default function PostList() {
                   <p>{post.body}</p>
                   <p>{formatDate}</p>
                 </div>
+                <div className='tagsContainer'>
+                  {post.tags.map((tag) => {
+                    if (tag !== "") {
+                      return <p className='tagItem'>{tag}</p>;
+                    }
+                  })}
+                </div>
               </Link>
             </div>
           );
@@ -105,6 +111,11 @@ export default function PostList() {
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
                   <p>{formatDate}</p>
+                </div>
+                <div className='tagsContainer'>
+                  {post.tags.map((tag) => {
+                    return <p className='tagItem'>{tag}</p>;
+                  })}
                 </div>
               </Link>
             </div>

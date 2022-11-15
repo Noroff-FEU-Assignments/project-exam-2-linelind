@@ -32,7 +32,6 @@ export default function EditPost() {
   });
 
   const history = useNavigate();
-
   const http = useAxios();
 
   let { id } = useParams();
@@ -59,17 +58,31 @@ export default function EditPost() {
     getPost();
   }, []);
 
-  async function onSubmit(data) {
+  async function editPost(data) {
     setUpdatingPost(true);
     setUpdateError(null);
     setUpdated(false);
+
+    const EditTitle = data.title;
+    const EditMessage = data.body;
+    const EditMedia = data.media;
+    const EditTags = [];
+
+    EditTags.push(data.tags);
 
     if (data.media === "") {
       data.media = null;
     }
 
+    const formData = {
+      title: EditTitle,
+      body: EditMessage,
+      media: EditMedia,
+      tags: EditTags,
+    };
+
     try {
-      const response = await http.put(url, data);
+      const response = await http.put(url, formData);
       setUpdated(true);
     } catch (error) {
       setUpdateError(error.toString());
@@ -86,7 +99,7 @@ export default function EditPost() {
     <div className='pageContainer'>
       <Heading title='Edit post' />
 
-      <form onSubmit={handleSubmit(onSubmit)} className='form'>
+      <form onSubmit={handleSubmit(editPost)} className='form'>
         {updated && <div>The post was updated</div>}
         <label>
           Title
@@ -100,6 +113,10 @@ export default function EditPost() {
         <label>
           Media
           <input {...register("media")} defaultValue={post.media} />
+        </label>
+        <label>
+          Tags
+          <input {...register("tags")} defaultValue={post.tags} />
         </label>
         <button>Update</button>
         <hr />
