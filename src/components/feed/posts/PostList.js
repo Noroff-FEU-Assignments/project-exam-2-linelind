@@ -15,9 +15,7 @@ export default function PostList() {
   const urlAxios = useAxios();
   const [auth] = useContext(AuthContext);
 
-  let count = 50;
-
-  const postUrl = `/social/posts?_author=true&_comments=true&_reactions=true&limit=${count}`;
+  const postUrl = `/social/posts?_author=true&_comments=true&_reactions=true&limit=30`;
 
   useEffect(function () {
     async function getPosts() {
@@ -32,11 +30,6 @@ export default function PostList() {
     }
     getPosts();
   }, []);
-
-  function getMorePosts() {
-    count = count + 50;
-    console.log(count);
-  }
 
   const checkUrl = `/social/profiles/${auth.name}?_following=true`;
 
@@ -101,13 +94,13 @@ export default function PostList() {
                 <div className='iconContainer'>
                   {(() => {
                     if (post._count.comments !== 0) {
-                      return <i className='fa-regular fa-comment-dots '></i>;
+                      return <i className='fa-solid fa-comment'></i>;
                     }
                     return null;
                   })()}
                   {(() => {
                     if (post._count.reactions !== 0) {
-                      return <i className='fa-regular fa-heart '></i>;
+                      return <i className='fa-solid fa-heart'></i>;
                     }
                     return null;
                   })()}
@@ -149,13 +142,13 @@ export default function PostList() {
                 <div className='iconContainer'>
                   {(() => {
                     if (post._count.comments !== 0) {
-                      return <i className='fa-regular fa-comment-dots '></i>;
+                      return <i className='fa-solid fa-comment'></i>;
                     }
                     return null;
                   })()}
                   {(() => {
                     if (post._count.reactions !== 0) {
-                      return <i className='fa-regular fa-heart '></i>;
+                      return <i className='fa-solid fa-heart'></i>;
                     }
                     return null;
                   })()}
@@ -165,7 +158,6 @@ export default function PostList() {
           );
         }
       })}
-      <button onClick={getMorePosts}>View more</button>
     </div>
   );
 }

@@ -44,7 +44,8 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+    <form onSubmit={handleSubmit(onSubmit)} className='form loginForm'>
+      <p className='logo logInLogo'>PlotTwist</p>
       <label>
         Email
         <input {...register("email")} />
@@ -55,8 +56,11 @@ export default function LoginForm() {
         <input {...register("password")} type='password' />
         {errors.password && <span>{errors.password.message}</span>}
       </label>
-      <button>Log in</button>
-      <a href='/register'>Create new account</a>
+      <button className='cta loginBtn'>Log in</button>
+      <hr></hr>
+      <a href='/register' className='cta newAccountBtn'>
+        Create new account
+      </a>
     </form>
   );
 }

@@ -3,7 +3,7 @@
   border: $border;
   background-color: getColour(white);
   margin: 20px;
-  max-width: 500px;
+  width: 500px;
   padding: 10px 15px;
 }
 
@@ -49,8 +49,7 @@ button.btnReact {
 .iconContainer {
   border-top: 1px solid getColour(green);
   text-align: right;
-  font-size: 24px;
-  color: getColour(green);
+  min-height: 51px;
 
   i {
     padding: 8px;

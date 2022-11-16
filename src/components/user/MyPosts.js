@@ -17,7 +17,6 @@ export default function MyPosts() {
     async function getMyPosts() {
       try {
         const response = await urlMyPosts.get("/social/profiles/" + auth.name + "/posts");
-        console.log(response.data);
         setMyposts(response.data);
       } catch (error) {
         setError(error.toString());

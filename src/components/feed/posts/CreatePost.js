@@ -55,7 +55,6 @@ export default function RegisterForm() {
 
     try {
       const response = await urlCreatePost.post("/social/posts", formData);
-
       setCreated(true);
       window.location.reload();
     } catch (error) {
@@ -75,7 +74,7 @@ export default function RegisterForm() {
         </div>
       </Link>
 
-      <form onSubmit={handleSubmit(createPost)}>
+      <form onSubmit={handleSubmit(createPost)} className='createFormInputs'>
         {postError && <div>{postError}</div>}
         <label>
           <input {...register("title")} placeholder='title' />
@@ -97,7 +96,7 @@ export default function RegisterForm() {
           <div className='addTagsBtn' onClick={displayTags}>
             Add tags
           </div>
-          <button className='createPostBtn'>Post</button>
+          <button className='cta createPostBtn'>Post</button>
         </div>
       </form>
     </div>

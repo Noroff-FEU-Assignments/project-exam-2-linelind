@@ -21,12 +21,12 @@ function NavBar() {
       <div>
         {auth ? (
           <>
-            <button onClick={logout} className='logOutBtn'>
+            <button onClick={logout} className='cta logOutBtn'>
               Log out
             </button>
           </>
         ) : (
-          <Link to='/' className='logInBtn'>
+          <Link to='/' className='cta logInBtn'>
             Login
           </Link>
         )}

@@ -55,19 +55,20 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+    <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
+      <p className='logo logInLogo'>PlotTwist</p>
       <label>
-        Name*
+        Name *
         <input {...register("name")} />
         {errors.name && <span>{errors.name.message}</span>}
       </label>
       <label>
-        Email*
+        Email *
         <input {...register("email")} />
         {errors.email && <span>{errors.email.message}</span>}
       </label>
       <label>
-        Password*
+        Password *
         <input {...register("password")} type='password' />
         {errors.password && <span>{errors.password.message}</span>}
       </label>
@@ -82,7 +83,7 @@ export default function RegisterForm() {
         {errors.banner && <span>{errors.banner.message}</span>}
       </label>
 
-      <button>Register</button>
+      <button className='cta registerBtn'>Register</button>
     </form>
   );
 }

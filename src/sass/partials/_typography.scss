@@ -1,0 +1,64 @@
+body {
+  font-family: $font-primary;
+  color: getColour(black);
+}
+
+.logo {
+  font-family: $font-logo;
+  font-size: 20px;
+}
+
+.logInLogo {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  /* color: getColour(black); */
+}
+
+h1,
+h2,
+h3 {
+  font-size: 26px;
+  margin-top: 25px;
+}
+
+h2,
+h3 {
+  font-family: $font-headings;
+}
+
+h1 {
+  text-align: center;
+  font-family: $font-logo;
+}
+
+h2 {
+  font-size: 21px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.date {
+  font-size: 12px;
+  margin-top: -10px;
+}
+
+label {
+  font-size: 12px;
+}
+
+.fa-heart,
+.fa-comment {
+  font-size: 24px;
+  color: getColour(green);
+}

@@ -5,19 +5,21 @@
   margin: 20px;
   border: $border;
   background-color: getColour(white);
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  input,
+  textarea {
+    border: $border;
+    padding: 5px;
+  }
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-input,
-textarea {
-  border: $border;
-  padding: 5px;
-}
+//Create post form
 
 .createForm {
   padding: 30px;
@@ -27,14 +29,14 @@ textarea {
   align-items: flex-start;
   gap: 20px;
   width: 500px;
-}
 
-.createForm.userImageContainer {
-  flex: 2;
-}
+  .userImageContainer {
+    flex: 1;
+  }
 
-.createForm form {
-  flex: 5;
+  .createFormInputs {
+    flex: 5;
+  }
 }
 
 .createBtnContainer {
@@ -63,5 +65,100 @@ textarea {
     padding: 5px;
     text-align: center;
     font-size: 14px;
+  }
+}
+
+// Login og register form
+
+.loginForm,
+.registerForm {
+  width: 400px;
+  padding: 10px 50px;
+  justify-content: center;
+
+  input {
+    margin-top: 5px;
+  }
+}
+
+.loginForm {
+  height: 450px;
+
+  .loginBtn {
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  .newAccountBtn {
+    background-color: getColour(grey);
+    color: getColour(black);
+    width: 80%;
+    align-self: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  hr {
+    width: 80%;
+    color: getColour(grey);
+  }
+}
+
+.registerForm {
+  height: 580px;
+}
+
+.loginBtn,
+.newAccountBtn,
+.registerBtn {
+  padding: 10px;
+}
+.registerBtn {
+  margin-top: 20px;
+}
+
+//Post details form
+
+.commentReactionContainer,
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: flex-end;
+}
+
+.commentReactionContainer {
+  border-top: 1px solid getColour(green);
+}
+
+.commentContainer {
+  textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border: $border;
+    padding: 8px;
+    max-width: 100%;
+  }
+
+  .commentBtn {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.reactionSymbols {
+  align-self: end;
+  margin-right: 15px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+
+  i {
+    margin-right: 5px;
+  }
+
+  p {
+    font-size: 24px;
+    margin-top: 5px;
   }
 }

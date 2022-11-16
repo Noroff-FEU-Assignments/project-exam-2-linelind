@@ -123,7 +123,7 @@ export default function PostDetail() {
               }
             })}
           </div>
-          <div>
+          <div className='commentReactionContainer'>
             <div className='reactionSymbols'>
               <ReactButton />
               <p>{postdetail._count.reactions}</p>

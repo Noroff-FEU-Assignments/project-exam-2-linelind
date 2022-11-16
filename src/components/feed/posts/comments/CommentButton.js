@@ -36,12 +36,12 @@ export default function CommentButton() {
   }
 
   return (
-    <form onSubmit={handleSubmit(handleComment)}>
+    <form onSubmit={handleSubmit(handleComment)} className='commentContainer'>
       <label>
-        <textarea {...register("body")} />
+        <textarea {...register("body")} placeholdeR='write your comment' />
         {errors.body && <span>{errors.body.message}</span>}
       </label>
-      <button>Comment</button>
+      <button className='cta commentBtn'>Comment</button>
     </form>
   );
 }

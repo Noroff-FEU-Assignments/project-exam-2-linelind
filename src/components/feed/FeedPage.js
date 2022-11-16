@@ -1,4 +1,3 @@
-import Heading from "../layout/Heading";
 import CreatePost from "./posts/CreatePost";
 import PostList from "./posts/PostList";
 import ProfileList from "./profiles/ProfileList";
