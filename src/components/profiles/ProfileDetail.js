@@ -60,7 +60,7 @@ export default function ProfileDetail() {
   return (
     <div key={profiledetail.name} className='profileHeaderContainer'>
       <div className='banner'>
-        <img src={profiledetail.avatar ? profiledetail.avatar : FallbackBanner} alt='Profile avatar.' />
+        <img src={profiledetail.banner ? profiledetail.banner : FallbackBanner} alt='Profile avatar.' />
       </div>
       <div className='profileInfoContainer'>
         <div className='userBasicsContainer'>

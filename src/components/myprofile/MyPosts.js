@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import moment from "moment";
 
 export default function MyPosts() {
@@ -16,7 +17,7 @@ export default function MyPosts() {
   useEffect(function () {
     async function getMyPosts() {
       try {
-        const response = await urlMyPosts.get("/social/profiles/" + auth.name + "/posts");
+        const response = await urlMyPosts.get("/social/profiles/" + auth.name + "/posts?_author=true");
         setMyposts(response.data);
       } catch (error) {
         setError(error.toString());
@@ -40,14 +41,17 @@ export default function MyPosts() {
         return (
           <div key={post.id} className='postCard'>
             <div className='postHeader'>
-              <Link to={`/feed/post/edit/${post.id}`}>
-                <button className='editBtn'>Edit post</button>
-              </Link>
-              <Link to={`/myprofile`}>
+              <Link to={`/myprofile`} className='postInfoContainer'>
+                <div className='avatar avatarSmall'>
+                  <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                </div>
                 <div>
                   <h2>{auth.name}</h2>
                   <p className='date'>{formatDate}</p>
                 </div>
+              </Link>
+              <Link to={`/feed/post/edit/${post.id}`}>
+                <button className='editBtn'>Edit post</button>
               </Link>
             </div>
             <Link to={`/feed/post/${post.id}`}>
@@ -67,7 +71,6 @@ export default function MyPosts() {
                   return <p className='tagItem'>{tag}</p>;
                 })}
               </div>
-
               <div className='iconContainer'>
                 {(() => {
                   if (post._count.comments !== 0) {

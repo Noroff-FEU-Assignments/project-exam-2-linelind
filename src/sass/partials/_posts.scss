@@ -40,12 +40,18 @@ a {
 
 .postHeader {
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   justify-content: space-between;
   align-items: center;
   margin: -10px -15px;
   padding: 10px 15px;
   box-shadow: $shadow;
+
+  .postInfoContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 .iconContainer {

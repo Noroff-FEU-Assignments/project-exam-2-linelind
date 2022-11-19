@@ -4,6 +4,7 @@ import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import FollowUnfollow from "../follow/FollowUnfollow";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import moment from "moment";
 
 export default function PostList() {
@@ -62,15 +63,18 @@ export default function PostList() {
           return (
             <div key={post.id} className='postCard'>
               <div className='postHeader'>
-                <div>
-                  <FollowUnfollow followings={followings} authorName={post.author.name} />
-                </div>
-                <Link to={`/feed/profile/${post.author.name}`} key={post.author.name}>
+                <Link to={`/feed/profile/${post.author.name}`} key={post.author.name} className='postInfoContainer'>
+                  <div className='avatar avatarSmall'>
+                    <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                  </div>
                   <div>
                     <h2>{post.author.name}</h2>
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
+                <div>
+                  <FollowUnfollow followings={followings} authorName={post.author.name} />
+                </div>
               </div>
               <Link to={`/feed/post/${post.id}`}>
                 <div>
@@ -112,14 +116,17 @@ export default function PostList() {
           return (
             <div key={post.id} className='postCard'>
               <div className='postHeader'>
-                <Link to={`/feed/post/edit/${post.id}`}>
-                  <button className='editBtn'>Edit post</button>
-                </Link>
-                <Link to={`/myprofile`}>
+                <Link to={`/myprofile`} className='postInfoContainer'>
+                  <div className='avatar avatarSmall'>
+                    <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                  </div>
                   <div>
                     <h2>{post.author.name}</h2>
                     <p className='date'>{formatDate}</p>
                   </div>
+                </Link>
+                <Link to={`/feed/post/edit/${post.id}`}>
+                  <button className='editBtn'>Edit post</button>
                 </Link>
               </div>
               <Link to={`/feed/post/${post.id}`}>

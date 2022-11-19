@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
@@ -26,6 +26,7 @@ function displayTags() {
 
 export default function RegisterForm() {
   const [created, setCreated] = useState(false);
+  const [avatar, setAvatar] = useState(false);
   const [postError, setPostError] = useState(null);
 
   const {
@@ -36,7 +37,7 @@ export default function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
-  const urlCreatePost = useAxios();
+  const urlAxios = useAxios();
 
   async function createPost(data) {
     const tagsData = data.tags;
@@ -54,9 +55,8 @@ export default function RegisterForm() {
     };
 
     try {
-      const response = await urlCreatePost.post("/social/posts", formData);
+      const response = await urlAxios.post("/social/posts", formData);
       setCreated(true);
-
       window.location.reload();
     } catch (error) {
       setPostError(error.toString());
@@ -65,13 +65,25 @@ export default function RegisterForm() {
     }
   }
 
+  useEffect(function () {
+    async function getAvatar() {
+      try {
+        const response = await urlAxios.get("/social/profiles/" + auth.name);
+        setAvatar(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getAvatar();
+  }, []);
+
   const [auth] = useContext(AuthContext);
 
   return (
     <div className='form createForm'>
       <Link to={`/myprofile`} className='userImageContainer'>
-        <div>
-          <img src={auth.avatar} alt='Go to profile' className='avatar avatarSmall' />
+        <div className='avatar avatarSmall'>
+          <img src={avatar.avatar} alt='Go to profile' />
         </div>
       </Link>
 
