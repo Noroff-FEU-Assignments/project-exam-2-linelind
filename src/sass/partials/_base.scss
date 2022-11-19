@@ -51,16 +51,23 @@ body {
   }
 }
 
-.isHidden {
-  display: none;
+.avatar {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 100%;
+  z-index: 1;
+
+  img {
+    width: 100%;
+    position: absolute;
+  }
 }
 
-.avatarImage {
+.avatarSmall {
   height: 70px;
   width: 70px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  border-radius: 100%;
 }
 
 .followBtn {
@@ -83,4 +90,8 @@ body {
   padding: 5px 10px;
   color: getColour(white);
   font-size: 14px;
+}
+
+.hidden {
+  display: none !important;
 }

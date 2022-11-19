@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
+import FallbackAvatar from "../common/FallbackAvatar";
+import FallbackBanner from "../common/FallbackBanner";
 
 export default function ProfileInfo() {
   const [myprofile, setMyprofile] = useState([]);
@@ -31,20 +33,23 @@ export default function ProfileInfo() {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className='pageContainer'>
-      <div>
-        <img src={myprofile.banner} alt='Banner image' />
+    <div>
+      <div className='banner'>
+        <img src={myprofile.banner ? myprofile.banner : FallbackBanner} alt='Profile banner.' />
       </div>
-      <div>
-        <div>
-          <img src={myprofile.avatar} alt='Profile avatar' />
-        </div>
-        <div>
-          <h1>{myprofile.name}</h1>
-          <p>{myprofile.email}</p>
+
+      <div className='profileInfoContainer'>
+        <div className='userBasicsContainer'>
+          <div className='avatar'>
+            <img src={myprofile.avatar ? myprofile.avatar : FallbackAvatar} alt='Profile avatar.' />
+          </div>
+          <div>
+            <h1>{myprofile.name}</h1>
+            <p>{myprofile.email}</p>
+          </div>
         </div>
         <Link to={`/myprofile/edit/${myprofile.name}`}>
-          <button>Edit profile</button>
+          <button className=' editBtn'>Edit profile</button>
         </Link>
       </div>
     </div>

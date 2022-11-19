@@ -11,7 +11,7 @@ export default function ProfilePage() {
     return <LoginPage />;
   } else {
     return (
-      <div className='pageContainer'>
+      <div className='profileContainer pageContainer '>
         <ProfileInfo />
         <MyPosts />
       </div>

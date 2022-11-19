@@ -1,0 +1,49 @@
+.profileContainer {
+  margin: 20px !important;
+  padding-bottom: 50px;
+  background-color: getColour(white);
+
+  .profileInfoContainer {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid getColour(green);
+
+    h1 {
+      font-family: $font-headings;
+    }
+
+    h1,
+    p {
+      text-align: left;
+      line-height: 15px;
+    }
+
+    .userBasicsContainer {
+      display: flex;
+      gap: 30px;
+    }
+  }
+
+  .banner {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      border-radius: 2px;
+      transform: translateY(-30%);
+    }
+  }
+
+  .postContainer {
+    margin-top: 50px;
+  }
+}

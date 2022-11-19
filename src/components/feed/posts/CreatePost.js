@@ -16,12 +16,12 @@ const schema = yup.object().shape({
 
 function displayImage() {
   const imageLabel = document.querySelector("#imageLabel");
-  imageLabel.classList.toggle("isHidden");
+  imageLabel.classList.toggle("hidden");
 }
 
 function displayTags() {
   const tagsLabel = document.querySelector("#tagsLabel");
-  tagsLabel.classList.toggle("isHidden");
+  tagsLabel.classList.toggle("hidden");
 }
 
 export default function RegisterForm() {
@@ -70,7 +70,7 @@ export default function RegisterForm() {
     <div className='form createForm'>
       <Link to={`/myprofile`} className='userImageContainer'>
         <div>
-          <img src={auth.avatar} alt='Go to profile' className='avatarImage' />
+          <img src={auth.avatar} alt='Go to profile' className='avatar avatarSmall' />
         </div>
       </Link>
 
@@ -83,10 +83,10 @@ export default function RegisterForm() {
         <label>
           <textarea {...register("body")} placeholder='body' />
         </label>
-        <label className='isHidden' id='imageLabel'>
+        <label id='imageLabel' className='hidden'>
           <input {...register("media")} placeholder='media' />
         </label>
-        <label className='isHidden' id='tagsLabel'>
+        <label id='tagsLabel' className='hidden'>
           <input {...register("tags")} placeholder='tags' />
         </label>
         <div className='createBtnContainer'>

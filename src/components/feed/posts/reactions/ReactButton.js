@@ -18,7 +18,7 @@ export default function ReactButton() {
 
   const http = useAxios();
   let { id } = useParams();
-  let symbol = "<i className='fa-solid fa-heart'></i>";
+  let symbol = "🧡";
 
   const urlReact = `/social/posts/${id}/react/${symbol}`;
 
@@ -33,10 +33,8 @@ export default function ReactButton() {
 
   return (
     <form onSubmit={handleSubmit(handleReact)} className='reactionContainer'>
-      <input type='hidden' {...register("symbol")} value={"<i className='fa-solid fa-heart'></i>"} />
-      <button className='btnReact'>
-        <i className='fa-solid fa-heart'></i>
-      </button>
+      <input type='hidden' {...register("symbol")} value={"🧡"} />
+      <button className='btnReact'>🧡</button>
     </form>
   );
 }

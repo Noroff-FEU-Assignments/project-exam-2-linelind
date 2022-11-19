@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
@@ -58,9 +59,9 @@ export default function LoginForm() {
       </label>
       <button className='cta loginBtn'>Log in</button>
       <hr></hr>
-      <a href='/register' className='cta newAccountBtn'>
+      <Link to='/register' className='cta newAccountBtn'>
         Create new account
-      </a>
+      </Link>
     </form>
   );
 }
