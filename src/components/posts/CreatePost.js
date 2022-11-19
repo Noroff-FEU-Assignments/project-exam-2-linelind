@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import useAxios from "../../../hooks/useAxios";
-import AuthContext from "../../../context/AuthContext";
+import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 
 const schema = yup.object().shape({
@@ -39,8 +39,8 @@ export default function RegisterForm() {
   const urlCreatePost = useAxios();
 
   async function createPost(data) {
-    const tagsArray = [];
-    tagsArray.push(data.tags);
+    const tagsData = data.tags;
+    const splitTags = tagsData.split(" ");
 
     if (data.media === "") {
       data.media = null;
@@ -50,12 +50,13 @@ export default function RegisterForm() {
       title: data.title,
       body: data.body,
       media: data.media,
-      tags: tagsArray,
+      tags: splitTags,
     };
 
     try {
       const response = await urlCreatePost.post("/social/posts", formData);
       setCreated(true);
+
       window.location.reload();
     } catch (error) {
       setPostError(error.toString());

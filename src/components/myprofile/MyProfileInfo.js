@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FallbackAvatar from "../common/FallbackAvatar";
-import FallbackBanner from "../common/FallbackBanner";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import FallbackBanner from "../../images/fallbackbanner.jpg";
 
 export default function ProfileInfo() {
   const [myprofile, setMyprofile] = useState([]);
@@ -33,7 +33,7 @@ export default function ProfileInfo() {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
+    <div className='profileHeaderContainer'>
       <div className='banner'>
         <img src={myprofile.banner ? myprofile.banner : FallbackBanner} alt='Profile banner.' />
       </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useAxios from "../../../hooks/useAxios";
-import Heading from "../../layout/Heading";
+import useAxios from "../../hooks/useAxios";
+import Heading from "../layout/Heading";
 
 export default function ProfileList() {
   const [profiles, setProfiles] = useState([]);

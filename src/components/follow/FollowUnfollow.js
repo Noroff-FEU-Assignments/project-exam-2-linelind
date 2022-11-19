@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import FollowButton from "../common/FollowButton";
-import UnfollowButton from "../common/UnfollowButton";
+import FollowButton from "./FollowButton";
+import UnfollowButton from "./UnfollowButton";
 
 export default function FollowUnfollow({ followings, authorName }) {
   const [inFollowings, setInFollowings] = useState(false);

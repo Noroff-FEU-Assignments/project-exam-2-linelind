@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import useAxios from "../../../../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 
 const schema = yup.object().shape({
   body: yup.string().required("Please enter your comment"),

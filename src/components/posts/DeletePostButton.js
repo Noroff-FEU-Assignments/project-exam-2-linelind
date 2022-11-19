@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import useAxios from "../../../hooks/useAxios";
+import useAxios from "../../hooks/useAxios";
 
 export default function DeletePostButton({ id }) {
   const [error, setError] = useState(null);

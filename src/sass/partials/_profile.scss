@@ -29,7 +29,12 @@
     }
   }
 
+  .profileHeaderContainer {
+    width: 100%;
+  }
+
   .banner {
+    width: 100% !important;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -37,7 +42,7 @@
     z-index: 1;
 
     img {
-      width: 100%;
+      width: 100% !important;
       border-radius: 2px;
       transform: translateY(-30%);
     }

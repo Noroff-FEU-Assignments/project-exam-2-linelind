@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useAxios from "../../../hooks/useAxios";
-import FollowButton from "../../common/FollowButton";
-import UnfollowButton from "../../common/UnfollowButton";
+import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
+import FollowUnfollow from "../follow/FollowUnfollow";
 import moment from "moment";
 
 export default function ProfilePosts() {
   const [profileposts, setProfileposts] = useState([]);
-  const [followers, setFollowers] = useState([]);
+  const [followings, setFollowings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -19,7 +20,7 @@ export default function ProfilePosts() {
   useEffect(function () {
     async function getProfilePosts() {
       try {
-        const response = await urlAxios.get("/social/profiles/" + name + "/posts");
+        const response = await urlAxios.get("/social/profiles/" + name + "/posts?_author=true");
         setProfileposts(response.data);
       } catch (error) {
         setError(error.toString());
@@ -30,13 +31,14 @@ export default function ProfilePosts() {
     getProfilePosts();
   }, []);
 
-  const checkUrl = `/social/profiles/${name}?_followers=true`;
+  const [auth] = useContext(AuthContext);
+  const checkUrl = `/social/profiles/${auth.name}?_following=true`;
 
   useEffect(function () {
     async function getFollowing() {
       try {
         const result = await urlAxios.get(checkUrl);
-        setFollowers(result.data.followers);
+        setFollowings(result.data.following);
       } catch (error) {
         setError(error);
       }
@@ -57,13 +59,7 @@ export default function ProfilePosts() {
           <div key={post.id} className='postCard'>
             <div className='postHeader'>
               <div>
-                {followers.map((follower) => {
-                  if (follower.name === post.name) {
-                    return <UnfollowButton name={post.name} />;
-                  } else {
-                    return <FollowButton name={post.name} />;
-                  }
-                })}
+                <FollowUnfollow followings={followings} authorName={post.author.name} />
               </div>
               <Link to={`/feed/profile/${name}`} key={name}>
                 <div>
@@ -91,16 +87,17 @@ export default function ProfilePosts() {
                   }
                 })}
               </div>
+
               <div className='iconContainer'>
                 {(() => {
                   if (post._count.comments !== 0) {
-                    return <i className='fa-regular fa-comment-dots '></i>;
+                    return <i className='fa-solid fa-comment'></i>;
                   }
                   return null;
                 })()}
                 {(() => {
                   if (post._count.reactions !== 0) {
-                    return <i className='fa-regular fa-heart '></i>;
+                    return <i className='fa-solid fa-heart'></i>;
                   }
                   return null;
                 })()}

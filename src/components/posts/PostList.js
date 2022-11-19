@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useAxios from "../../../hooks/useAxios";
-import AuthContext from "../../../context/AuthContext";
+import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FollowUnfollow from "../../common/FollowUnfollow";
+import FollowUnfollow from "../follow/FollowUnfollow";
 import moment from "moment";
 
 export default function PostList() {
@@ -84,14 +84,10 @@ export default function PostList() {
                     return null;
                   }
                 })()}
-                <div>
+                <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     if (tag !== "") {
-                      return (
-                        <div className='tagsContainer'>
-                          <p className='tagItem'>{tag}</p>
-                        </div>
-                      );
+                      return <p className='tagItem'>{tag}</p>;
                     }
                   })}
                 </div>
@@ -138,14 +134,10 @@ export default function PostList() {
                     return null;
                   }
                 })()}
-                <div>
+                <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     if (tag !== "") {
-                      return (
-                        <div className='tagsContainer'>
-                          <p className='tagItem'>{tag}</p>
-                        </div>
-                      );
+                      return <p className='tagItem'>{tag}</p>;
                     }
                   })}
                 </div>

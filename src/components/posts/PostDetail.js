@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useAxios from "../../../hooks/useAxios";
+import useAxios from "../../hooks/useAxios";
 import ReactButton from "./reactions/ReactButton";
 import CommentButton from "./comments/CommentButton";
 import moment from "moment";
