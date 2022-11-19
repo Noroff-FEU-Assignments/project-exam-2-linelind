@@ -53,7 +53,7 @@ export default function ProfilePosts() {
   const formatDate = moment(date).startOf("hour").fromNow();
 
   return (
-    <div>
+    <div className='postContainer'>
       {profileposts.slice(0, 15).map((post) => {
         return (
           <div key={post.id} className='postCard'>
@@ -64,7 +64,7 @@ export default function ProfilePosts() {
               <Link to={`/feed/profile/${name}`} key={name}>
                 <div>
                   <h2>{name}</h2>
-                  <p>{formatDate}</p>
+                  <p className='date'>{formatDate}</p>
                 </div>
               </Link>
             </div>
@@ -87,7 +87,6 @@ export default function ProfilePosts() {
                   }
                 })}
               </div>
-
               <div className='iconContainer'>
                 {(() => {
                   if (post._count.comments !== 0) {

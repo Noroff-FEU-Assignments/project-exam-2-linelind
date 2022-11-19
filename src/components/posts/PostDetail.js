@@ -57,6 +57,7 @@ export default function PostDetail() {
           </Link>
           <div>
             <h2>{postdetail.author.name}</h2>
+            <p className='date'>{formatDate}</p>
             <h3>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
@@ -67,14 +68,10 @@ export default function PostDetail() {
               return null;
             }
           })()}
-          <div>
+          <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return (
-                  <div className='tagsContainer'>
-                    <p className='tagItem'>{tag}</p>
-                  </div>
-                );
+                return <p className='tagItem'>{tag}</p>;
               }
             })}
           </div>
@@ -108,6 +105,7 @@ export default function PostDetail() {
         <div className='postCard' key={postdetail.id}>
           <div>
             <h2>{postdetail.author.name}</h2>
+            <p className='date'>{formatDate}</p>
             <h3>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
@@ -118,14 +116,10 @@ export default function PostDetail() {
               return null;
             }
           })()}
-          <div>
+          <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return (
-                  <div className='tagsContainer'>
-                    <p className='tagItem'>{tag}</p>
-                  </div>
-                );
+                return <p className='tagItem'>{tag}</p>;
               }
             })}
           </div>

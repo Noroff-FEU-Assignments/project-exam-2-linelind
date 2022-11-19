@@ -9,14 +9,15 @@ $laptop-width: 850px;
 $largelaptop-width: 950px;
 $largestscreen-width: 1200px;
 
-$shadow: 0px 1px 3px rgba(96, 101, 100, 0.29);
-$border: 1px solid #00825e;
+$shadow: 1px 0px 5px rgba(96, 101, 100, 0.29);
+$border: 2px solid #00825e;
 
 $colours: (
   green: #00825e,
   black: #0e0e0e,
   grey: #f5f5f5,
   white: #fcfcfc,
+  dark-grey: #cacccb,
   error: #6c0a0a,
   error-light: #fce6e6,
   success: #0a6c52,

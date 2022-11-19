@@ -13,7 +13,7 @@ export default function FeedPage() {
   } else {
     return (
       <div className='pageContainer'>
-        <h1>How's it going {auth.name}?</h1>
+        <h1 className='feedTitle'>How's it going {auth.name}?</h1>
         <CreatePost />
         <PostList />
         <ProfileList />

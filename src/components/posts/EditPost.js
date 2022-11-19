@@ -66,9 +66,8 @@ export default function EditPost() {
     const EditTitle = data.title;
     const EditMessage = data.body;
     const EditMedia = data.media;
-    const EditTags = [];
-
-    EditTags.push(data.tags);
+    const editTagsData = data.tags;
+    const editSplitTags = editTagsData.split(" ");
 
     if (data.media === "") {
       data.media = null;
@@ -78,7 +77,7 @@ export default function EditPost() {
       title: EditTitle,
       body: EditMessage,
       media: EditMedia,
-      tags: EditTags,
+      tags: editSplitTags,
     };
 
     try {

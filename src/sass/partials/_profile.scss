@@ -1,5 +1,5 @@
 .profileContainer {
-  margin: 20px !important;
+  margin-top: 20px !important;
   padding-bottom: 50px;
   background-color: getColour(white);
 
@@ -11,15 +11,10 @@
     padding-bottom: 30px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid getColour(green);
-
-    h1 {
-      font-family: $font-headings;
-    }
+    box-shadow: 0 4px 2px -2px getColour(dark-grey);
 
     h1,
     p {
-      text-align: left;
       line-height: 15px;
     }
 
@@ -44,7 +39,7 @@
     img {
       width: 100% !important;
       border-radius: 2px;
-      transform: translateY(-30%);
+      transform: translateY(-40%);
     }
   }
 

@@ -46,7 +46,7 @@ export default function MyPosts() {
               <Link to={`/myprofile`}>
                 <div>
                   <h2>{auth.name}</h2>
-                  <p>{formatDate}</p>
+                  <p className='date'>{formatDate}</p>
                 </div>
               </Link>
             </div>

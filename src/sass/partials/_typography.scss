@@ -22,18 +22,16 @@ a {
 h1,
 h2,
 h3 {
-  font-size: 26px;
-  margin-top: 25px;
-}
-
-h2,
-h3 {
   font-family: $font-headings;
 }
 
+h1,
+h2 {
+  margin-top: 25px;
+}
+
 h1 {
-  text-align: center;
-  font-family: $font-logo;
+  font-size: 26px;
 }
 
 h2 {
@@ -42,10 +40,17 @@ h2 {
 
 h3 {
   font-size: 18px;
+  margin-top: 50px;
 }
 
 p {
   font-size: 16px;
+}
+
+.feedTitle {
+  text-align: center;
+  font-family: $font-logo;
+  font-size: 28px;
 }
 
 .date {

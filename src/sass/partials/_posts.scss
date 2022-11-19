@@ -2,7 +2,7 @@
 .profileCard {
   border: $border;
   background-color: getColour(white);
-  margin: 20px;
+  margin: 40px 20px;
   width: 500px;
   padding: 10px 15px;
 }
@@ -35,7 +35,7 @@ a {
 
 .tagItem {
   color: getColour(green);
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .postHeader {
@@ -43,17 +43,21 @@ a {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid getColour(green);
+  margin: -10px -15px;
+  padding: 10px 15px;
+  box-shadow: $shadow;
 }
 
 .iconContainer {
   border-top: 1px solid getColour(green);
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 10px 15px 0px 15px;
   text-align: right;
   min-height: 51px;
 
   i {
     padding: 8px;
-    margin-top: 10px;
   }
 }
 
