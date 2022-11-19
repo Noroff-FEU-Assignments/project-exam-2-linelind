@@ -67,16 +67,17 @@ export default function MyPosts() {
                   return <p className='tagItem'>{tag}</p>;
                 })}
               </div>
+
               <div className='iconContainer'>
                 {(() => {
                   if (post._count.comments !== 0) {
-                    return <i className='fa-regular fa-comment-dots '></i>;
+                    return <i className='fa-solid fa-comment'></i>;
                   }
                   return null;
                 })()}
                 {(() => {
                   if (post._count.reactions !== 0) {
-                    return <i className='fa-regular fa-heart '></i>;
+                    return <i className='fa-solid fa-heart'></i>;
                   }
                   return null;
                 })()}

@@ -1,6 +1,5 @@
 import React from "react";
-import Heading from "../layout/Heading";
-import RegisterForm from "./RegisterForm";
+import RegisterForm from "../components/login/RegisterForm";
 
 export default function RegisterPage() {
   return (

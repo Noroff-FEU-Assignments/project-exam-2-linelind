@@ -95,3 +95,14 @@ body {
 .hidden {
   display: none !important;
 }
+
+.errorMessage {
+  border: 1px solid getColour(error);
+  background-color: getColour(error-light);
+  color: getColour(error);
+  padding: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}

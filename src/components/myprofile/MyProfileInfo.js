@@ -37,7 +37,6 @@ export default function ProfileInfo() {
       <div className='banner'>
         <img src={myprofile.banner ? myprofile.banner : FallbackBanner} alt='Profile banner.' />
       </div>
-
       <div className='profileInfoContainer'>
         <div className='userBasicsContainer'>
           <div className='avatar'>

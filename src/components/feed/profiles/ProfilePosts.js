@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
-import FollowButton from "../../follow/FollowButton";
-import UnfollowButton from "../../follow/UnfollowButton";
+import FollowButton from "../../common/FollowButton";
+import UnfollowButton from "../../common/UnfollowButton";
 import moment from "moment";
 
 export default function ProfilePosts() {

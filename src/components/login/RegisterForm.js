@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .required("Please enter an email address")
-    .matches(/^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bstud.noroff.no)$/, "Please enter a valid email"),
+    .matches(/^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bstud.noroff.no)$/, "Please enter a valid stud.noroff.no email"),
   password: yup.string().required("Please enter your first name").min(8, "You must enter at least 8 characters"),
   avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
   banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
@@ -24,6 +24,7 @@ const schema = yup.object().shape({
 
 export default function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [registerError, setRegisterError] = useState(null);
 
   const {
     register,
@@ -48,6 +49,8 @@ export default function RegisterForm() {
       const response = await axios.post(url, data);
       console.log("response", response.data);
     } catch (error) {
+      const displayMessage = <div>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>;
+      setRegisterError(displayMessage);
       console.log("error", error);
     } finally {
       setSubmitted(false);
@@ -56,6 +59,7 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
+      {registerError && <div className='errorMessage'>{registerError}</div>}
       <p className='logo logInLogo'>PlotTwist</p>
       <label>
         Name *

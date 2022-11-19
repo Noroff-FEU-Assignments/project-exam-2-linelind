@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
-import FollowUnfollow from "../../follow/FollowUnfollow";
+import FollowUnfollow from "../../common/FollowUnfollow";
 import moment from "moment";
 
 export default function PostList() {
@@ -84,10 +84,14 @@ export default function PostList() {
                     return null;
                   }
                 })()}
-                <div className='tagsContainer'>
+                <div>
                   {post.tags.map((tag) => {
                     if (tag !== "") {
-                      return <p className='tagItem'>{tag}</p>;
+                      return (
+                        <div className='tagsContainer'>
+                          <p className='tagItem'>{tag}</p>
+                        </div>
+                      );
                     }
                   })}
                 </div>
@@ -134,9 +138,15 @@ export default function PostList() {
                     return null;
                   }
                 })()}
-                <div className='tagsContainer'>
+                <div>
                   {post.tags.map((tag) => {
-                    return <p className='tagItem'>{tag}</p>;
+                    if (tag !== "") {
+                      return (
+                        <div className='tagsContainer'>
+                          <p className='tagItem'>{tag}</p>
+                        </div>
+                      );
+                    }
                   })}
                 </div>
                 <div className='iconContainer'>

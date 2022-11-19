@@ -53,14 +53,13 @@ export default function PostDetail() {
       <div className='pageContainer'>
         <div className='postCard' key={postdetail.id}>
           <Link to={`/feed/post/edit/${postdetail.id}`}>
-            <button className='editBtn'>Edit post</button>
+            <button className='editBtn editBtnDetails'>Edit post</button>
           </Link>
           <div>
             <h2>{postdetail.author.name}</h2>
             <h3>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
-
           {(() => {
             if (postdetail.media !== null) {
               return <img src={postdetail.media} className='postCardImage' />;
@@ -68,15 +67,18 @@ export default function PostDetail() {
               return null;
             }
           })()}
-
-          <div className='tagsContainer'>
+          <div>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return <p className='tagItem'>{tag}</p>;
+                return (
+                  <div className='tagsContainer'>
+                    <p className='tagItem'>{tag}</p>
+                  </div>
+                );
               }
             })}
           </div>
-          <div>
+          <div className='commentReactionContainer'>
             <div className='reactionSymbols'>
               <ReactButton />
               <p>{postdetail._count.reactions}</p>
@@ -116,10 +118,14 @@ export default function PostDetail() {
               return null;
             }
           })()}
-          <div className='tagsContainer'>
+          <div>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return <p className='tagItem'>{tag}</p>;
+                return (
+                  <div className='tagsContainer'>
+                    <p className='tagItem'>{tag}</p>
+                  </div>
+                );
               }
             })}
           </div>

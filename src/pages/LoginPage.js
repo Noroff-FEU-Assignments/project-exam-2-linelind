@@ -1,9 +1,8 @@
 import React from "react";
-import Heading from "../layout/Heading";
-import LoginForm from "./LoginForm";
-import AuthContext from "../../context/AuthContext";
+import LoginForm from "../components/login/LoginForm";
+import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
-import FeedPage from "../feed/FeedPage";
+import FeedPage from "./FeedPage";
 
 export default function LoginPage() {
   const [auth] = useContext(AuthContext);

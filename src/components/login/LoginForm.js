@@ -17,6 +17,7 @@ const schema = yup.object().shape({
 
 export default function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
+  const [loginError, setLoginError] = useState(null);
 
   const history = useNavigate();
 
@@ -38,7 +39,8 @@ export default function LoginForm() {
       setAuth(response.data);
       history("/feed");
     } catch (error) {
-      console.log("error", error);
+      const displayMessage = <div>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>;
+      setLoginError(displayMessage);
     } finally {
       setSubmitting(false);
     }
@@ -46,6 +48,7 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='form loginForm'>
+      {loginError && <div className='errorMessage'>{loginError}</div>}
       <p className='logo logInLogo'>PlotTwist</p>
       <label>
         Email
