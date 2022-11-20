@@ -42,7 +42,7 @@ export default function ProfileInfo() {
           <div className='avatar'>
             <img src={myprofile.avatar ? myprofile.avatar : FallbackAvatar} alt='Profile avatar.' />
           </div>
-          <div>
+          <div className='profileNameContainer'>
             <h1>{myprofile.name}</h1>
             <p>{myprofile.email}</p>
           </div>

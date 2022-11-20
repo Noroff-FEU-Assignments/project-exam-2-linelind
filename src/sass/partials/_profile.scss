@@ -13,9 +13,13 @@
     justify-content: space-between;
     box-shadow: 0 4px 2px -2px getColour(dark-grey);
 
-    h1,
+    .profileName,
     p {
-      line-height: 15px;
+      line-height: 10px;
+    }
+
+    .profileNameContainer {
+      align-self: center;
     }
 
     .userBasicsContainer {

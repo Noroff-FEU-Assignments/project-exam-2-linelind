@@ -1,9 +1,9 @@
 import React from "react";
-import MyPosts from "./MyPosts";
-import MyFollowing from "./MyFollowings";
-import MyFollowers from "./MyFollowers";
+import ProfilePosts from "./ProfilePosts";
+import ProfileFollowers from "./ProfileFollowers";
+import ProfileFollowing from "./ProfileFollowings";
 
-function MyProfileMenu() {
+function ProfileMenu() {
   return (
     <>
       <ul className='nav nav-tabs' id='myTab' role='tablist'>
@@ -49,17 +49,17 @@ function MyProfileMenu() {
       </ul>
       <div className='tab-content' id='myTabContent'>
         <div className='tab-pane fade show active' id='post-tab-pane' role='tabpanel' aria-labelledby='post-tab' tabIndex='0'>
-          <MyPosts />
+          <ProfilePosts />
         </div>
         <div className='tab-pane fade' id='following-tab-pane' role='tabpanel' aria-labelledby='following-tab' tabIndex='0'>
-          <MyFollowing />
+          <ProfileFollowing />
         </div>
         <div className='tab-pane fade' id='followers-tab-pane' role='tabpanel' aria-labelledby='followers-tab' tabIndex='0'>
-          <MyFollowers />
+          <ProfileFollowers />
         </div>
       </div>
     </>
   );
 }
 
-export default MyProfileMenu;
+export default ProfileMenu;

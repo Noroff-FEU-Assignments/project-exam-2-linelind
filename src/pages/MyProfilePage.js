@@ -3,7 +3,7 @@ import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
 import MyPosts from "../components/myprofile/MyPosts";
-import MyPorfileMenu from "../components/myprofile/MyProfileMenu";
+import MyProfileMenu from "../components/myprofile/MyProfileMenu";
 
 export default function ProfilePage() {
   const [auth] = useContext(AuthContext);
@@ -14,7 +14,7 @@ export default function ProfilePage() {
     return (
       <div className='profileContainer pageContainer '>
         <ProfileInfo />
-        <MyPorfileMenu />
+        <MyProfileMenu />
       </div>
     );
   }

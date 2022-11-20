@@ -67,7 +67,7 @@ export default function ProfileDetail() {
           <div className='avatar'>
             <img src={profiledetail.avatar ? profiledetail.avatar : FallbackAvatar} alt='Profile avatar.' />
           </div>
-          <div>
+          <div className='profileNameContainer'>
             <h1>{profiledetail.name}</h1>
             <p>{profiledetail.email}</p>
           </div>
