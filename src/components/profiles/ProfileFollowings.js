@@ -36,7 +36,7 @@ export default function ProfileFollowing() {
     <div className='myFollowersContainer'>
       {profileFollowing.map((following) => {
         return (
-          <Link to={`/profile/${following.name}`} key={following.name} onClick={() => window.reload()}>
+          <Link to={`/profile/${following.name}`} key={following.name}>
             <div className='myProfileFollow'>
               <div className='avatar avatarSmall'>
                 <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
