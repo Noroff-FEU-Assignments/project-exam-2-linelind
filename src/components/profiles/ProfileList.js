@@ -14,11 +14,6 @@ export default function ProfileList() {
     async function getProfiles() {
       try {
         const response = await urlProfiles.get("/social/profiles");
-
-        if (response.data.avatar === null) {
-          response.data.avatar = "";
-        }
-
         setProfiles(response.data);
       } catch (error) {
         setError(error.toString());

@@ -17,7 +17,6 @@ export default function MyFollowers() {
     async function getFollowers() {
       try {
         const response = await urlProfiles.get("/social/profiles/" + auth.name + "?_followers=true");
-        console.log(response.data);
         setMyfollowers(response.data.followers);
       } catch (error) {
         setError(error.toString());

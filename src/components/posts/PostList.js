@@ -82,10 +82,10 @@ export default function PostList() {
                   <p>{post.body}</p>
                 </div>
                 {(() => {
-                  if (post.media !== null) {
-                    return <img src={post.media} className='postCardImage' />;
-                  } else {
+                  if (post.media === null || post.image === "") {
                     return null;
+                  } else {
+                    return <img src={post.media} className='postCardImage' />;
                   }
                 })()}
                 <div className='tagsContainer'>
@@ -135,10 +135,10 @@ export default function PostList() {
                   <p>{post.body}</p>
                 </div>
                 {(() => {
-                  if (post.image !== null) {
-                    return <img src={post.media} className='postCardImage' />;
-                  } else {
+                  if (post.media === null || post.image === "") {
                     return null;
+                  } else {
+                    return <img src={post.media} className='postCardImage' />;
                   }
                 })()}
                 <div className='tagsContainer'>

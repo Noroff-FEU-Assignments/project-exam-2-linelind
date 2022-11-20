@@ -31,13 +31,12 @@ a {
 .tagsContainer {
   display: flex;
   flex-direction: row;
-}
 
-.tagItem {
-  color: getColour(green);
-  margin-right: 15px;
+  .tagItem {
+    color: getColour(green);
+    margin-right: 15px;
+  }
 }
-
 .postHeader {
   display: flex;
   justify-content: space-between;
