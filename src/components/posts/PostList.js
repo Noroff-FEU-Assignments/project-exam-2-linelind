@@ -63,7 +63,7 @@ export default function PostList() {
           return (
             <div key={post.id} className='postCard'>
               <div className='postHeader'>
-                <Link to={`/feed/profile/${post.author.name}`} key={post.author.name} className='postInfoContainer'>
+                <Link to={`/profile/${post.author.name}`} key={post.author.name} className='postInfoContainer'>
                   <div className='avatar avatarSmall'>
                     <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
                   </div>
@@ -76,7 +76,7 @@ export default function PostList() {
                   <FollowUnfollow followings={followings} authorName={post.author.name} />
                 </div>
               </div>
-              <Link to={`/feed/post/${post.id}`}>
+              <Link to={`/post/${post.id}`}>
                 <div>
                   <h3 className='postTitle'>{post.title}</h3>
                   <p>{post.body}</p>
@@ -125,11 +125,11 @@ export default function PostList() {
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
-                <Link to={`/feed/post/edit/${post.id}`}>
+                <Link to={`/post/edit/${post.id}`}>
                   <button className='editBtn'>Edit post</button>
                 </Link>
               </div>
-              <Link to={`/feed/post/${post.id}`}>
+              <Link to={`/post/${post.id}`}>
                 <div>
                   <h3 className='postTitle'>{post.title}</h3>
                   <p>{post.body}</p>

@@ -50,11 +50,11 @@ export default function MyPosts() {
                   <p className='date'>{formatDate}</p>
                 </div>
               </Link>
-              <Link to={`/feed/post/edit/${post.id}`}>
+              <Link to={`/post/edit/${post.id}`}>
                 <button className='editBtn'>Edit post</button>
               </Link>
             </div>
-            <Link to={`/feed/post/${post.id}`}>
+            <Link to={`/post/${post.id}`}>
               <div>
                 <h3 className='postTitle'>{post.title}</h3>
                 <p>{post.body}</p>

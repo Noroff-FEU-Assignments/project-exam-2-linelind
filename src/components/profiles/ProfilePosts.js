@@ -59,7 +59,7 @@ export default function ProfilePosts() {
         return (
           <div key={post.id} className='postCard'>
             <div className='postHeader'>
-              <Link to={`/feed/profile/${name}`} key={name} className='postInfoContainer'>
+              <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
                 <div className='avatar avatarSmall'>
                   <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
                 </div>
@@ -72,7 +72,7 @@ export default function ProfilePosts() {
                 <FollowUnfollow followings={followings} authorName={post.author.name} />
               </div>
             </div>
-            <Link to={`/feed/post/${post.id}`}>
+            <Link to={`/post/${post.id}`}>
               <div>
                 <h3 className='postTitle'>{post.title}</h3>
                 <p>{post.body}</p>

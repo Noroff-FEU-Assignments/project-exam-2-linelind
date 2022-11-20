@@ -24,9 +24,9 @@ function App() {
             <Route path='/' exact element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/feed' element={<FeedPage />} />
-            <Route path='/feed/post/:id' element={<PostDetail />} />
-            <Route path='/feed/post/edit/:id' element={<EditPost />} />
-            <Route path='/feed/profile/:name' element={<ProfilePage />} />
+            <Route path='/post/:id' element={<PostDetail />} />
+            <Route path='/post/edit/:id' element={<EditPost />} />
+            <Route path='/profile/:name' element={<ProfilePage />} />
             <Route path='/myprofile' element={<MyProfilePage />} />
             <Route path='/myprofile/edit/:name' element={<EditMyProfile />} />
           </Routes>

@@ -79,7 +79,7 @@ export default function PostDetail() {
                 <p className='date'>{formatDate}</p>
               </div>
             </Link>
-            <Link to={`/feed/post/edit/${postdetail.id}`}>
+            <Link to={`/post/edit/${postdetail.id}`}>
               <button className='editBtn editBtnDetails'>Edit post</button>
             </Link>
           </div>
@@ -116,7 +116,7 @@ export default function PostDetail() {
               return (
                 <div className='comment'>
                   <p>{comment.body}</p>
-                  <Link to={`/feed/profile/${comment.owner}`}>
+                  <Link to={`/profile/${comment.owner}`}>
                     <div>
                       <p className='commentOwner'>Written by {comment.owner}</p>
                       <p className='date'>{formatCreated}</p>
@@ -134,7 +134,7 @@ export default function PostDetail() {
       <div className='pageContainer'>
         <div className='postCard' key={postdetail.id}>
           <div className='postHeader'>
-            <Link to={`/feed/profile/${postdetail.author.name}`} key={postdetail.author.name} className='postInfoContainer'>
+            <Link to={`/profile/${postdetail.author.name}`} key={postdetail.author.name} className='postInfoContainer'>
               <div className='avatar avatarSmall'>
                 <img src={postdetail.author.avatar ? postdetail.author.avatar : FallbackAvatar} alt='Profile avatar.' />
               </div>
@@ -180,7 +180,7 @@ export default function PostDetail() {
               return (
                 <div className='comment'>
                   <p>{comment.body}</p>
-                  <Link to={`/feed/profile/${comment.owner}`}>
+                  <Link to={`/profile/${comment.owner}`}>
                     <div>
                       <p className='commentOwner'>Written by {comment.owner}</p>
                       <p className='date'>{formatCreated}</p>

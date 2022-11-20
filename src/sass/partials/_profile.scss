@@ -42,8 +42,27 @@
       transform: translateY(-40%);
     }
   }
+}
 
-  .postContainer {
-    margin-top: 50px;
+.myFollowersContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+
+  .myProfileFollow {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: $shadow;
+    width: 300px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 0;
   }
 }

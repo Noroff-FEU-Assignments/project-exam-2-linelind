@@ -85,7 +85,7 @@ export default function EditPost() {
 
       if (response.status === 200) {
         setTimeout(() => {
-          history(`/feed/post/${id}`);
+          history(`/post/${id}`);
         }, 1500);
       }
     } catch (error) {
