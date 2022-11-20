@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../layout/Heading";
+import Loader from "../layout/Loader";
 
 export default function ProfileList() {
   const [profiles, setProfiles] = useState([]);
@@ -24,9 +25,9 @@ export default function ProfileList() {
     getProfiles();
   }, []);
 
-  if (loading) return <div>Loading profiles ..</div>;
+  if (loading) return <Loader />;
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div>

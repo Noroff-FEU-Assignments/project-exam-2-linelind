@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Loader from "../layout/Loader";
 
 export default function ProfileFollowers() {
   const [profilefollowers, setProfilefollowers] = useState([]);
@@ -27,15 +28,15 @@ export default function ProfileFollowers() {
     getFollowers();
   }, []);
 
-  if (loading) return <div>Loading profiles ..</div>;
+  if (loading) return <Loader />;
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div className='myFollowersContainer'>
-      {profilefollowers.slice(0, 5).map((follower) => {
+      {profilefollowers.map((follower) => {
         return (
-          <Link to={`/profile/${follower.name}`} key={follower.name}>
+          <Link to={`/profile/${follower.name}`} key={follower.name} onClick={() => window.reload()}>
             <div className='myProfileFollow'>
               <div className='avatar avatarSmall'>
                 <img src={follower.avatar ? follower.avatar : FallbackAvatar} alt='Profile avatar.' />

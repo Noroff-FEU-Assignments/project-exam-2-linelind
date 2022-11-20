@@ -9,6 +9,7 @@ import ReactButton from "./reactions/ReactButton";
 import CommentButton from "./comments/CommentButton";
 import FollowUnfollow from "../follow/FollowUnfollow";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Loader from "../layout/Loader";
 import moment from "moment";
 
 export default function PostDetail() {
@@ -58,9 +59,9 @@ export default function PostDetail() {
     getFollowing();
   }, []);
 
-  if (loading) return <div>Loading posts...</div>;
+  if (loading) return <Loader />;
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   const date = postdetail.created;
   const formatDate = moment(date).startOf("hour").fromNow();

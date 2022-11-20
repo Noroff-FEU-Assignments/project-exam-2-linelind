@@ -127,3 +127,14 @@ body {
   line-height: 20px;
   font-size: 14px;
 }
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px;
+
+  .loaderColour {
+    color: getColour(green) !important;
+  }
+}

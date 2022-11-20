@@ -4,6 +4,7 @@ import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Loader from "../layout/Loader";
 import moment from "moment";
 
 export default function MyPosts() {
@@ -28,9 +29,9 @@ export default function MyPosts() {
     getMyPosts();
   }, []);
 
-  if (loading) return <div>Loading posts...</div>;
+  if (loading) return <Loader />;
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   const date = myposts.created;
   const formatDate = moment(date).startOf("hour").fromNow();

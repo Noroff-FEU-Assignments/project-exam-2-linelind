@@ -7,6 +7,7 @@ import { useContext } from "react";
 import FollowUnfollow from "../follow/FollowUnfollow";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import FallbackBanner from "../../images/fallbackbanner.jpg";
+import Loader from "../layout/Loader";
 
 export default function ProfileDetail() {
   const [profiledetail, setProfiledetail] = useState(null);
@@ -54,8 +55,8 @@ export default function ProfileDetail() {
     getFollowing();
   }, []);
 
-  if (loading) return <div>Loading profile info...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <Loader />;
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div key={profiledetail.name} className='profileHeaderContainer'>

@@ -4,6 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import useAxios from "../../hooks/useAxios";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Loader from "../layout/Loader";
 
 export default function MyFollowing() {
   const [myfollowing, setMyfollowing] = useState([]);
@@ -27,13 +28,13 @@ export default function MyFollowing() {
     getFollowing();
   }, []);
 
-  if (loading) return <div>Loading profiles ..</div>;
+  if (loading) return <Loader />;
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div className='myFollowersContainer'>
-      {myfollowing.slice(0, 5).map((following) => {
+      {myfollowing.map((following) => {
         return (
           <Link to={`/profile/${following.name}`} key={following.name}>
             <div className='myProfileFollow'>

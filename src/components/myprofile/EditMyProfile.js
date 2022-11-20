@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
+import Loader from "../layout/Loader";
 
 const schema = yup.object().shape({
   banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
@@ -91,9 +92,9 @@ export default function EditMyProfile() {
     }
   }
 
-  if (fetchingMedia) return <div>Loading...</div>;
+  if (fetchingMedia) return <Loader />;
 
-  if (fetchError) return <div>{fetchError}</div>;
+  if (fetchError) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div className='pageContainer'>
