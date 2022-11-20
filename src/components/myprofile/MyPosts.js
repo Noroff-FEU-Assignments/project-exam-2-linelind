@@ -38,7 +38,7 @@ export default function MyPosts() {
 
   return (
     <div className='postContainer'>
-      {myposts.slice(0, 15).map((post) => {
+      {myposts.map((post) => {
         return (
           <div key={post.id} className='postCard'>
             <div className='postHeader'>

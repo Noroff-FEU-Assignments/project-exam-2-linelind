@@ -56,7 +56,7 @@ export default function ProfilePosts() {
 
   return (
     <div className='postContainer'>
-      {profileposts.slice(0, 15).map((post) => {
+      {profileposts.map((post) => {
         return (
           <div key={post.id} className='postCard'>
             <div className='postHeader'>

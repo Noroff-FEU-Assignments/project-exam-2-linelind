@@ -33,7 +33,7 @@ export default function ProfileList() {
     <div>
       <Heading size='2' title='Profiles' />
 
-      {profiles.slice(0, 5).map((profile) => {
+      {profiles.map((profile) => {
         return (
           <Link to={`/profile/${profile.name}`} key={profile.name}>
             <div className='profileCard'>
