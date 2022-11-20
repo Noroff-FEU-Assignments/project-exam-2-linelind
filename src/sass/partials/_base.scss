@@ -67,9 +67,14 @@ body {
   }
 }
 
-.avatarSmall {
+.avatarCreate {
   height: 70px;
   width: 70px;
+}
+
+.avatarSmall {
+  height: 60px;
+  width: 60px;
 }
 
 .followBtn {
@@ -96,7 +101,6 @@ body {
   border: none;
   padding: 5px 10px;
   color: getColour(white);
-  font-size: 14px;
 }
 
 .hidden {
@@ -107,6 +111,16 @@ body {
   border: 1px solid getColour(error);
   background-color: getColour(error-light);
   color: getColour(error);
+}
+
+.successMessage {
+  border: 1px solid getColour(success);
+  background-color: getColour(success-light);
+  color: getColour(success);
+}
+
+.errorMessage,
+.successMessage {
   padding: 10px;
   margin-bottom: 30px;
   text-align: center;

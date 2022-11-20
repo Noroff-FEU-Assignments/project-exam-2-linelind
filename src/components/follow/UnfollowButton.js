@@ -10,7 +10,6 @@ export default function UnfollowButton({ name }) {
   async function handleUnfollow() {
     try {
       const response = await http.put(`/social/profiles/${name}/unfollow`);
-      console.log(response);
       window.location.reload();
     } catch (error) {
       console.log(error);

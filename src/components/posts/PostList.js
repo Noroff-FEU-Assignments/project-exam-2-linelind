@@ -68,7 +68,7 @@ export default function PostList() {
                     <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
                   </div>
                   <div>
-                    <h2>{post.author.name}</h2>
+                    <h2 className='postAuthor'>{post.author.name}</h2>
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
@@ -78,7 +78,7 @@ export default function PostList() {
               </div>
               <Link to={`/feed/post/${post.id}`}>
                 <div>
-                  <h3>{post.title}</h3>
+                  <h3 className='postTitle'>{post.title}</h3>
                   <p>{post.body}</p>
                 </div>
                 {(() => {
@@ -121,7 +121,7 @@ export default function PostList() {
                     <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
                   </div>
                   <div>
-                    <h2>{post.author.name}</h2>
+                    <h2 className='postAuthor'>{post.author.name}</h2>
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
@@ -131,7 +131,7 @@ export default function PostList() {
               </div>
               <Link to={`/feed/post/${post.id}`}>
                 <div>
-                  <h3>{post.title}</h3>
+                  <h3 className='postTitle'>{post.title}</h3>
                   <p>{post.body}</p>
                 </div>
                 {(() => {

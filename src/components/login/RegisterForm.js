@@ -10,20 +10,29 @@ const url = API_BASE + "/social/auth/register";
 const schema = yup.object().shape({
   name: yup
     .string()
+    .trim()
     .required("Please enter your name")
     .min(3, "You must enter at least 3 characters")
     .matches(/^[a-zA-Z0-9_]+$/, "Special caracters not allowed"),
   email: yup
     .string()
+    .trim()
     .required("Please enter an email address")
-    .matches(/^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bstud.noroff.no)$/, "Please enter a valid stud.noroff.no email"),
+    .matches(/^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bstud.noroff.no)$/, "Please enter a stud.noroff.no email"),
   password: yup.string().required("Please enter your first name").min(8, "You must enter at least 8 characters"),
-  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
-  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
+  avatar: yup
+    .string()
+    .trim()
+    .matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
+  banner: yup
+    .string()
+    .trim()
+    .matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
 });
 
 export default function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [updated, setUpdated] = useState(false);
   const [registerError, setRegisterError] = useState(null);
 
   const {
@@ -35,23 +44,15 @@ export default function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
-    setSubmitted(true);
-    reset();
-  }
-
   async function onSubmit(data) {
     setSubmitted(true);
 
-    console.log(data);
-
     try {
       const response = await axios.post(url, data);
-      console.log("response", response.data);
+      setUpdated(true);
+      setRegisterError(false);
     } catch (error) {
-      const displayMessage = <div>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>;
-      setRegisterError(displayMessage);
-      console.log("error", error);
+      setRegisterError(true);
     } finally {
       setSubmitted(false);
     }
@@ -59,7 +60,10 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
-      {registerError && <div className='errorMessage'>{registerError}</div>}
+      {registerError && (
+        <div className='errorMessage'>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>
+      )}
+      {updated && <div className='successMessage'>Welcome to our community!</div>}
       <p className='logo logInLogo'>PlotTwist</p>
       <label>
         Name *

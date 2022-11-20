@@ -16,7 +16,6 @@ body {
 
 a {
   text-decoration: none;
-  /* color: getColour(black); */
 }
 
 h1,
@@ -25,21 +24,17 @@ h3 {
   font-family: $font-headings;
 }
 
-h1,
-h2 {
-  margin-top: 25px;
-}
-
 h1 {
   font-size: 26px;
 }
 
-h2 {
+.postAuthor {
   font-size: 21px;
 }
 
-h3 {
+.postTitle {
   font-size: 18px;
+  font-weight: 700;
   margin-top: 50px;
 }
 
@@ -47,7 +42,19 @@ p {
   font-size: 16px;
 }
 
-.feedTitle {
+.editBtn,
+.logInBtn,
+.logOutBtn,
+.followBtn,
+.updatePostBtn,
+.deleteBtn,
+.loginBtn,
+.newAccountBtn {
+  font-size: 14px !important;
+}
+
+.feedTitle,
+.editHeading {
   text-align: center;
   font-family: $font-logo;
   font-size: 28px;
@@ -55,7 +62,13 @@ p {
 
 .date {
   font-size: 12px;
-  margin-top: -15px;
+  margin-top: -5px;
+}
+
+.commentOwner {
+  font-size: 14px;
+  margin-bottom: 18px;
+  margin-top: 35px;
 }
 
 label {

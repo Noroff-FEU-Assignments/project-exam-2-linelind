@@ -40,17 +40,20 @@ a {
 
 .postHeader {
   display: flex;
-  /* flex-direction: row-reverse; */
   justify-content: space-between;
   align-items: center;
   margin: -10px -15px;
-  padding: 10px 15px;
+  padding: 15px 20px;
   box-shadow: $shadow;
 
   .postInfoContainer {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+
+    h2 {
+      margin-top: 10px;
+    }
   }
 }
 
@@ -69,10 +72,20 @@ a {
 
 .postCardImage {
   width: 100%;
+  margin: 10px auto;
 }
 
 .editBtnDetails {
   float: right;
   margin-top: 10px;
   margin-right: 10px;
+}
+
+.comment {
+  padding: 20px 15px 15px 15px;
+  border-top: 1px solid getColour(green);
+
+  .date {
+    margin-top: -15px;
+  }
 }

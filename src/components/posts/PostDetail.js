@@ -7,10 +7,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import ReactButton from "./reactions/ReactButton";
 import CommentButton from "./comments/CommentButton";
+import FollowUnfollow from "../follow/FollowUnfollow";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import moment from "moment";
 
 export default function PostDetail() {
   const [postdetail, setPostdetail] = useState(null);
+  const [followings, setFollowings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -41,6 +44,20 @@ export default function PostDetail() {
     getPostDetail();
   }, []);
 
+  const checkUrl = `/social/profiles/${auth.name}?_following=true`;
+
+  useEffect(function () {
+    async function getFollowing() {
+      try {
+        const response = await urlAxios.get(checkUrl);
+        setFollowings(response.data.following);
+      } catch (error) {
+        setError(error);
+      }
+    }
+    getFollowing();
+  }, []);
+
   if (loading) return <div>Loading posts...</div>;
 
   if (error) return <div>{error}</div>;
@@ -52,13 +69,22 @@ export default function PostDetail() {
     return (
       <div className='pageContainer'>
         <div className='postCard' key={postdetail.id}>
-          <Link to={`/feed/post/edit/${postdetail.id}`}>
-            <button className='editBtn editBtnDetails'>Edit post</button>
-          </Link>
+          <div className='postHeader'>
+            <Link to={`/myprofile`} className='postInfoContainer'>
+              <div className='avatar avatarSmall'>
+                <img src={postdetail.author.avatar ? postdetail.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+              </div>
+              <div>
+                <h2 className='postAuthor'>{postdetail.author.name}</h2>
+                <p className='date'>{formatDate}</p>
+              </div>
+            </Link>
+            <Link to={`/feed/post/edit/${postdetail.id}`}>
+              <button className='editBtn editBtnDetails'>Edit post</button>
+            </Link>
+          </div>
           <div>
-            <h2>{postdetail.author.name}</h2>
-            <p className='date'>{formatDate}</p>
-            <h3>{postdetail.title}</h3>
+            <h3 className='postTitle'>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
           {(() => {
@@ -88,10 +114,14 @@ export default function PostDetail() {
             {postdetail.comments.map((comment) => {
               const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
-                <div>
+                <div className='comment'>
                   <p>{comment.body}</p>
-                  <p>{comment.owner}</p>
-                  <p>{formatCreated}</p>
+                  <Link to={`/feed/profile/${comment.owner}`}>
+                    <div>
+                      <p className='commentOwner'>Written by {comment.owner}</p>
+                      <p className='date'>{formatCreated}</p>
+                    </div>
+                  </Link>
                 </div>
               );
             })}
@@ -103,10 +133,22 @@ export default function PostDetail() {
     return (
       <div className='pageContainer'>
         <div className='postCard' key={postdetail.id}>
+          <div className='postHeader'>
+            <Link to={`/feed/profile/${postdetail.author.name}`} key={postdetail.author.name} className='postInfoContainer'>
+              <div className='avatar avatarSmall'>
+                <img src={postdetail.author.avatar ? postdetail.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+              </div>
+              <div>
+                <h2 className='postAuthor'>{postdetail.author.name}</h2>
+                <p className='date'>{formatDate}</p>
+              </div>
+            </Link>
+            <div>
+              <FollowUnfollow followings={followings} authorName={postdetail.author.name} />
+            </div>
+          </div>
           <div>
-            <h2>{postdetail.author.name}</h2>
-            <p className='date'>{formatDate}</p>
-            <h3>{postdetail.title}</h3>
+            <h3 className='postTitle'>{postdetail.title}</h3>
             <p>{postdetail.body}</p>
           </div>
           {(() => {
@@ -136,10 +178,14 @@ export default function PostDetail() {
             {postdetail.comments.map((comment) => {
               const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
-                <div>
+                <div className='comment'>
                   <p>{comment.body}</p>
-                  <p>{comment.owner}</p>
-                  <p>{formatCreated}</p>
+                  <Link to={`/feed/profile/${comment.owner}`}>
+                    <div>
+                      <p className='commentOwner'>Written by {comment.owner}</p>
+                      <p className='date'>{formatCreated}</p>
+                    </div>
+                  </Link>
                 </div>
               );
             })}

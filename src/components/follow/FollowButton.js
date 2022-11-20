@@ -10,7 +10,6 @@ export default function FollowButton({ name }) {
   async function handleFollow() {
     try {
       const response = await http.put(`/social/profiles/${name}/follow`);
-      console.log(response);
       window.location.reload();
     } catch (error) {
       setError(error);

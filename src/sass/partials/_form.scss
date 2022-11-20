@@ -73,6 +73,41 @@
   }
 }
 
+// Edit form
+
+.editPostForm {
+  width: 400px;
+  height: 600px;
+  justify-content: center;
+
+  .updatePostBtn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .deleteBtnContainer {
+    border-top: $border-thin;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .deleteBtn {
+    width: 90%;
+    background-color: getColour(black);
+  }
+}
+
+.editProfileForm {
+  width: 400px;
+  height: 400px;
+  justify-content: center;
+
+  .editProfileBtn {
+    width: 60%;
+    margin-top: 20px;
+    align-self: center;
+  }
+}
 // Login og register form
 
 .loginForm,
@@ -89,8 +124,15 @@
 .loginForm {
   height: 500px;
 
+  .loginBtnContainer {
+    border-bottom: $border-thin;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
   .loginBtn {
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 20px;
     margin-top: 20px;
   }
 
@@ -100,7 +142,6 @@
     width: 80%;
     align-self: center;
     text-align: center;
-    margin-top: 10px;
   }
 
   hr {
@@ -137,6 +178,7 @@
 }
 
 .commentContainer {
+  margin-bottom: 30px;
   textarea {
     width: 100%;
     margin-bottom: 10px;

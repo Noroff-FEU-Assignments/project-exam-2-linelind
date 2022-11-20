@@ -82,7 +82,7 @@ export default function RegisterForm() {
   return (
     <div className='form createForm'>
       <Link to={`/myprofile`} className='userImageContainer'>
-        <div className='avatar avatarSmall'>
+        <div className='avatar avatarCreate'>
           <img src={avatar.avatar} alt='Go to profile' />
         </div>
       </Link>

@@ -25,7 +25,7 @@ export default function DeletePostButton({ id }) {
   }
 
   return (
-    <button type='button' className='delete' onClick={handleDelete}>
+    <button type='button' className='cta deleteBtn' onClick={handleDelete}>
       {error ? "Error" : "Delete"}
     </button>
   );

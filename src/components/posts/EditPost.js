@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import Heading from "../layout/Heading";
 import DeletePostButton from "./DeletePostButton";
 
 const schema = yup.object().shape({
@@ -83,11 +82,16 @@ export default function EditPost() {
     try {
       const response = await http.put(url, formData);
       setUpdated(true);
+
+      if (response.status === 200) {
+        setTimeout(() => {
+          history(`/feed/post/${id}`);
+        }, 1500);
+      }
     } catch (error) {
-      setUpdateError(error.toString());
+      setUpdateError(true);
     } finally {
       setUpdatingPost(false);
-      history(`/feed/post/${id}`);
     }
   }
 
@@ -96,10 +100,14 @@ export default function EditPost() {
 
   return (
     <div className='pageContainer'>
-      <Heading title='Edit post' />
-
-      <form onSubmit={handleSubmit(editPost)} className='form'>
-        {updated && <div>The post was updated</div>}
+      <form onSubmit={handleSubmit(editPost)} className='form editPostForm'>
+        {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}
+        {updateError && (
+          <div className='errorMessage'>
+            Ah sorry, that did not go to plan.<br></br>Please try again.
+          </div>
+        )}
+        <h1 className='editHeading'>Edit post</h1>
         <label>
           Title
           <input {...register("title")} defaultValue={post.title} />
@@ -117,9 +125,10 @@ export default function EditPost() {
           Tags
           <input {...register("tags")} defaultValue={post.tags} />
         </label>
-        <button>Update</button>
-        <hr />
-        <DeletePostButton id={post.id} />
+        <button className='cta updatePostBtn'>Update</button>
+        <div className='deleteBtnContainer'>
+          <DeletePostButton id={post.id} />
+        </div>
       </form>
     </div>
   );

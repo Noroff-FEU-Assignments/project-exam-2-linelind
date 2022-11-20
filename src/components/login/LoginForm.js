@@ -60,8 +60,9 @@ export default function LoginForm() {
         <input {...register("password")} type='password' />
         {errors.password && <span>{errors.password.message}</span>}
       </label>
-      <button className='cta loginBtn'>Log in</button>
-      <hr></hr>
+      <div className='loginBtnContainer'>
+        <button className='cta loginBtn'>Log in</button>
+      </div>
       <Link to='/register' className='cta newAccountBtn'>
         Create new account
       </Link>

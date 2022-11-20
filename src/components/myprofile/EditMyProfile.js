@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import Heading from "../layout/Heading";
 
 const schema = yup.object().shape({
-  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
-  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, "Please enter a valid image url"),
+  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
+  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
 });
 
 export default function EditMyProfile() {
@@ -27,6 +27,8 @@ export default function EditMyProfile() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const history = useNavigate();
 
   const axiosUrl = useAxios();
 
@@ -75,8 +77,13 @@ export default function EditMyProfile() {
 
     try {
       const response = await axiosUrl.put(MyMediaUrl, data);
-
       setUpdated(true);
+
+      if (response.status === 200) {
+        setTimeout(() => {
+          history(`/myprofile`);
+        }, 1500);
+      }
     } catch (error) {
       setUpdateError(error.toString());
     } finally {
@@ -90,10 +97,14 @@ export default function EditMyProfile() {
 
   return (
     <div className='pageContainer'>
-      <Heading title='Edit media' />
-
-      <form onSubmit={handleSubmit(onSubmit)} className='form'>
-        {updated && <div>Your profile was updated</div>}
+      <form onSubmit={handleSubmit(onSubmit)} className='form editProfileForm'>
+        {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}
+        {updateError && (
+          <div className='errorMessage'>
+            Ah sorry, that did not go to plan.<br></br>Please try again.
+          </div>
+        )}
+        <h1 className='editHeading'>Edit media</h1>
         <label>
           Banner
           <input {...register("banner")} defaultValue={profilemedia.banner} />
@@ -104,7 +115,7 @@ export default function EditMyProfile() {
           <input {...register("avatar")} defaultValue={profilemedia.avatar} />
           {errors.avatar && <span>{errors.avatar.message}</span>}
         </label>
-        <button>Update profile</button>
+        <button className='cta editProfileBtn'>Update profile</button>
       </form>
     </div>
   );
