@@ -48,25 +48,36 @@
   }
 }
 
+.profileListContainer,
 .myFollowersContainer {
   display: flex;
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 800px;
+}
 
-  .myProfileFollow {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    box-shadow: $shadow;
-    width: 300px;
-  }
+.profileCard,
+.myProfileFollow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  box-shadow: $shadow;
+  width: 300px;
+  background-color: getColour(white);
 
   h2 {
     font-size: 18px;
     margin: 0;
   }
+}
+
+.profileListContainer {
+  max-width: 1000px;
+  margin: 40px 20px;
+}
+
+.myFollowersContainer {
+  max-width: 800px;
 }

@@ -1,12 +1,42 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
 import ProfilePosts from "./ProfilePosts";
 import ProfileFollowers from "./ProfileFollowers";
 import ProfileFollowing from "./ProfileFollowings";
+import Loader from "../layout/Loader";
 
 function ProfileMenu() {
+  const [counted, setCounted] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const { name } = useParams();
+
+  const urlAxios = useAxios();
+
+  useEffect(function () {
+    async function getCount() {
+      try {
+        const result = await urlAxios.get("/social/profiles/" + name);
+        setCounted(result.data._count);
+      } catch (error) {
+        setError(error.toString());
+      } finally {
+        setLoading(false);
+      }
+    }
+    getCount();
+  }, []);
+
+  if (loading) return <Loader />;
+
+  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+
   return (
     <>
-      <ul className='nav nav-tabs' id='myTab' role='tablist'>
+      <ul className='nav nav-tabs navTabsProfile' id='myTab' role='tablist'>
         <li className='nav-item' role='presentation'>
           <button
             className='nav-link active'
@@ -17,7 +47,7 @@ function ProfileMenu() {
             role='tab'
             aria-controls='post-tab-pane'
             aria-selected='true'>
-            Posts
+            Posts ({counted.posts})
           </button>
         </li>
         <li className='nav-item' role='presentation'>
@@ -30,7 +60,7 @@ function ProfileMenu() {
             role='tab'
             aria-controls='following-tab-pane'
             aria-selected='false'>
-            Following
+            Following ({counted.following})
           </button>
         </li>
         <li className='nav-item' role='presentation'>
@@ -43,7 +73,7 @@ function ProfileMenu() {
             role='tab'
             aria-controls='followers-tab-pane'
             aria-selected='false'>
-            Followers
+            Followers ({counted.followers})
           </button>
         </li>
       </ul>

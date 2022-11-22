@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FollowUnfollow from "../follow/FollowUnfollow";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
 import moment from "moment";
@@ -62,7 +61,7 @@ export default function PostList() {
       {posts.map((post) => {
         if (post.author.email !== auth.email) {
           return (
-            <div key={post.id} className='postCard'>
+            <div key={post.id} className='postCard postCardHover'>
               <div className='postHeader'>
                 <Link to={`/profile/${post.author.name}`} key={post.author.name} className='postInfoContainer'>
                   <div className='avatar avatarSmall'>
@@ -73,9 +72,6 @@ export default function PostList() {
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
-                <div>
-                  <FollowUnfollow followings={followings} authorName={post.author.name} />
-                </div>
               </div>
               <Link to={`/post/${post.id}`}>
                 <div>
@@ -115,7 +111,7 @@ export default function PostList() {
           );
         } else {
           return (
-            <div key={post.id} className='postCard'>
+            <div key={post.id} className='postCard postCardHover'>
               <div className='postHeader'>
                 <Link to={`/myprofile`} className='postInfoContainer'>
                   <div className='avatar avatarSmall'>

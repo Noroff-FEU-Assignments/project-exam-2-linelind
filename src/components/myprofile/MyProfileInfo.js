@@ -49,7 +49,7 @@ export default function ProfileInfo() {
           </div>
         </div>
         <Link to={`/myprofile/edit/${myprofile.name}`}>
-          <button className=' editBtn'>Edit profile</button>
+          <button className='editBtn'>Edit profile</button>
         </Link>
       </div>
     </div>

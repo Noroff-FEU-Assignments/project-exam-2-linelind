@@ -11,13 +11,13 @@ export default function MyFollowers() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const urlProfiles = useAxios();
+  const urlAxios = useAxios();
   const [auth] = useContext(AuthContext);
 
   useEffect(function () {
     async function getFollowers() {
       try {
-        const response = await urlProfiles.get("/social/profiles/" + auth.name + "?_followers=true");
+        const response = await urlAxios.get("/social/profiles/" + auth.name + "?_followers=true");
         setMyfollowers(response.data.followers);
       } catch (error) {
         setError(error.toString());

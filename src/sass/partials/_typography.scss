@@ -8,6 +8,11 @@ body {
   font-size: 20px;
 }
 
+.logo:hover,
+.fa-user:hover {
+  color: getColour(black) !important;
+}
+
 .logInLogo {
   text-align: center;
   font-size: 30px;
@@ -16,6 +21,14 @@ body {
 
 a {
   text-decoration: none;
+  color: getColour(black);
+}
+
+a > *:hover,
+.postCardHover > *:hover,
+.postCardImage:hover,
+.postHeader > *:hover {
+  color: getColour(green) !important;
 }
 
 h1,
@@ -59,6 +72,10 @@ p {
   text-align: center;
   font-family: $font-logo;
   font-size: 28px;
+}
+
+.feedTitle {
+  margin-top: 50px;
 }
 
 .date {

@@ -1,24 +1,23 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
 
-export default function ProfileFollowers() {
-  const [profilefollowers, setProfilefollowers] = useState([]);
+export default function MyFollowers() {
+  const [followers, setFollowers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const urlAxios = useAxios();
-
   const { name } = useParams();
+  const urlAxios = useAxios();
 
   useEffect(function () {
     async function getFollowers() {
       try {
         const response = await urlAxios.get("/social/profiles/" + name + "?_followers=true");
-        setProfilefollowers(response.data.followers);
+        setFollowers(response.data.followers);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -34,7 +33,7 @@ export default function ProfileFollowers() {
 
   return (
     <div className='myFollowersContainer'>
-      {profilefollowers.map((follower) => {
+      {followers.map((follower) => {
         return (
           <Link to={`/profile/${follower.name}`} key={follower.name}>
             <div className='myProfileFollow'>

@@ -1,6 +1,5 @@
 import CreatePost from "../components/posts/CreatePost";
-import PostList from "../components/posts/PostList";
-import ProfileList from "../components/profiles/ProfileList";
+import FeedMenu from "../components/layout/FeedMenu";
 import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
@@ -15,8 +14,7 @@ export default function FeedPage() {
       <div className='pageContainer'>
         <h1 className='feedTitle'>How's it going {auth.name}?</h1>
         <CreatePost />
-        <PostList />
-        <ProfileList />
+        <FeedMenu />
       </div>
     );
   }

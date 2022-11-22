@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import Heading from "../layout/Heading";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
 
 export default function ProfileList() {
@@ -30,15 +30,17 @@ export default function ProfileList() {
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
-    <div>
-      <Heading size='2' title='Profiles' />
-
+    <div className='profileListContainer'>
       {profiles.map((profile) => {
         return (
           <Link to={`/profile/${profile.name}`} key={profile.name}>
             <div className='profileCard'>
-              <h3>{profile.name}</h3>
-              <p>{profile.email}</p>
+              <div className='avatar avatarSmall'>
+                <img src={profile.avatar ? profile.avatar : FallbackAvatar} alt='Profile avatar.' />
+              </div>
+              <div>
+                <h2>{profile.name}</h2>
+              </div>
             </div>
           </Link>
         );

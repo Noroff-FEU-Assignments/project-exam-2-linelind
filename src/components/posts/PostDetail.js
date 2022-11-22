@@ -7,14 +7,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import ReactButton from "./reactions/ReactButton";
 import CommentButton from "./comments/CommentButton";
-import FollowUnfollow from "../follow/FollowUnfollow";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
 import moment from "moment";
 
 export default function PostDetail() {
   const [postdetail, setPostdetail] = useState(null);
-  const [followings, setFollowings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -45,20 +43,6 @@ export default function PostDetail() {
     getPostDetail();
   }, []);
 
-  const checkUrl = `/social/profiles/${auth.name}?_following=true`;
-
-  useEffect(function () {
-    async function getFollowing() {
-      try {
-        const response = await urlAxios.get(checkUrl);
-        setFollowings(response.data.following);
-      } catch (error) {
-        setError(error);
-      }
-    }
-    getFollowing();
-  }, []);
-
   if (loading) return <Loader />;
 
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
@@ -69,7 +53,7 @@ export default function PostDetail() {
   if (postdetail.author.email === auth.email) {
     return (
       <div className='pageContainer'>
-        <div className='postCard' key={postdetail.id}>
+        <div className='postCard ' key={postdetail.id}>
           <div className='postHeader'>
             <Link to={`/myprofile`} className='postInfoContainer'>
               <div className='avatar avatarSmall'>
@@ -111,7 +95,7 @@ export default function PostDetail() {
               <CommentButton />
             </div>
           </div>
-          <div>
+          <div className='commentsContainer'>
             {postdetail.comments.map((comment) => {
               const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
@@ -144,9 +128,6 @@ export default function PostDetail() {
                 <p className='date'>{formatDate}</p>
               </div>
             </Link>
-            <div>
-              <FollowUnfollow followings={followings} authorName={postdetail.author.name} />
-            </div>
           </div>
           <div>
             <h3 className='postTitle'>{postdetail.title}</h3>
@@ -175,7 +156,7 @@ export default function PostDetail() {
               <CommentButton />
             </div>
           </div>
-          <div>
+          <div className='commentsContainer'>
             {postdetail.comments.map((comment) => {
               const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (

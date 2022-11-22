@@ -77,22 +77,12 @@ body {
   width: 60px;
 }
 
-.followBtn {
+.editBtn,
+.unfollowBtn {
   border: $border-thin;
   background-color: getColour(white);
   padding: 5px 10px;
   color: getColour(green);
-}
-
-.editBtn {
-  background-color: #aecdc4;
-  border: none;
-  padding: 7px 10px;
-}
-
-.followBtn,
-.editBtn {
-  border-radius: 2px;
 }
 
 .cta {

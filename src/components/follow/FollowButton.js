@@ -9,7 +9,7 @@ export default function FollowButton({ name }) {
 
   async function handleFollow() {
     try {
-      const response = await http.put(`/social/profiles/${name}/follow`);
+      const response = await http.put("/social/profiles/" + { name } + "/follow");
       window.location.reload();
     } catch (error) {
       setError(error);
@@ -17,7 +17,7 @@ export default function FollowButton({ name }) {
   }
 
   return (
-    <button onClick={handleFollow} className='followBtn'>
+    <button onClick={handleFollow} className='cta'>
       {error ? "Error" : "Follow"}
     </button>
   );

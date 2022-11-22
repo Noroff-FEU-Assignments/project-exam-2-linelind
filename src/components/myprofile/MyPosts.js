@@ -40,7 +40,7 @@ export default function MyPosts() {
     <div className='postContainer'>
       {myposts.map((post) => {
         return (
-          <div key={post.id} className='postCard'>
+          <div key={post.id} className='postCard postCardHover'>
             <div className='postHeader'>
               <Link to={`/myprofile`} className='postInfoContainer'>
                 <div className='avatar avatarSmall'>

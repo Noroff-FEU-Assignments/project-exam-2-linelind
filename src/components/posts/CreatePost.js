@@ -10,7 +10,7 @@ import { useContext } from "react";
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
   body: yup.string(),
-  media: yup.string(),
+  media: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
   tags: yup.string(),
 });
 
@@ -98,6 +98,7 @@ export default function RegisterForm() {
         </label>
         <label id='imageLabel' className='hidden'>
           <input {...register("media")} placeholder='media' />
+          {errors.media && <span>{errors.media.message}</span>}
         </label>
         <label id='tagsLabel' className='hidden'>
           <input {...register("tags")} placeholder='tags' />

@@ -58,7 +58,7 @@ export default function ProfilePosts() {
     <div className='postContainer'>
       {profileposts.map((post) => {
         return (
-          <div key={post.id} className='postCard'>
+          <div key={post.id} className='postCard postCardHover'>
             <div className='postHeader'>
               <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
                 <div className='avatar avatarSmall'>
@@ -69,9 +69,6 @@ export default function ProfilePosts() {
                   <p className='date'>{formatDate}</p>
                 </div>
               </Link>
-              <div>
-                <FollowUnfollow followings={followings} authorName={post.author.name} />
-              </div>
             </div>
             <Link to={`/post/${post.id}`}>
               <div>
