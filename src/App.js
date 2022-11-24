@@ -22,12 +22,12 @@ function App() {
 
           <Routes>
             <Route path='/' exact element={<LoginPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/feed' element={<FeedPage />} />
+            <Route path='/register' exact element={<RegisterPage />} />
+            <Route path='/feed' exact element={<FeedPage />} />
             <Route path='/post/:id' element={<PostDetail />} />
             <Route path='/post/edit/:id' element={<EditPost />} />
-            <Route path='/profile/:name' exact element={<ProfilePage />} />
-            <Route path='/myprofile' element={<MyProfilePage />} />
+            <Route path='/profile/:name' element={<ProfilePage />} />
+            <Route path='/myprofile' exact element={<MyProfilePage />} />
             <Route path='/myprofile/edit/:name' element={<EditMyProfile />} />
           </Routes>
         </div>
