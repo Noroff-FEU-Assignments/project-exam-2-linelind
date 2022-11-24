@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+#About the Project Exam 2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my submission for Project Exam 2.
+The project consists of a social media platform built with the [Noroff API, Social Endpoints](https://noroff-api-docs).netlify.app/.
 
-## Available Scripts
+Visit site live on Netlify: [https://plottwist-linelind.netlify.app/](https://plottwist-linelind.netlify.app/)
 
-In the project directory, you can run:
+## Links
 
-### `npm start`
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <td>URL</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Gantt Chart</th>
+      <td>
+        https://trello.com/1/cards/6354440f81d4fe010f125e45/attachments/6354442d8fcd2c005a985218/previews/6354442e8fcd2c005a985225/download/placker_gantt_export_202210222126.png
+      </td>
+    </tr>
+    <tr>
+      <th>Design Prototype</th>
+      <td>https://xd.adobe.com/view/d75d7ed7-d625-45df-984b-e91f673efc82-820e/</td>
+    </tr>
+    <tr>
+      <th>Style Guide</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Kanban Board</th>
+      <td>https://trello.com/b/pDfOqL8n/examproject-2</td>
+    </tr>
+    <tr>
+      <th>Repository</th>
+      <td>https://github.com/Noroff-FEU-Assignments/project-exam-2-linelind</td>
+    </tr>
+    <tr>
+      <th>Hosted Demo</th>
+      <td>https://plottwist-linelind.netlify.app/</td>
+    </tr>
+  </tbody>
+</table>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Resources used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+These are the resources used for this project.
 
-### `npm test`
+### Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Bootstrap
+- Sass
+- Axios
+- Yup
+- Moment.js
+- Google Fonts
+- Fontawesome
+- GitHub
 
-### `npm run build`
+### Design application
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Adobe Xd
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Planning and hosting
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Trello
+- Netlify
 
-### `npm run eject`
+## Installation and setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Clone down this repository. You will need node and npm installed globally on your machine.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use `npm install` to install.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Use `npm run start` to start the project on the local server.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app will usually start on port 3000. Use `localhost:3000` to view the project in your browser, while using the local server.

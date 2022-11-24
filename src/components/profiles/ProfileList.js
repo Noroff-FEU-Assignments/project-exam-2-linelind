@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
 
@@ -8,6 +10,8 @@ export default function ProfileList() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [auth] = useContext(AuthContext);
 
   const urlProfiles = useAxios();
 

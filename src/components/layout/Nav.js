@@ -18,7 +18,7 @@ function NavBar() {
           PlotTwist
         </Link>
       </div>
-      <div clkassName='navElementsContainer'>
+      <div className='navElementsContainer'>
         {auth ? (
           <>
             <button onClick={logout} className='cta logOutBtn'>
