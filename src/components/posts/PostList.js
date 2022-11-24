@@ -9,7 +9,6 @@ import moment from "moment";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
-  const [followings, setFollowings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -30,20 +29,6 @@ export default function PostList() {
       }
     }
     getPosts();
-  }, []);
-
-  const checkUrl = `/social/profiles/${auth.name}?_following=true`;
-
-  useEffect(function () {
-    async function getFollowing() {
-      try {
-        const response = await urlAxios.get(checkUrl);
-        setFollowings(response.data.following);
-      } catch (error) {
-        setError(error);
-      }
-    }
-    getFollowing();
   }, []);
 
   if (loading) return <Loader />;
