@@ -29,7 +29,6 @@ export default function MyFollowing() {
   }, []);
 
   if (loading) return <Loader />;
-
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (

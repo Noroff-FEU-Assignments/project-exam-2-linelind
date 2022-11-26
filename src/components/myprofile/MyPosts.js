@@ -30,7 +30,6 @@ export default function MyPosts() {
   }, []);
 
   if (loading) return <Loader />;
-
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   const date = myposts.created;
@@ -40,7 +39,7 @@ export default function MyPosts() {
     <div className='postContainer'>
       {myposts.map((post) => {
         return (
-          <div key={post.id} className='postCard postCardHover'>
+          <div className='postCard postCardHover' key={post.id}>
             <div className='postHeader'>
               <Link to={`/myprofile`} className='postInfoContainer'>
                 <div className='avatar avatarSmall'>

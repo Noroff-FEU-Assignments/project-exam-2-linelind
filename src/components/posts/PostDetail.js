@@ -44,7 +44,6 @@ export default function PostDetail() {
   }, []);
 
   if (loading) return <Loader />;
-
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   const date = postdetail.created;
@@ -52,8 +51,8 @@ export default function PostDetail() {
 
   if (postdetail.author.email === auth.email) {
     return (
-      <div className='pageContainer'>
-        <div className='postCard ' key={postdetail.id}>
+      <div className='pageContainer' key={postdetail.id}>
+        <div className='postCard'>
           <div className='postHeader'>
             <Link to={`/myprofile`} className='postInfoContainer'>
               <div className='avatar avatarSmall'>
@@ -116,8 +115,8 @@ export default function PostDetail() {
     );
   } else {
     return (
-      <div className='pageContainer'>
-        <div className='postCard' key={postdetail.id}>
+      <div className='pageContainer' key={postdetail.id}>
+        <div className='postCard'>
           <div className='postHeader'>
             <Link to={`/profile/${postdetail.author.name}`} key={postdetail.author.name} className='postInfoContainer'>
               <div className='avatar avatarSmall'>

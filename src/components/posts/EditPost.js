@@ -48,8 +48,9 @@ export default function EditPost() {
         }
 
         setPost(response.data);
+        setFetchError(false);
       } catch (error) {
-        setFetchError(error.toString());
+        setFetchError(true);
       } finally {
         setFetchingPost(false);
       }
@@ -85,6 +86,8 @@ export default function EditPost() {
       setUpdated(true);
 
       if (response.status === 200) {
+        setUpdateError(false);
+
         setTimeout(() => {
           history(`/post/${id}`);
         }, 1500);

@@ -13,26 +13,28 @@ function NavBar() {
 
   return (
     <nav>
-      <div>
-        <Link to='/feed' className='logo'>
-          PlotTwist
-        </Link>
-      </div>
-      <div className='navElementsContainer'>
-        {auth ? (
-          <>
-            <button onClick={logout} className='cta logOutBtn'>
-              Log out
-            </button>
-          </>
-        ) : (
-          <Link to='/' className='cta logInBtn'>
-            Login
+      <div className='navContainer'>
+        <div>
+          <Link to='/feed' className='logo'>
+            PlotTwist
           </Link>
-        )}
-        <Link to='/myprofile'>
-          <i className='fa-solid fa-user'></i>
-        </Link>
+        </div>
+        <div className='navElementsContainer'>
+          {auth ? (
+            <>
+              <button onClick={logout} className='cta logOutBtn'>
+                Log out
+              </button>
+            </>
+          ) : (
+            <Link to='/' className='cta logInBtn'>
+              Login
+            </Link>
+          )}
+          <Link to='/myprofile'>
+            <i className='fa-solid fa-user'></i>
+          </Link>
+        </div>
       </div>
     </nav>
   );

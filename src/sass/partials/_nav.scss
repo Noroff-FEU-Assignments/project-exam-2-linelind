@@ -1,13 +1,18 @@
 nav {
   background-color: getColour(white);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px 30px;
   box-shadow: $shadow;
   position: sticky;
   top: 0;
   z-index: 100;
+
+  .navContainer {
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+  }
 
   .logOutBtn,
   .logInBtn {
@@ -23,14 +28,14 @@ nav {
   width: 80%;
   margin-top: 30px;
   margin-bottom: 100px;
+
+  @media (max-width: $medium-width) {
+    width: 100%;
+  }
 }
 
 .nav-link {
   color: getColour(green) !important;
-}
-
-.postContainer {
-  margin-top: -50px;
 }
 
 .navTabsFeed {

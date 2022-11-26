@@ -32,13 +32,23 @@ export default function MyFollowers() {
   }, []);
 
   if (loading) return <Loader />;
-
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div className='myFollowersContainer'>
       {followers.map((follower) => {
-        if (follower.name !== auth.name) {
+        if (follower.name === auth.name) {
+          return (
+            <Link to={`/myprofile`} key={follower.name}>
+              <div className='myProfileFollow'>
+                <div className='avatar avatarSmall'>
+                  <img src={follower.avatar ? follower.avatar : FallbackAvatar} alt='Profile avatar.' />
+                </div>
+                <h2>{follower.name}</h2>
+              </div>
+            </Link>
+          );
+        } else {
           return (
             <Link to={`/profile/${follower.name}`} key={follower.name}>
               <div className='myProfileFollow'>
@@ -49,15 +59,6 @@ export default function MyFollowers() {
               </div>
             </Link>
           );
-        } else {
-          <Link to={`/myprofile`} key={follower.name}>
-            <div className='myProfileFollow'>
-              <div className='avatar avatarSmall'>
-                <img src={follower.avatar ? follower.avatar : FallbackAvatar} alt='Profile avatar.' />
-              </div>
-              <h2>{follower.name}</h2>
-            </div>
-          </Link>;
         }
       })}
     </div>

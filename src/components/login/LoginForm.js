@@ -38,9 +38,9 @@ export default function LoginForm() {
       const response = await axios.post(url, data);
       setAuth(response.data);
       history("/feed");
+      setLoginError(false);
     } catch (error) {
-      const displayMessage = <div>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>;
-      setLoginError(displayMessage);
+      setLoginError(true);
     } finally {
       setSubmitting(false);
     }
@@ -48,7 +48,7 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='form loginForm'>
-      {loginError && <div className='errorMessage'>{loginError}</div>}
+      {loginError && <div className='errorMessage'>Well this is awkward. Quick, try again, and we can pretend this error never happened.</div>}
       <p className='logo logInLogo'>PlotTwist</p>
       <label>
         Email

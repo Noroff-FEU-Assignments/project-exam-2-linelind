@@ -30,7 +30,6 @@ export default function EditMyProfile() {
   });
 
   const history = useNavigate();
-
   const axiosUrl = useAxios();
 
   let { name } = useParams();
@@ -52,7 +51,7 @@ export default function EditMyProfile() {
 
         setProfilemedia(response.data);
       } catch (error) {
-        setFetchError(error.toString());
+        setFetchError(true);
       } finally {
         setFetchingMedia(false);
       }
@@ -86,14 +85,13 @@ export default function EditMyProfile() {
         }, 1500);
       }
     } catch (error) {
-      setUpdateError(error.toString());
+      setUpdateError(true);
     } finally {
       setUpdatingMedia(false);
     }
   }
 
   if (fetchingMedia) return <Loader />;
-
   if (fetchError) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (

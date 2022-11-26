@@ -15,7 +15,7 @@ export default function PostList() {
   const urlAxios = useAxios();
   const [auth] = useContext(AuthContext);
 
-  const postUrl = `/social/posts?_author=true&_comments=true&_reactions=true&limit=30`;
+  const postUrl = `/social/posts?_author=true&_comments=true&_reactions=true`;
 
   useEffect(function () {
     async function getPosts() {
@@ -46,7 +46,7 @@ export default function PostList() {
       {posts.map((post) => {
         if (post.author.email !== auth.email) {
           return (
-            <div key={post.id} className='postCard postCardHover'>
+            <div className='postCard postCardHover' key={post.id}>
               <div className='postHeader'>
                 <Link to={`/profile/${post.author.name}`} key={post.author.name} className='postInfoContainer'>
                   <div className='avatar avatarSmall'>
@@ -96,7 +96,7 @@ export default function PostList() {
           );
         } else {
           return (
-            <div key={post.id} className='postCard postCardHover'>
+            <div className='postCard postCardHover' key={post.id}>
               <div className='postHeader'>
                 <Link to={`/myprofile`} className='postInfoContainer'>
                   <div className='avatar avatarSmall'>

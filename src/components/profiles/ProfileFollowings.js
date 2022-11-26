@@ -32,15 +32,14 @@ export default function ProfileFollowing() {
   }, []);
 
   if (loading) return <Loader />;
-
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
     <div className='myFollowersContainer'>
       {profileFollowing.map((following) => {
-        if (following.name !== auth.name) {
+        if (following.name === auth.name) {
           return (
-            <Link to={`/profile/${following.name}`} key={following.name}>
+            <Link to={`/myprofile`} key={following.name}>
               <div className='myProfileFollow'>
                 <div className='avatar avatarSmall'>
                   <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
@@ -51,7 +50,7 @@ export default function ProfileFollowing() {
           );
         } else {
           return (
-            <Link to={`/myprofile`} key={following.name}>
+            <Link to={`/profile/${following.name}`} key={following.name}>
               <div className='myProfileFollow'>
                 <div className='avatar avatarSmall'>
                   <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />

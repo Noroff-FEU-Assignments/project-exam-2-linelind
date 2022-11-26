@@ -6,6 +6,11 @@
   border: $border;
   background-color: getColour(white);
 
+  @media (max-width: $small-width) {
+    max-width: 90%;
+    border: $border-thin;
+  }
+
   label {
     display: flex;
     flex-direction: column;
@@ -21,6 +26,10 @@
   textarea {
     border: $border;
     padding: 5px;
+
+    @media (max-width: $small-width) {
+      border: $border-thin;
+    }
   }
 }
 
@@ -37,6 +46,10 @@
 
   .userImageContainer {
     flex: 1;
+
+    @media (max-width: $small-width) {
+      display: none;
+    }
   }
 
   .createFormInputs {
@@ -79,6 +92,10 @@
   width: 400px;
   height: 600px;
   justify-content: center;
+
+  @media (max-width: $small-width) {
+    padding: 20px;
+  }
 
   .updatePostBtn {
     margin-top: 10px;
@@ -159,6 +176,7 @@
 .registerBtn {
   padding: 10px;
 }
+
 .registerBtn {
   margin-top: 20px;
 }
@@ -179,6 +197,7 @@
 
 .commentContainer {
   margin-bottom: 30px;
+
   textarea {
     width: 100%;
     margin-bottom: 10px;

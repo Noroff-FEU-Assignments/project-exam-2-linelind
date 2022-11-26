@@ -6,6 +6,10 @@ body {
 .logo {
   font-family: $font-logo;
   font-size: 20px;
+
+  @media (max-width: $small-width) {
+    font-size: 18px;
+  }
 }
 
 .logo:hover,
@@ -39,32 +43,67 @@ h3 {
 
 h1 {
   font-size: 26px;
+
+  @media (max-width: $small-width) {
+    font-size: 18px;
+  }
 }
 
 .postAuthor {
   font-size: 21px;
+
+  @media (max-width: $small-width) {
+    font-size: 16px;
+  }
 }
 
 .postTitle {
   font-size: 18px;
   font-weight: 700;
   margin-top: 50px;
+
+  @media (max-width: $small-width) {
+    font-size: 14px;
+  }
 }
 
 p {
   font-size: 16px;
+
+  @media (max-width: $small-width) {
+    font-size: 12px;
+  }
+}
+
+.cta {
+  @media (max-width: $small-width) {
+    font-size: 12px;
+  }
 }
 
 .editBtn,
 .logInBtn,
 .logOutBtn,
 .followBtn,
+.unfollowBtn,
 .updatePostBtn,
 .deleteBtn,
 .loginBtn,
 .newAccountBtn,
 .editProfileBtn {
   font-size: 14px !important;
+
+  @media (max-width: $small-width) {
+    font-size: 12px !important;
+  }
+}
+
+.addImageBtn,
+.addTagsBtn,
+.createPostBtn {
+  @media (max-width: $medium-width) {
+    font-size: 12px !important;
+  }
 }
 
 .feedTitle,
@@ -72,6 +111,10 @@ p {
   text-align: center;
   font-family: $font-logo;
   font-size: 28px;
+
+  @media (max-width: $small-width) {
+    font-size: 24px;
+  }
 }
 
 .feedTitle {
@@ -81,12 +124,20 @@ p {
 .date {
   font-size: 12px;
   margin-top: -5px;
+
+  @media (max-width: $small-width) {
+    font-size: 10px;
+  }
 }
 
 .commentOwner {
   font-size: 14px;
   margin-bottom: 18px;
   margin-top: 35px;
+
+  @media (max-width: $small-width) {
+    font-size: 12px;
+  }
 }
 
 label {
@@ -97,4 +148,18 @@ label {
 .fa-comment {
   font-size: 24px;
   color: getColour(green);
+}
+
+.nav-link {
+  @media (max-width: $small-width) {
+    font-size: 12px;
+  }
+}
+
+.profileCard {
+  h2 {
+    @media (max-width: $medium-width) {
+      font-size: 16px !important;
+    }
+  }
 }

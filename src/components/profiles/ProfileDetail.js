@@ -59,7 +59,7 @@ export default function ProfileDetail() {
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
   return (
-    <div key={profiledetail.name} className='profileHeaderContainer'>
+    <div className='profileHeaderContainer' key={profiledetail.name}>
       <div className='banner'>
         <img src={profiledetail.banner ? profiledetail.banner : FallbackBanner} alt='Profile avatar.' />
       </div>

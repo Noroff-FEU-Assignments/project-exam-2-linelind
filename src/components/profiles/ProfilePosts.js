@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FollowUnfollow from "../follow/FollowUnfollow";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
 import moment from "moment";
@@ -58,7 +57,7 @@ export default function ProfilePosts() {
     <div className='postContainer'>
       {profileposts.map((post) => {
         return (
-          <div key={post.id} className='postCard postCardHover'>
+          <div className='postCard postCardHover' key={post.id}>
             <div className='postHeader'>
               <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
                 <div className='avatar avatarSmall'>

@@ -57,9 +57,10 @@ export default function RegisterForm() {
     try {
       const response = await urlAxios.post("/social/posts", formData);
       setCreated(true);
+      setPostError(false);
       window.location.reload();
     } catch (error) {
-      setPostError(error.toString());
+      setPostError(true);
     } finally {
       setCreated(false);
     }
@@ -71,7 +72,7 @@ export default function RegisterForm() {
         const response = await urlAxios.get("/social/profiles/" + auth.name);
         setAvatar(response.data);
       } catch (error) {
-        console.log(error);
+        /* console.log(error); */
       }
     }
     getAvatar();
@@ -88,7 +89,7 @@ export default function RegisterForm() {
       </Link>
 
       <form onSubmit={handleSubmit(createPost)} className='createFormInputs'>
-        {postError && <div>{postError}</div>}
+        {postError && <div className='errorMessage'>That did not go to plan. Please try again.</div>}
         <label>
           <input {...register("title")} placeholder='title' />
           {errors.title && <span>{errors.title.message}</span>}

@@ -57,7 +57,7 @@ body {
       text-decoration: underline;
     }
 
-    @media (max-width: $mobile-width) {
+    @media (max-width: $small-width) {
       flex-direction: column;
       align-items: flex-start;
       padding-left: 20px;
@@ -66,83 +66,5 @@ body {
         margin-top: 30px;
       }
     }
-  }
-}
-
-.avatar {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 100%;
-  z-index: 1;
-
-  img {
-    width: 100%;
-    position: absolute;
-    min-height: 100%;
-    object-fit: cover;
-  }
-}
-
-.avatarCreate {
-  height: 70px;
-  width: 70px;
-}
-
-.avatarSmall {
-  height: 60px;
-  width: 60px;
-}
-
-.editBtn,
-.unfollowBtn {
-  border: $border-thin;
-  background-color: getColour(white);
-  padding: 5px 10px;
-  color: getColour(green);
-}
-
-.cta {
-  border-radius: 2px;
-  background-color: getColour(green);
-  border: none;
-  padding: 5px 10px;
-  color: getColour(white);
-}
-
-.hidden {
-  display: none !important;
-}
-
-.errorMessage {
-  border: 1px solid getColour(error);
-  background-color: getColour(error-light);
-  color: getColour(error);
-}
-
-.successMessage {
-  border: 1px solid getColour(success);
-  background-color: getColour(success-light);
-  color: getColour(success);
-}
-
-.errorMessage,
-.successMessage {
-  padding: 10px;
-  margin-bottom: 30px;
-  text-align: center;
-  line-height: 20px;
-  font-size: 14px;
-}
-
-.loaderContainer {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 50px;
-
-  .loaderColour {
-    color: getColour(green) !important;
   }
 }

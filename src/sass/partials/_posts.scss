@@ -2,8 +2,17 @@
   border: $border;
   background-color: getColour(white);
   margin: 40px 20px;
-  width: 500px;
+  max-width: 500px;
   padding: 10px 15px;
+
+  @media (max-width: $medium-width) {
+    max-width: 90%;
+    border: $border-thin;
+  }
+
+  @media (min-width: $medium-width) {
+    min-width: 500px;
+  }
 }
 
 .btnReact {
@@ -31,6 +40,7 @@
     margin-right: 15px;
   }
 }
+
 .postHeader {
   display: flex;
   justify-content: space-between;
@@ -77,12 +87,13 @@
 .commentsContainer {
   display: flex;
   flex-direction: column-reverse;
-}
-.comment {
-  padding: 20px 15px 15px 15px;
-  border-top: 1px solid getColour(green);
 
-  .date {
-    margin-top: -15px;
+  .comment {
+    padding: 20px 15px 15px 15px;
+    border-top: 1px solid getColour(green);
+
+    .date {
+      margin-top: -15px;
+    }
   }
 }
