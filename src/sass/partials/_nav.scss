@@ -6,6 +6,11 @@ nav {
   top: 0;
   z-index: 100;
 
+  .navElementsContainer {
+    display: flex;
+    align-items: center;
+  }
+
   .navContainer {
     max-width: 1400px;
     display: flex;
@@ -19,8 +24,12 @@ nav {
     margin-right: 20px;
   }
 
+  .logInBtn:hover {
+    color: getColour(white);
+  }
+
   .fa-user {
-    font-size: 25px;
+    font-size: 28px;
   }
 }
 
@@ -31,6 +40,16 @@ nav {
 
   @media (max-width: $medium-width) {
     width: 100%;
+  }
+
+  @media (max-width: $smallest-width) {
+    display: flex;
+    flex-direction: column;
+
+    .active {
+      border: none;
+      text-decoration: underline;
+    }
   }
 }
 

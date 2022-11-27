@@ -10,8 +10,12 @@
     border: $border-thin;
   }
 
-  @media (min-width: $medium-width) {
+  @media (main-width: $medium-width) {
     min-width: 500px;
+  }
+
+  @media (max-width: $smallest-width) {
+    width: 250px;
   }
 }
 

@@ -9,6 +9,7 @@
   @media (max-width: $small-width) {
     max-width: 90%;
     border: $border-thin;
+    padding: 20px !important;
   }
 
   label {
@@ -55,34 +56,46 @@
   .createFormInputs {
     flex: 5;
   }
-}
 
-.createBtnContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-
-  .addImageBtn,
-  .addTagsBtn {
-    background-color: getColour(grey);
-    width: 100%;
+  #imageLabel,
+  #tagsLabel {
+    @media (max-width: $smallest-width) {
+      display: inline-flex !important;
+      width: 100%;
+    }
   }
 
-  .createPostBtn {
-    border-radius: 2px;
-    background-color: getColour(green);
-    color: getColour(white);
-  }
+  .createBtnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 
-  div,
-  .createPostBtn {
-    border: none;
-    width: 100%;
-    padding: 5px;
-    text-align: center;
-    font-size: 14px;
+    .addImageBtn,
+    .addTagsBtn {
+      background-color: getColour(grey);
+      width: 100%;
+
+      @media (max-width: $smallest-width) {
+        display: none;
+      }
+    }
+
+    .createPostBtn {
+      border-radius: 2px;
+      background-color: getColour(green);
+      color: getColour(white);
+    }
+
+    div,
+    .createPostBtn {
+      border: none;
+      width: 100%;
+      padding: 5px;
+      text-align: center;
+      font-size: 14px;
+    }
   }
 }
 
@@ -92,10 +105,6 @@
   width: 400px;
   height: 600px;
   justify-content: center;
-
-  @media (max-width: $small-width) {
-    padding: 20px;
-  }
 
   .updatePostBtn {
     margin-top: 10px;

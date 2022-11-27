@@ -88,6 +88,10 @@
   width: 300px;
   background-color: getColour(white);
 
+  @media (max-width: $smallest-width) {
+    width: 250px;
+  }
+
   h2 {
     font-size: 18px;
     margin: 0;
