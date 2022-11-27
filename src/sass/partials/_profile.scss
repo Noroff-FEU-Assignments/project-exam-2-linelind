@@ -41,6 +41,7 @@
 
   .myFollowersContainer {
     max-width: 800px;
+    margin: 10px;
   }
 
   .postContainer {
@@ -96,4 +97,18 @@
 .profileListContainer {
   max-width: 1000px;
   margin: 40px 20px;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 60px auto;
+
+  .search {
+    margin: auto;
+    border: none;
+    box-shadow: $shadow;
+    padding: 5px;
+    width: 200px;
+  }
 }
