@@ -72,7 +72,7 @@ export default function RegisterForm() {
         const response = await urlAxios.get("/social/profiles/" + auth.name);
         setAvatar(response.data);
       } catch (error) {
-        /* console.log(error); */
+        console.log(error);
       }
     }
     getAvatar();

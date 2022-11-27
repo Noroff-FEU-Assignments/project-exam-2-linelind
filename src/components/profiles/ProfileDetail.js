@@ -8,6 +8,7 @@ import FollowUnfollow from "../follow/FollowUnfollow";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import FallbackBanner from "../../images/fallbackbanner.jpg";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 export default function ProfileDetail() {
   const [profiledetail, setProfiledetail] = useState(null);
@@ -31,7 +32,7 @@ export default function ProfileDetail() {
         const result = await urlAxios.get("/social/profiles/" + name);
         setProfiledetail(result.data);
       } catch (error) {
-        setError(error.toString());
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -49,14 +50,14 @@ export default function ProfileDetail() {
         const response = await urlAxios.get(checkUrl);
         setFollowings(response.data.following);
       } catch (error) {
-        setError(error);
+        setError(true);
       }
     }
     getFollowing();
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   return (
     <div className='profileHeaderContainer' key={profiledetail.name}>

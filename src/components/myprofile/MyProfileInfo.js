@@ -6,6 +6,7 @@ import { useContext } from "react";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import FallbackBanner from "../../images/fallbackbanner.jpg";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 export default function ProfileInfo() {
   const [myprofile, setMyprofile] = useState([]);
@@ -30,7 +31,7 @@ export default function ProfileInfo() {
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   return (
     <div className='profileHeaderContainer'>

@@ -6,6 +6,7 @@ import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 export default function MyFollowers() {
   const [followers, setFollowers] = useState([]);
@@ -23,7 +24,7 @@ export default function MyFollowers() {
         const response = await urlAxios.get("/social/profiles/" + name + "?_followers=true");
         setFollowers(response.data.followers);
       } catch (error) {
-        setError(error.toString());
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -32,7 +33,7 @@ export default function MyFollowers() {
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   return (
     <div className='myFollowersContainer'>

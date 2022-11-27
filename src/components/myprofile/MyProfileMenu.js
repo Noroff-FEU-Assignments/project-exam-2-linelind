@@ -7,6 +7,7 @@ import MyPosts from "./MyPosts";
 import MyFollowing from "./MyFollowings";
 import MyFollowers from "./MyFollowers";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 function MyProfileMenu() {
   const [counted, setCounted] = useState(null);
@@ -32,7 +33,7 @@ function MyProfileMenu() {
 
   if (loading) return <Loader />;
 
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   return (
     <>

@@ -6,6 +6,7 @@ import ProfilePosts from "./ProfilePosts";
 import ProfileFollowers from "./ProfileFollowers";
 import ProfileFollowing from "./ProfileFollowings";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 function ProfileMenu() {
   const [counted, setCounted] = useState(null);
@@ -22,7 +23,7 @@ function ProfileMenu() {
         const result = await urlAxios.get("/social/profiles/" + name);
         setCounted(result.data._count);
       } catch (error) {
-        setError(error.toString());
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -31,7 +32,7 @@ function ProfileMenu() {
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   return (
     <>

@@ -6,6 +6,7 @@ import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 import moment from "moment";
 
 export default function ProfilePosts() {
@@ -41,14 +42,14 @@ export default function ProfilePosts() {
         const result = await urlAxios.get(checkUrl);
         setFollowings(result.data.following);
       } catch (error) {
-        setError(error);
+        setError(true);
       }
     }
     getFollowing();
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   const date = profileposts.created;
   const formatDate = moment(date).startOf("hour").fromNow();

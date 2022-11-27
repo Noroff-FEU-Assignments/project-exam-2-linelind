@@ -17,7 +17,6 @@ export default function PostDetail() {
   const [error, setError] = useState(null);
 
   let history = useNavigate();
-
   const { id } = useParams();
 
   if (!id) {
@@ -35,7 +34,7 @@ export default function PostDetail() {
         const result = await urlAxios.get(urlPostDetail);
         setPostdetail(result.data);
       } catch (error) {
-        setError(error.toString());
+        setError(true);
       } finally {
         setLoading(false);
       }

@@ -5,6 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 export default function ProfileList() {
   const [profiles, setProfiles] = useState([]);
@@ -23,7 +24,7 @@ export default function ProfileList() {
         const response = await urlProfiles.get("/social/profiles");
         setProfiles(response.data);
       } catch (error) {
-        setError(error.toString());
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -32,7 +33,7 @@ export default function ProfileList() {
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
@@ -49,7 +50,7 @@ export default function ProfileList() {
   return (
     <>
       <div className='searchContainer'>
-        <input className='search' placeholder='Search profile' onChange={(event: any) => searchItems(event.target.value.trim())} />
+        <input className='search' placeholder='Search profile' onChange={(e) => searchItems(e.target.value.trim())} />
       </div>
       <div className='profileListContainer'>
         {searchInput.length > 1

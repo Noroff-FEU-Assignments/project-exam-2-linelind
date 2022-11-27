@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import DeletePostButton from "./DeletePostButton";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
@@ -100,7 +101,7 @@ export default function EditPost() {
   }
 
   if (fetchingPost) return <Loader />;
-  if (fetchError) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (fetchError) return <ErrorMessage />;
 
   return (
     <div className='pageContainer'>

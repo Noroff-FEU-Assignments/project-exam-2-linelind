@@ -5,6 +5,7 @@ import { useContext } from "react";
 import useAxios from "../../hooks/useAxios";
 import FallbackAvatar from "../../images/fallbackavatar.jpg";
 import Loader from "../layout/Loader";
+import ErrorMessage from "../layout/ErrorMessage";
 
 export default function MyFollowers() {
   const [myfollowers, setMyfollowers] = useState([]);
@@ -29,7 +30,7 @@ export default function MyFollowers() {
   }, []);
 
   if (loading) return <Loader />;
-  if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
+  if (error) return <ErrorMessage />;
 
   return (
     <div className='myFollowersContainer'>
