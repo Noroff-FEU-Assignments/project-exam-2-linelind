@@ -5,13 +5,13 @@
   max-width: 500px;
   padding: 10px 15px;
 
-  @media (max-width: $medium-width) {
-    max-width: 90%;
-    border: $border-thin;
+  @media (min-width: $medium-width) {
+    min-width: 500px;
   }
 
-  @media (main-width: $medium-width) {
-    min-width: 500px;
+  @media (max-width: $medium-width) {
+    width: 90%;
+    border: $border-thin;
   }
 
   @media (max-width: $smallest-width) {

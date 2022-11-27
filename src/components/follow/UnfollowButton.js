@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import useAxios from "../../hooks/useAxios";
 
-export default function UnfollowButton({ name }) {
-  const [error, setError] = useState(null);
+export default function UnfollowButton() {
+  const [error, setError] = useState(false);
 
-  const http = useAxios();
+  const { name } = useParams();
+
+  const urlAxios = useAxios();
 
   async function handleUnfollow() {
     try {
-      const response = await http.put(`/social/profiles/${name}/unfollow`);
+      const response = await urlAxios.put("/social/profiles/" + name + "/unfollow");
       window.location.reload();
     } catch (error) {
       console.log(error);
