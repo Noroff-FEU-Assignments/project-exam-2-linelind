@@ -34,6 +34,15 @@
   }
 }
 
+.avatarTiny {
+  height: 45px;
+  width: 45px;
+
+  @media (max-width: $medium-width) {
+    display: none;
+  }
+}
+
 .editBtn,
 .unfollowBtn {
   border: $border-thin;

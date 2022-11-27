@@ -101,9 +101,14 @@ export default function PostDetail() {
                 <div className='comment'>
                   <p>{comment.body}</p>
                   <Link to={`/profile/${comment.owner}`}>
-                    <div>
-                      <p className='commentOwner'>Written by {comment.owner}</p>
-                      <p className='date'>{formatCreated}</p>
+                    <div className='commentOwnerContainer'>
+                      <div className='avatar avatarTiny'>
+                        <img src={comment.author.avatar ? comment.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                      </div>
+                      <div>
+                        <p className='commentOwner'>Written by {comment.owner}</p>
+                        <p className='date'>{formatCreated}</p>
+                      </div>
                     </div>
                   </Link>
                 </div>
@@ -162,9 +167,14 @@ export default function PostDetail() {
                 <div className='comment'>
                   <p>{comment.body}</p>
                   <Link to={`/profile/${comment.owner}`}>
-                    <div>
-                      <p className='commentOwner'>Written by {comment.owner}</p>
-                      <p className='date'>{formatCreated}</p>
+                    <div className='commentOwnerContainer'>
+                      <div className='avatar avatarTiny'>
+                        <img src={comment.author.avatar ? comment.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                      </div>
+                      <div>
+                        <p className='commentOwner'>Written by {comment.owner}</p>
+                        <p className='date'>{formatCreated}</p>
+                      </div>
                     </div>
                   </Link>
                 </div>
