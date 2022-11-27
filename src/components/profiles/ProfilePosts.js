@@ -54,59 +54,63 @@ export default function ProfilePosts() {
   const date = profileposts.created;
   const formatDate = moment(date).startOf("hour").fromNow();
 
-  return (
-    <div className='postContainer'>
-      {profileposts.map((post) => {
-        return (
-          <div className='postCard postCardHover' key={post.id}>
-            <div className='postHeader'>
-              <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
-                <div className='avatar avatarSmall'>
-                  <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-                </div>
+  if (profileposts.length === 0) {
+    return <p>This user has not posted anything yet.</p>;
+  } else {
+    return (
+      <div className='postContainer'>
+        {profileposts.map((post) => {
+          return (
+            <div className='postCard postCardHover' key={post.id}>
+              <div className='postHeader'>
+                <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
+                  <div className='avatar avatarSmall'>
+                    <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                  </div>
+                  <div>
+                    <h2 className='postAuthor'>{name}</h2>
+                    <p className='date'>{formatDate}</p>
+                  </div>
+                </Link>
+              </div>
+              <Link to={`/post/${post.id}`}>
                 <div>
-                  <h2 className='postAuthor'>{name}</h2>
-                  <p className='date'>{formatDate}</p>
+                  <h3 className='postTitle'>{post.title}</h3>
+                  <p>{post.body}</p>
+                </div>
+                {(() => {
+                  if (post.image !== null) {
+                    return <img src={post.media} className='postCardImage' />;
+                  } else {
+                    return null;
+                  }
+                })()}
+                <div className='tagsContainer'>
+                  {post.tags.map((tag) => {
+                    if (tag !== "") {
+                      return <p className='tagItem'>{tag}</p>;
+                    }
+                  })}
+                </div>
+                <div className='iconContainer'>
+                  {(() => {
+                    if (post._count.comments !== 0) {
+                      return <i className='fa-solid fa-comment'></i>;
+                    }
+                    return null;
+                  })()}
+                  {(() => {
+                    if (post._count.reactions !== 0) {
+                      return <i className='fa-solid fa-heart'></i>;
+                    }
+                    return null;
+                  })()}
                 </div>
               </Link>
             </div>
-            <Link to={`/post/${post.id}`}>
-              <div>
-                <h3 className='postTitle'>{post.title}</h3>
-                <p>{post.body}</p>
-              </div>
-              {(() => {
-                if (post.image !== null) {
-                  return <img src={post.media} className='postCardImage' />;
-                } else {
-                  return null;
-                }
-              })()}
-              <div className='tagsContainer'>
-                {post.tags.map((tag) => {
-                  if (tag !== "") {
-                    return <p className='tagItem'>{tag}</p>;
-                  }
-                })}
-              </div>
-              <div className='iconContainer'>
-                {(() => {
-                  if (post._count.comments !== 0) {
-                    return <i className='fa-solid fa-comment'></i>;
-                  }
-                  return null;
-                })()}
-                {(() => {
-                  if (post._count.reactions !== 0) {
-                    return <i className='fa-solid fa-heart'></i>;
-                  }
-                  return null;
-                })()}
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
-  );
+          );
+        })}
+      </div>
+    );
+  }
 }

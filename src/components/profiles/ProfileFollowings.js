@@ -35,33 +35,37 @@ export default function ProfileFollowing() {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
-  return (
-    <div className='myFollowersContainer'>
-      {profileFollowing.map((following) => {
-        if (following.name === auth.name) {
-          return (
-            <Link to={`/myprofile`} key={following.name}>
-              <div className='myProfileFollow'>
-                <div className='avatar avatarSmall'>
-                  <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
+  if (profileFollowing.length === 0) {
+    return <p>This user is not following anyone yet.</p>;
+  } else {
+    return (
+      <div className='myFollowersContainer'>
+        {profileFollowing.map((following) => {
+          if (following.name === auth.name) {
+            return (
+              <Link to={`/myprofile`} key={following.name}>
+                <div className='myProfileFollow'>
+                  <div className='avatar avatarSmall'>
+                    <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
+                  </div>
+                  <h2>{following.name}</h2>
                 </div>
-                <h2>{following.name}</h2>
-              </div>
-            </Link>
-          );
-        } else {
-          return (
-            <Link to={`/profile/${following.name}`} key={following.name}>
-              <div className='myProfileFollow'>
-                <div className='avatar avatarSmall'>
-                  <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
+              </Link>
+            );
+          } else {
+            return (
+              <Link to={`/profile/${following.name}`} key={following.name}>
+                <div className='myProfileFollow'>
+                  <div className='avatar avatarSmall'>
+                    <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
+                  </div>
+                  <h2>{following.name}</h2>
                 </div>
-                <h2>{following.name}</h2>
-              </div>
-            </Link>
-          );
-        }
-      })}
-    </div>
-  );
+              </Link>
+            );
+          }
+        })}
+      </div>
+    );
+  }
 }

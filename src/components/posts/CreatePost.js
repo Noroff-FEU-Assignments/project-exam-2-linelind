@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
@@ -72,7 +73,7 @@ export default function RegisterForm() {
         const response = await urlAxios.get("/social/profiles/" + auth.name);
         setAvatar(response.data);
       } catch (error) {
-        console.log(error);
+        console.log("An error occured");
       }
     }
     getAvatar();
@@ -84,7 +85,7 @@ export default function RegisterForm() {
     <div className='form createForm'>
       <Link to={`/myprofile`} className='userImageContainer'>
         <div className='avatar avatarCreate'>
-          <img src={avatar.avatar} alt='Go to profile' />
+          <img src={avatar.avatar ? avatar.avatar : FallbackAvatar} alt='Go to profile.' />
         </div>
       </Link>
 

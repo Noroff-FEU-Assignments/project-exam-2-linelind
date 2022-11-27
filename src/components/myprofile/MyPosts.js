@@ -36,60 +36,64 @@ export default function MyPosts() {
   const date = myposts.created;
   const formatDate = moment(date).startOf("hour").fromNow();
 
-  return (
-    <div className='postContainer'>
-      {myposts.map((post) => {
-        return (
-          <div className='postCard postCardHover' key={post.id}>
-            <div className='postHeader'>
-              <Link to={`/myprofile`} className='postInfoContainer'>
-                <div className='avatar avatarSmall'>
-                  <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-                </div>
+  if (myposts.length === 0) {
+    return <p>You have not posted anything yet.</p>;
+  } else {
+    return (
+      <div className='postContainer'>
+        {myposts.map((post) => {
+          return (
+            <div className='postCard postCardHover' key={post.id}>
+              <div className='postHeader'>
+                <Link to={`/myprofile`} className='postInfoContainer'>
+                  <div className='avatar avatarSmall'>
+                    <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
+                  </div>
+                  <div>
+                    <h2 className='postAuthor'>{auth.name}</h2>
+                    <p className='date'>{formatDate}</p>
+                  </div>
+                </Link>
+                <Link to={`/post/edit/${post.id}`}>
+                  <button className='editBtn'>Edit post</button>
+                </Link>
+              </div>
+              <Link to={`/post/${post.id}`}>
                 <div>
-                  <h2 className='postAuthor'>{auth.name}</h2>
-                  <p className='date'>{formatDate}</p>
+                  <h3 className='postTitle'>{post.title}</h3>
+                  <p>{post.body}</p>
                 </div>
-              </Link>
-              <Link to={`/post/edit/${post.id}`}>
-                <button className='editBtn'>Edit post</button>
+                {(() => {
+                  if (post.image !== null) {
+                    return <img src={post.media} className='postCardImage' />;
+                  } else {
+                    return null;
+                  }
+                })()}
+                <div className='tagsContainer'>
+                  {post.tags.map((tag) => {
+                    return <p className='tagItem'>{tag}</p>;
+                  })}
+                </div>
+                <div className='iconContainer'>
+                  {(() => {
+                    if (post._count.comments !== 0) {
+                      return <i className='fa-solid fa-comment'></i>;
+                    }
+                    return null;
+                  })()}
+                  {(() => {
+                    if (post._count.reactions !== 0) {
+                      return <i className='fa-solid fa-heart'></i>;
+                    }
+                    return null;
+                  })()}
+                </div>
               </Link>
             </div>
-            <Link to={`/post/${post.id}`}>
-              <div>
-                <h3 className='postTitle'>{post.title}</h3>
-                <p>{post.body}</p>
-              </div>
-              {(() => {
-                if (post.image !== null) {
-                  return <img src={post.media} className='postCardImage' />;
-                } else {
-                  return null;
-                }
-              })()}
-              <div className='tagsContainer'>
-                {post.tags.map((tag) => {
-                  return <p className='tagItem'>{tag}</p>;
-                })}
-              </div>
-              <div className='iconContainer'>
-                {(() => {
-                  if (post._count.comments !== 0) {
-                    return <i className='fa-solid fa-comment'></i>;
-                  }
-                  return null;
-                })()}
-                {(() => {
-                  if (post._count.reactions !== 0) {
-                    return <i className='fa-solid fa-heart'></i>;
-                  }
-                  return null;
-                })()}
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
-  );
+          );
+        })}
+      </div>
+    );
+  }
 }

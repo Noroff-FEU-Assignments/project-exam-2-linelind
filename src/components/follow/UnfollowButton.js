@@ -15,7 +15,6 @@ export default function UnfollowButton() {
       const response = await urlAxios.put("/social/profiles/" + name + "/unfollow");
       window.location.reload();
     } catch (error) {
-      console.log(error);
       setError(error);
     }
   }

@@ -32,20 +32,24 @@ export default function MyFollowing() {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
-  return (
-    <div className='myFollowersContainer'>
-      {myfollowing.map((following) => {
-        return (
-          <Link to={`/profile/${following.name}`} key={following.name}>
-            <div className='myProfileFollow'>
-              <div className='avatar avatarSmall'>
-                <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
+  if (myfollowing.length === 0) {
+    return <p>You are not following anyone yet.</p>;
+  } else {
+    return (
+      <div className='myFollowersContainer'>
+        {myfollowing.map((following) => {
+          return (
+            <Link to={`/profile/${following.name}`} key={following.name}>
+              <div className='myProfileFollow'>
+                <div className='avatar avatarSmall'>
+                  <img src={following.avatar ? following.avatar : FallbackAvatar} alt='Profile avatar.' />
+                </div>
+                <h2>{following.name}</h2>
               </div>
-              <h2>{following.name}</h2>
-            </div>
-          </Link>
-        );
-      })}
-    </div>
-  );
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
 }
