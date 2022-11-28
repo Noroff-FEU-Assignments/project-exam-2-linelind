@@ -19,7 +19,6 @@ function App() {
       <Router>
         <div className='contentWrapper'>
           <NavBar />
-
           <Routes>
             <Route path='/' exact element={<LoginPage />} />
             <Route path='/register' exact element={<RegisterPage />} />

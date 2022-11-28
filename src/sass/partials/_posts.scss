@@ -2,20 +2,12 @@
   border: $border;
   background-color: getColour(white);
   margin: 40px 20px;
-  max-width: 500px;
+  width: 500px !important;
   padding: 10px 15px;
 
-  @media (min-width: $medium-width) {
-    min-width: 500px;
-  }
-
   @media (max-width: $medium-width) {
-    width: 90%;
     border: $border-thin;
-  }
-
-  @media (max-width: $smallest-width) {
-    width: 250px;
+    max-width: 90vw !important;
   }
 }
 
