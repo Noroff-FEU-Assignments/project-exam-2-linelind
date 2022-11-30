@@ -7,7 +7,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import ReactButton from "./reactions/ReactButton";
 import CommentButton from "./comments/CommentButton";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Heading from "../common/Heading";
+import Avatar from "../common/Avatar";
+import PostImage from "../common/PostImage";
 import Loader from "../layout/Loader";
 import moment from "moment";
 
@@ -54,11 +56,9 @@ export default function PostDetail() {
         <div className='postCard'>
           <div className='postHeader'>
             <Link to={`/myprofile`} className='postInfoContainer'>
-              <div className='avatar avatarSmall'>
-                <img src={postdetail.author.avatar ? postdetail.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-              </div>
+              <Avatar styles={"avatar avatarSmall"} media={postdetail.author.avatar} alt={postdetail.author.name} />
               <div>
-                <h2 className='postAuthor'>{postdetail.author.name}</h2>
+                <Heading size={2} title={postdetail.author.name} styling='postAuthor' />
                 <p className='date'>{formatDate}</p>
               </div>
             </Link>
@@ -67,20 +67,20 @@ export default function PostDetail() {
             </Link>
           </div>
           <div>
-            <h3 className='postTitle'>{postdetail.title}</h3>
+            <Heading size={3} title={postdetail.title} styling='postTitle' />
             <p>{postdetail.body}</p>
           </div>
-          {(() => {
-            if (postdetail.media !== null) {
-              return <img src={postdetail.media} className='postCardImage' />;
-            } else {
-              return null;
-            }
-          })()}
+
+          <PostImage media={postdetail.media} />
+
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return <p className='tagItem'>{tag}</p>;
+                return (
+                  <p className='tagItem' key={postdetail.id + tag}>
+                    {tag}
+                  </p>
+                );
               }
             })}
           </div>
@@ -97,13 +97,11 @@ export default function PostDetail() {
             {postdetail.comments.map((comment) => {
               const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
-                <div className='comment'>
+                <div className='comment' key={comment.id}>
                   <p>{comment.body}</p>
                   <Link to={`/profile/${comment.owner}`}>
                     <div className='commentOwnerContainer'>
-                      <div className='avatar avatarTiny'>
-                        <img src={comment.author.avatar ? comment.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-                      </div>
+                      <Avatar styles={"avatar avatarTiny"} media={comment.author.avatar} alt={comment.owner} />
                       <div>
                         <p className='commentOwner'>Written by {comment.owner}</p>
                         <p className='date'>{formatCreated}</p>
@@ -123,26 +121,20 @@ export default function PostDetail() {
         <div className='postCard'>
           <div className='postHeader'>
             <Link to={`/profile/${postdetail.author.name}`} key={postdetail.author.name} className='postInfoContainer'>
-              <div className='avatar avatarSmall'>
-                <img src={postdetail.author.avatar ? postdetail.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-              </div>
+              <Avatar styles={"avatar avatarSmall"} media={postdetail.author.avatar} alt={postdetail.author.name} />
               <div>
-                <h2 className='postAuthor'>{postdetail.author.name}</h2>
+                <Heading size={2} title={postdetail.author.name} styling='postAuthor' />
                 <p className='date'>{formatDate}</p>
               </div>
             </Link>
           </div>
           <div>
-            <h3 className='postTitle'>{postdetail.title}</h3>
+            <Heading size={3} title={postdetail.title} styling='postTitle' />
             <p>{postdetail.body}</p>
           </div>
-          {(() => {
-            if (postdetail.media !== null) {
-              return <img src={postdetail.media} className='postCardImage' />;
-            } else {
-              return null;
-            }
-          })()}
+
+          <PostImage media={postdetail.media} />
+
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
@@ -163,13 +155,11 @@ export default function PostDetail() {
             {postdetail.comments.map((comment) => {
               const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
-                <div className='comment'>
+                <div className='comment' key={comment.id}>
                   <p>{comment.body}</p>
                   <Link to={`/profile/${comment.owner}`}>
                     <div className='commentOwnerContainer'>
-                      <div className='avatar avatarTiny'>
-                        <img src={comment.author.avatar ? comment.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-                      </div>
+                      <Avatar styles={"avatar avatarTiny"} media={comment.author.avatar} alt={comment.owner} />
                       <div>
                         <p className='commentOwner'>Written by {comment.owner}</p>
                         <p className='date'>{formatCreated}</p>

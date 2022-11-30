@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Heading from "../common/Heading";
+import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 
@@ -54,11 +55,9 @@ export default function ProfileList() {
               return (
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
                   <div className='profileCard'>
-                    <div className='avatar avatarSmall'>
-                      <img src={profile.avatar ? profile.avatar : FallbackAvatar} alt='Profile avatar.' />
-                    </div>
+                    <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
                     <div>
-                      <h2>{profile.name}</h2>
+                      <Heading size={2} title={profile.name} />
                     </div>
                   </div>
                 </Link>
@@ -68,11 +67,9 @@ export default function ProfileList() {
               return (
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
                   <div className='profileCard'>
-                    <div className='avatar avatarSmall'>
-                      <img src={profile.avatar ? profile.avatar : FallbackAvatar} alt='Profile avatar.' />
-                    </div>
+                    <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
                     <div>
-                      <h2>{profile.name}</h2>
+                      <Heading size={2} title={profile.name} />
                     </div>
                   </div>
                 </Link>

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import useAxios from "../../hooks/useAxios";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Heading from "../common/Heading";
+import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 
@@ -41,10 +42,8 @@ export default function MyFollowers() {
           return (
             <Link to={`/profile/${follower.name}`} key={follower.name}>
               <div className='myProfileFollow'>
-                <div className='avatar avatarSmall'>
-                  <img src={follower.avatar ? follower.avatar : FallbackAvatar} alt='Profile avatar.' />
-                </div>
-                <h2>{follower.name}</h2>
+                <Avatar styles={"avatar avatarSmall"} media={follower.avatar} alt={follower.name} />
+                <Heading size={2} title={follower.name} />
               </div>
             </Link>
           );

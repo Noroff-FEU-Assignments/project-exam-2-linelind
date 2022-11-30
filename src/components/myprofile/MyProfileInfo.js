@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
-import FallbackBanner from "../../images/fallbackbanner.jpg";
+import Heading from "../common/Heading";
+import Avatar from "../common/Avatar";
+import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 
@@ -35,16 +36,13 @@ export default function ProfileInfo() {
 
   return (
     <div className='profileHeaderContainer'>
-      <div className='banner'>
-        <img src={myprofile.banner ? myprofile.banner : FallbackBanner} alt='Profile banner.' />
-      </div>
+      <Banner media={myprofile.banner} alt={myprofile.name} />
+
       <div className='profileInfoContainer'>
         <div className='userBasicsContainer'>
-          <div className='avatar'>
-            <img src={myprofile.avatar ? myprofile.avatar : FallbackAvatar} alt='Profile avatar.' />
-          </div>
+          <Avatar styles={"avatar"} media={myprofile.avatar} alt={myprofile.name} />
           <div className='profileNameContainer'>
-            <h1>{myprofile.name}</h1>
+            <Heading title={myprofile.name} />
             <p>{myprofile.email}</p>
           </div>
         </div>

@@ -3,6 +3,7 @@ import FeedMenu from "../components/layout/FeedMenu";
 import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
+import Heading from "../components/common/Heading";
 
 export default function FeedPage() {
   const [auth] = useContext(AuthContext);
@@ -12,7 +13,8 @@ export default function FeedPage() {
   } else {
     return (
       <div className='pageContainer'>
-        <h1 className='feedTitle'>How's it going {auth.name}?</h1>
+        <Heading title={`How's it going` + auth.name + `?`} styling='feedTitle' />
+
         <CreatePost />
         <FeedMenu />
       </div>

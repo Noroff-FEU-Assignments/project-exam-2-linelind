@@ -4,9 +4,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
+import Heading from "../common/Heading";
 import FollowUnfollow from "../follow/FollowUnfollow";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
-import FallbackBanner from "../../images/fallbackbanner.jpg";
+import Avatar from "../common/Avatar";
+import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 
@@ -61,16 +62,12 @@ export default function ProfileDetail() {
 
   return (
     <div className='profileHeaderContainer' key={profiledetail.name}>
-      <div className='banner'>
-        <img src={profiledetail.banner ? profiledetail.banner : FallbackBanner} alt='Profile avatar.' />
-      </div>
+      <Banner media={profiledetail.banner} alt={profiledetail.name} />
       <div className='profileInfoContainer'>
         <div className='userBasicsContainer'>
-          <div className='avatar'>
-            <img src={profiledetail.avatar ? profiledetail.avatar : FallbackAvatar} alt='Profile avatar.' />
-          </div>
+          <Avatar styles={"avatar"} media={profiledetail.avatar} alt={profiledetail.name} />
           <div className='profileNameContainer'>
-            <h1>{profiledetail.name}</h1>
+            <Heading title={profiledetail.name} />
             <p>{profiledetail.email}</p>
           </div>
         </div>

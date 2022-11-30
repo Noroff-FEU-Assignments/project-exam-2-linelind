@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Avatar from "../common/Avatar";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
@@ -84,9 +84,7 @@ export default function RegisterForm() {
   return (
     <div className='form createForm'>
       <Link to={`/myprofile`} className='userImageContainer'>
-        <div className='avatar avatarCreate'>
-          <img src={avatar.avatar ? avatar.avatar : FallbackAvatar} alt='Go to profile.' />
-        </div>
+        <Avatar styles={"avatar avatarCreate"} media={avatar.avatar} alt={auth.name} />
       </Link>
 
       <form onSubmit={handleSubmit(createPost)} className='createFormInputs'>

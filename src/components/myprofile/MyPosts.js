@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Heading from "../common/Heading";
+import Avatar from "../common/Avatar";
+import PostImage from "../common/PostImage";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 import moment from "moment";
@@ -46,11 +48,9 @@ export default function MyPosts() {
             <div className='postCard postCardHover' key={post.id}>
               <div className='postHeader'>
                 <Link to={`/myprofile`} className='postInfoContainer'>
-                  <div className='avatar avatarSmall'>
-                    <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-                  </div>
+                  <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={auth.name} />
                   <div>
-                    <h2 className='postAuthor'>{auth.name}</h2>
+                    <Heading size={2} title={auth.name} styling='postAuthor' />
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
@@ -60,19 +60,19 @@ export default function MyPosts() {
               </div>
               <Link to={`/post/${post.id}`}>
                 <div>
-                  <h3 className='postTitle'>{post.title}</h3>
+                  <Heading size={3} title={post.title} styling='postTitle' />
                   <p>{post.body}</p>
                 </div>
-                {(() => {
-                  if (post.image !== null) {
-                    return <img src={post.media} className='postCardImage' />;
-                  } else {
-                    return null;
-                  }
-                })()}
+
+                <PostImage media={post.media} />
+
                 <div className='tagsContainer'>
                   {post.tags.map((tag) => {
-                    return <p className='tagItem'>{tag}</p>;
+                    return (
+                      <p className='tagItem' key={post.id + tag}>
+                        {tag}
+                      </p>
+                    );
                   })}
                 </div>
                 <div className='iconContainer'>

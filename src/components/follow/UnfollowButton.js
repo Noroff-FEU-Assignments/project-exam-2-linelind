@@ -12,7 +12,8 @@ export default function UnfollowButton() {
 
   async function handleUnfollow() {
     try {
-      const response = await urlAxios.put("/social/profiles/" + name + "/unfollow");
+      const response = await urlAxios.put(`/social/profiles/${name}/unfollow`);
+      console.log(response);
       window.location.reload();
     } catch (error) {
       setError(error);
@@ -20,7 +21,7 @@ export default function UnfollowButton() {
   }
 
   return (
-    <button type='button' onClick={handleUnfollow} className='unfollowBtn'>
+    <button onClick={handleUnfollow} className='unfollowBtn'>
       {error ? "Error" : "Unfollow"}
     </button>
   );

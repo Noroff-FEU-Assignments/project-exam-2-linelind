@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
-import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import Heading from "../common/Heading";
+import PostImage from "../common/PostImage";
+import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 import moment from "moment";
@@ -64,31 +66,27 @@ export default function ProfilePosts() {
             <div className='postCard postCardHover' key={post.id}>
               <div className='postHeader'>
                 <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
-                  <div className='avatar avatarSmall'>
-                    <img src={post.author.avatar ? post.author.avatar : FallbackAvatar} alt='Profile avatar.' />
-                  </div>
+                  <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={name} />
                   <div>
-                    <h2 className='postAuthor'>{name}</h2>
+                    <Heading size={2} title={name} styling='postAuthor' />
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
               </div>
               <Link to={`/post/${post.id}`}>
                 <div>
-                  <h3 className='postTitle'>{post.title}</h3>
+                  <Heading size={3} title={post.title} styling='postTitle' />
                   <p>{post.body}</p>
                 </div>
-                {(() => {
-                  if (post.image !== null) {
-                    return <img src={post.media} className='postCardImage' />;
-                  } else {
-                    return null;
-                  }
-                })()}
+                <PostImage media={post.media} />
                 <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     if (tag !== "") {
-                      return <p className='tagItem'>{tag}</p>;
+                      return (
+                        <p className='tagItem' key={post.id + tag}>
+                          {tag}
+                        </p>
+                      );
                     }
                   })}
                 </div>

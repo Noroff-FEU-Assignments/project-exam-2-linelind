@@ -12,7 +12,8 @@ export default function FollowButton() {
 
   async function handleFollow() {
     try {
-      const response = await urlAxios.put("/social/profiles/" + name + "/follow");
+      const response = await urlAxios.put(`/social/profiles/${name}/follow`);
+      console.log(response);
       window.location.reload();
     } catch (error) {
       setError(error);
