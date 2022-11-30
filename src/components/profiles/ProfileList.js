@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
+import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../layout/ErrorMessage";
 
@@ -67,6 +68,7 @@ export default function ProfileList() {
               return (
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
                   <div className='profileCard'>
+                    <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
                     <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
                     <div>
                       <Heading size={2} title={profile.name} />

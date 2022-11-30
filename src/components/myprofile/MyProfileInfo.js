@@ -36,7 +36,7 @@ export default function ProfileInfo() {
 
   return (
     <div className='profileHeaderContainer'>
-      <Banner media={myprofile.banner} alt={myprofile.name} />
+      <Banner styles='banner' media={myprofile.banner} alt={myprofile.name} />
 
       <div className='profileInfoContainer'>
         <div className='userBasicsContainer'>

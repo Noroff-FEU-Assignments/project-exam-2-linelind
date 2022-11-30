@@ -81,20 +81,45 @@
 .profileCard,
 .myProfileFollow {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
+  justify-content: center;
+  gap: 30px;
   box-shadow: $shadow;
-  width: 300px;
+  width: 180px;
+  height: 200px;
   background-color: getColour(white);
-
-  @media (max-width: $smallest-width) {
-    width: 250px;
-  }
+  position: relative;
 
   h2 {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    z-index: 10;
+  }
+
+  .bannerSmall {
+    width: 180px !important;
+    height: 90px !important;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    height: 250px;
+    z-index: 1;
+    position: absolute;
+
+    img {
+      width: 100% !important;
+      margin: 0;
+      border-radius: 2px;
+    }
+  }
+
+  .avatarSmall {
+    height: 80px;
+    width: 80px;
+    background-color: getColour(white);
+    margin-top: 20px;
   }
 }
 
@@ -110,9 +135,9 @@
 
   .search {
     margin: auto;
-    border: none;
-    box-shadow: $shadow;
-    padding: 5px;
+    border: $border;
+
+    padding: 8px 12px;
     width: 200px;
   }
 }

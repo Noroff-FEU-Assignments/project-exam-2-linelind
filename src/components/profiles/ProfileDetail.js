@@ -62,7 +62,7 @@ export default function ProfileDetail() {
 
   return (
     <div className='profileHeaderContainer' key={profiledetail.name}>
-      <Banner media={profiledetail.banner} alt={profiledetail.name} />
+      <Banner styles='banner' media={profiledetail.banner} alt={profiledetail.name} />
       <div className='profileInfoContainer'>
         <div className='userBasicsContainer'>
           <Avatar styles={"avatar"} media={profiledetail.avatar} alt={profiledetail.name} />
