@@ -62,10 +62,21 @@
   margin-right: -15px;
   padding: 10px 15px 0px 15px;
   text-align: right;
-  min-height: 51px;
+  min-height: 45px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
 
-  i {
-    padding: 8px;
+  .PostCardCommentInfo,
+  .PostCardReactionInfo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  p {
+    margin: 0;
+    color: getColour(green);
   }
 }
 

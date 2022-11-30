@@ -63,9 +63,7 @@ export default function MyPosts() {
                   <Heading size={3} title={post.title} styling='postTitle' />
                   <p>{post.body}</p>
                 </div>
-
                 <PostImage media={post.media} />
-
                 <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     return (
@@ -78,13 +76,23 @@ export default function MyPosts() {
                 <div className='iconContainer'>
                   {(() => {
                     if (post._count.comments !== 0) {
-                      return <i className='fa-solid fa-comment'></i>;
+                      return (
+                        <div className='PostCardCommentInfo'>
+                          <i className='fa-solid fa-comment'></i>
+                          <p>{post._count.comments}</p>
+                        </div>
+                      );
                     }
                     return null;
                   })()}
                   {(() => {
                     if (post._count.reactions !== 0) {
-                      return <i className='fa-solid fa-heart'></i>;
+                      return (
+                        <div className='PostCardReactionInfo'>
+                          <i className='fa-solid fa-heart'></i>
+                          <p>{post._count.reactions}</p>
+                        </div>
+                      );
                     }
                     return null;
                   })()}

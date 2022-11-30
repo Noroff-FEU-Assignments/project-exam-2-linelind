@@ -76,11 +76,7 @@ export default function PostDetail() {
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return (
-                  <p className='tagItem' key={postdetail.id + tag}>
-                    {tag}
-                  </p>
-                );
+                return <p className='tagItem'>{tag}</p>;
               }
             })}
           </div>
@@ -132,9 +128,7 @@ export default function PostDetail() {
             <Heading size={3} title={postdetail.title} styling='postTitle' />
             <p>{postdetail.body}</p>
           </div>
-
           <PostImage media={postdetail.media} />
-
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
