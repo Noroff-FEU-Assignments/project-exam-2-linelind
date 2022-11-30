@@ -72,11 +72,8 @@
 .profileListContainer,
 .followListContainer {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-
-  max-width: 1000px;
 
   .profileCard {
     display: flex;
@@ -95,6 +92,7 @@
 .profileListContainer {
   flex-direction: row;
   margin: 40px 20px;
+  gap: 35px;
 
   .ProfileListCard {
     flex-direction: column;
@@ -103,38 +101,36 @@
     width: 180px;
     height: 200px;
     position: relative;
+  }
 
-    .bannerSmall {
-      width: 180px !important;
-      height: 90px !important;
+  .bannerSmall {
+    width: 180px !important;
+    height: 90px !important;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    height: 250px;
+    z-index: 1;
+    position: absolute;
+
+    img {
+      width: 100% !important;
       margin: 0;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      height: 250px;
-      z-index: 1;
-      position: absolute;
-
-      img {
-        width: 100% !important;
-        margin: 0;
-        border-radius: 2px;
-      }
-    }
-
-    .avatarSmall {
-      height: 80px;
-      width: 80px;
-      background-color: getColour(white);
-      margin-top: 20px;
+      border-radius: 2px;
     }
   }
 }
 
-.followCard {
+.followListContainer {
   gap: 20px;
-  width: 300px;
-  padding: 20px;
+  margin: auto 40px;
+
+  .followCard {
+    gap: 20px;
+    width: 300px;
+    padding: 20px;
+  }
 }
 
 .profileListContainer {

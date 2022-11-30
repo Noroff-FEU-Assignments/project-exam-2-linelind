@@ -5,6 +5,7 @@
   position: relative;
   border-radius: 100%;
   z-index: 1;
+  background-color: getColour(white);
 
   @media (max-width: $small-width) {
     height: 70px;

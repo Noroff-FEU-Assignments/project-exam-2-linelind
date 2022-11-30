@@ -56,7 +56,7 @@ export default function ProfileList() {
               return (
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
                   <div className='profileCard ProfileListCard'>
-                    <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
+                    <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
                     <div>
                       <Heading size={2} title={profile.name} />
                     </div>
@@ -69,7 +69,7 @@ export default function ProfileList() {
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
                   <div className='profileCard ProfileListCard'>
                     <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
-                    <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
+                    <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
                     <div>
                       <Heading size={2} title={profile.name} />
                     </div>
