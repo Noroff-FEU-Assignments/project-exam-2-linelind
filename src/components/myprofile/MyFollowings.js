@@ -37,11 +37,11 @@ export default function MyFollowing() {
     return <p>You are not following anyone yet.</p>;
   } else {
     return (
-      <div className='myFollowersContainer'>
+      <div className='followListContainer'>
         {myfollowing.map((following) => {
           return (
             <Link to={`/profile/${following.name}`} key={following.name}>
-              <div className='myProfileFollow'>
+              <div className='profileCard followCard'>
                 <Avatar styles={"avatar avatarSmall"} media={following.avatar} alt={following.name} />
                 <Heading size={2} title={following.name} />
               </div>

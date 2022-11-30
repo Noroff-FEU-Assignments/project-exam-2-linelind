@@ -55,7 +55,7 @@ export default function ProfileList() {
           ? filteredResults.map((profile) => {
               return (
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
-                  <div className='profileCard'>
+                  <div className='profileCard ProfileListCard'>
                     <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
                     <div>
                       <Heading size={2} title={profile.name} />
@@ -67,7 +67,7 @@ export default function ProfileList() {
           : profiles.map((profile) => {
               return (
                 <Link to={`/profile/${profile.name}`} key={profile.name}>
-                  <div className='profileCard'>
+                  <div className='profileCard ProfileListCard'>
                     <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
                     <Avatar styles={"avatar avatarSmall"} media={profile.avatar} alt={profile.name} />
                     <div>

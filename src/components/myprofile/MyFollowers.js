@@ -37,11 +37,11 @@ export default function MyFollowers() {
     return <p>No followers to show.</p>;
   } else {
     return (
-      <div className='myFollowersContainer'>
+      <div className='followListContainer'>
         {myfollowers.map((follower) => {
           return (
             <Link to={`/profile/${follower.name}`} key={follower.name}>
-              <div className='myProfileFollow'>
+              <div className='profileCard followCard'>
                 <Avatar styles={"avatar avatarSmall"} media={follower.avatar} alt={follower.name} />
                 <Heading size={2} title={follower.name} />
               </div>

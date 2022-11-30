@@ -40,12 +40,12 @@ export default function MyFollowers() {
     return <p>No followers to show.</p>;
   } else {
     return (
-      <div className='myFollowersContainer'>
+      <div className='followListContainer'>
         {followers.map((follower) => {
           if (follower.name === auth.name) {
             return (
               <Link to={`/myprofile`} key={follower.name}>
-                <div className='myProfileFollow'>
+                <div className='profileCard followCard'>
                   <Avatar styles={"avatar avatarSmall"} media={follower.avatar} alt={follower.name} />
                   <Heading size={2} title={follower.name} />
                 </div>
@@ -54,7 +54,7 @@ export default function MyFollowers() {
           } else {
             return (
               <Link to={`/profile/${follower.name}`} key={follower.name}>
-                <div className='myProfileFollow'>
+                <div className='profileCard followCard'>
                   <Avatar styles={"avatar avatarSmall"} media={follower.avatar} alt={follower.name} />
                   <Heading size={2} title={follower.name} />
                 </div>

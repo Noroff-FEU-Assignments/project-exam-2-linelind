@@ -40,12 +40,12 @@ export default function ProfileFollowing() {
     return <p>This user is not following anyone yet.</p>;
   } else {
     return (
-      <div className='myFollowersContainer'>
+      <div className='followListContainer'>
         {profileFollowing.map((following) => {
           if (following.name === auth.name) {
             return (
               <Link to={`/myprofile`} key={following.name}>
-                <div className='myProfileFollow'>
+                <div className='profileCard followCard'>
                   <Avatar styles={"avatar avatarSmall"} media={following.avatar} alt={following.name} />
                   <Heading size={2} title={following.name} />
                 </div>
@@ -54,7 +54,7 @@ export default function ProfileFollowing() {
           } else {
             return (
               <Link to={`/profile/${following.name}`} key={following.name}>
-                <div className='myProfileFollow'>
+                <div className='profileCard followCard'>
                   <Avatar styles={"avatar avatarSmall"} media={following.avatar} alt={following.name} />
                   <Heading size={2} title={following.name} />
                 </div>

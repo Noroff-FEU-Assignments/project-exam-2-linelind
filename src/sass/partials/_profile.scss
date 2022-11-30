@@ -70,57 +70,71 @@
 }
 
 .profileListContainer,
-.myFollowersContainer {
+.followListContainer {
   display: flex;
-  flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-}
 
-.profileCard,
-.myProfileFollow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  box-shadow: $shadow;
-  width: 180px;
-  height: 200px;
-  background-color: getColour(white);
-  position: relative;
+  max-width: 1000px;
 
-  h2 {
-    font-size: 16px;
-    margin: 0;
-    z-index: 10;
-  }
+  .profileCard {
+    display: flex;
+    align-items: center;
+    box-shadow: $shadow;
+    background-color: getColour(white);
 
-  .bannerSmall {
-    width: 180px !important;
-    height: 90px !important;
-    margin: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    height: 250px;
-    z-index: 1;
-    position: absolute;
-
-    img {
-      width: 100% !important;
+    h2 {
+      font-size: 16px;
       margin: 0;
-      border-radius: 2px;
+      z-index: 10;
     }
   }
+}
 
-  .avatarSmall {
-    height: 80px;
-    width: 80px;
-    background-color: getColour(white);
-    margin-top: 20px;
+.profileListContainer {
+  flex-direction: row;
+  margin: 40px 20px;
+
+  .ProfileListCard {
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    width: 180px;
+    height: 200px;
+    position: relative;
+
+    .bannerSmall {
+      width: 180px !important;
+      height: 90px !important;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      height: 250px;
+      z-index: 1;
+      position: absolute;
+
+      img {
+        width: 100% !important;
+        margin: 0;
+        border-radius: 2px;
+      }
+    }
+
+    .avatarSmall {
+      height: 80px;
+      width: 80px;
+      background-color: getColour(white);
+      margin-top: 20px;
+    }
   }
+}
+
+.followCard {
+  gap: 20px;
+  width: 300px;
+  padding: 20px;
 }
 
 .profileListContainer {
