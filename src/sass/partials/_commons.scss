@@ -74,6 +74,12 @@
   color: getColour(error);
 }
 
+.errorMain {
+  margin-top: 50px !important;
+  max-width: 380px;
+  margin: auto;
+}
+
 .successMessage {
   border: 1px solid getColour(success);
   background-color: getColour(success-light);

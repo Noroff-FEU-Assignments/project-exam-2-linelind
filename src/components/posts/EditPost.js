@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import DeletePostButton from "./DeletePostButton";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),

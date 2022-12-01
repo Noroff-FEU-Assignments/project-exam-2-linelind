@@ -12,6 +12,7 @@ import Avatar from "../common/Avatar";
 import PostImage from "../common/PostImage";
 import Loader from "../layout/Loader";
 import moment from "moment";
+import UniqueKey from "../common/UniqueKey";
 
 export default function PostDetail() {
   const [postdetail, setPostdetail] = useState(null);
@@ -70,13 +71,15 @@ export default function PostDetail() {
             <Heading size={3} title={postdetail.title} styling='postTitle' />
             <p>{postdetail.body}</p>
           </div>
-
           <PostImage media={postdetail.media} />
-
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return <p className='tagItem'>{tag}</p>;
+                return (
+                  <p className='tagItem' key={UniqueKey(tag)}>
+                    {tag}
+                  </p>
+                );
               }
             })}
           </div>
@@ -132,7 +135,11 @@ export default function PostDetail() {
           <div className='tagsContainer'>
             {postdetail.tags.map((tag) => {
               if (tag !== "") {
-                return <p className='tagItem'>{tag}</p>;
+                return (
+                  <p className='tagItem' key={UniqueKey(tag)}>
+                    {tag}
+                  </p>
+                );
               }
             })}
           </div>

@@ -7,8 +7,9 @@ import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import PostImage from "../common/PostImage";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 import moment from "moment";
+import UniqueKey from "../common/UniqueKey";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -69,7 +70,7 @@ export default function PostList() {
                   {post.tags.map((tag) => {
                     if (tag !== "") {
                       return (
-                        <p className='tagItem' key={post.id + tag}>
+                        <p className='tagItem' key={UniqueKey(tag)}>
                           {tag}
                         </p>
                       );
@@ -128,7 +129,7 @@ export default function PostList() {
                   {post.tags.map((tag) => {
                     if (tag !== "") {
                       return (
-                        <p className='tagItem' key={post.media}>
+                        <p className='tagItem' key={UniqueKey(tag)}>
                           {tag}
                         </p>
                       );

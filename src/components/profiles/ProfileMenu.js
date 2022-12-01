@@ -1,35 +1,42 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import ProfilePosts from "./ProfilePosts";
 import ProfileFollowers from "./ProfileFollowers";
 import ProfileFollowing from "./ProfileFollowings";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
 function ProfileMenu() {
   const [counted, setCounted] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { name } = useParams();
+  /*   const { name } = useParams();*/
+
+  let location = useLocation();
 
   const urlAxios = useAxios();
 
-  useEffect(function () {
-    async function getCount() {
-      try {
-        const result = await urlAxios.get("/social/profiles/" + name);
-        setCounted(result.data._count);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
+  useEffect(
+    function () {
+      async function getCount() {
+        const name = location.pathname.split("/").pop();
+
+        try {
+          const result = await urlAxios.get("/social/profiles/" + name);
+          setCounted(result.data._count);
+        } catch (error) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    getCount();
-  }, []);
+      getCount();
+    },
+    [location.pathname]
+  );
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;

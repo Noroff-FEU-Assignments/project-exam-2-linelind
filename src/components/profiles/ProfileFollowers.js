@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
@@ -7,31 +7,38 @@ import { useContext } from "react";
 import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
-export default function MyFollowers() {
+export default function ProfileFollowers() {
   const [followers, setFollowers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const [auth] = useContext(AuthContext);
 
-  const { name } = useParams();
+  /* const { name } = useParams(); */
   const urlAxios = useAxios();
 
-  useEffect(function () {
-    async function getFollowers() {
-      try {
-        const response = await urlAxios.get("/social/profiles/" + name + "?_followers=true");
-        setFollowers(response.data.followers);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
+  let location = useLocation();
+
+  useEffect(
+    function () {
+      async function getFollowers() {
+        const name = location.pathname.split("/").pop();
+
+        try {
+          const response = await urlAxios.get("/social/profiles/" + name + "?_followers=true");
+          setFollowers(response.data.followers);
+        } catch (error) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    getFollowers();
-  }, []);
+      getFollowers();
+    },
+    [location]
+  );
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;

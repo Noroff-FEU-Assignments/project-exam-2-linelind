@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
@@ -8,8 +8,9 @@ import Heading from "../common/Heading";
 import PostImage from "../common/PostImage";
 import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 import moment from "moment";
+import UniqueKey from "../common/UniqueKey";
 
 export default function ProfilePosts() {
   const [profileposts, setProfileposts] = useState([]);
@@ -19,21 +20,28 @@ export default function ProfilePosts() {
 
   const urlAxios = useAxios();
 
-  const { name } = useParams();
+  /*  const { name } = useParams(); */
 
-  useEffect(function () {
-    async function getProfilePosts() {
-      try {
-        const response = await urlAxios.get("/social/profiles/" + name + "/posts?_author=true");
-        setProfileposts(response.data);
-      } catch (error) {
-        setError(error.toString());
-      } finally {
-        setLoading(false);
+  let location = useLocation();
+
+  useEffect(
+    function () {
+      const name = location.pathname.split("/").pop();
+
+      async function getProfilePosts() {
+        try {
+          const response = await urlAxios.get("/social/profiles/" + name + "/posts?_author=true");
+          setProfileposts(response.data);
+        } catch (error) {
+          setError(error.toString());
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    getProfilePosts();
-  }, []);
+      getProfilePosts();
+    },
+    [location]
+  );
 
   const [auth] = useContext(AuthContext);
   const checkUrl = `/social/profiles/${auth.name}?_following=true`;
@@ -65,10 +73,10 @@ export default function ProfilePosts() {
           return (
             <div className='postCard postCardHover' key={post.id}>
               <div className='postHeader'>
-                <Link to={`/profile/${name}`} key={name} className='postInfoContainer'>
-                  <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={name} />
+                <Link to={`/profile/${post.author.name}`} key={post.author.name} className='postInfoContainer'>
+                  <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={post.author.name} />
                   <div>
-                    <Heading size={2} title={name} styling='postAuthor' />
+                    <Heading size={2} title={post.author.name} styling='postAuthor' />
                     <p className='date'>{formatDate}</p>
                   </div>
                 </Link>
@@ -83,7 +91,7 @@ export default function ProfilePosts() {
                   {post.tags.map((tag) => {
                     if (tag !== "") {
                       return (
-                        <p className='tagItem' key={post.id + tag}>
+                        <p className='tagItem' key={UniqueKey(tag)}>
                           {tag}
                         </p>
                       );
@@ -93,13 +101,23 @@ export default function ProfilePosts() {
                 <div className='iconContainer'>
                   {(() => {
                     if (post._count.comments !== 0) {
-                      return <i className='fa-solid fa-comment'></i>;
+                      return (
+                        <div className='PostCardCommentInfo'>
+                          <i className='fa-solid fa-comment'></i>
+                          <p>{post._count.comments}</p>
+                        </div>
+                      );
                     }
                     return null;
                   })()}
                   {(() => {
                     if (post._count.reactions !== 0) {
-                      return <i className='fa-solid fa-heart'></i>;
+                      return (
+                        <div className='PostCardReactionInfo'>
+                          <i className='fa-solid fa-heart'></i>
+                          <p>{post._count.reactions}</p>
+                        </div>
+                      );
                     }
                     return null;
                   })()}

@@ -6,7 +6,7 @@ import useAxios from "../../hooks/useAxios";
 import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
 export default function MyFollowers() {
   const [myfollowers, setMyfollowers] = useState([]);

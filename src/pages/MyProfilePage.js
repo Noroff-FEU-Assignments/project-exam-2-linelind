@@ -5,6 +5,8 @@ import { useContext } from "react";
 import MyProfileMenu from "../components/myprofile/MyProfileMenu";
 
 export default function ProfilePage() {
+  document.title = "PlotTwist | My profile";
+
   const [auth] = useContext(AuthContext);
 
   if (!auth) {

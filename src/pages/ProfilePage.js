@@ -6,6 +6,8 @@ import ProfilePosts from "../components/profiles/ProfilePosts";
 import ProfileMenu from "../components/profiles/ProfileMenu";
 
 export default function ProfilePage() {
+  document.title = "PlotTwist | View profile";
+
   const [auth] = useContext(AuthContext);
 
   if (!auth) {

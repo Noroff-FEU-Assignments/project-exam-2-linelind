@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
@@ -9,7 +9,7 @@ import FollowUnfollow from "../follow/FollowUnfollow";
 import Avatar from "../common/Avatar";
 import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
 export default function ProfileDetail() {
   const [profiledetail, setProfiledetail] = useState(null);
@@ -17,29 +17,35 @@ export default function ProfileDetail() {
   const [followings, setFollowings] = useState([]);
   const [error, setError] = useState(null);
 
-  let history = useNavigate();
+  // let history = useNavigate();
 
-  const { name } = useParams();
+  let location = useLocation();
 
-  if (!name) {
-    history("/feed");
-  }
+  // const { name } = useParams();
+
+  // if (!name) {
+  //   history("/feed");
+  // }
 
   const urlAxios = useAxios();
 
-  useEffect(function () {
-    async function getProfileDetail() {
-      try {
-        const result = await urlAxios.get("/social/profiles/" + name);
-        setProfiledetail(result.data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+  useEffect(
+    function () {
+      const name = location.pathname.split("/").pop();
+      async function getProfileDetail() {
+        try {
+          const result = await urlAxios.get("/social/profiles/" + name);
+          setProfiledetail(result.data);
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    getProfileDetail();
-  }, []);
+      getProfileDetail();
+    },
+    [location.pathname]
+  );
 
   const [auth] = useContext(AuthContext);
 

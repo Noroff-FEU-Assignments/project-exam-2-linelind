@@ -7,8 +7,9 @@ import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import PostImage from "../common/PostImage";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 import moment from "moment";
+import UniqueKey from "../common/UniqueKey";
 
 export default function MyPosts() {
   const [myposts, setMyposts] = useState([]);
@@ -67,7 +68,7 @@ export default function MyPosts() {
                 <div className='tagsContainer'>
                   {post.tags.map((tag) => {
                     return (
-                      <p className='tagItem' key={post.id + tag}>
+                      <p className='tagItem' key={UniqueKey(tag)}>
                         {tag}
                       </p>
                     );

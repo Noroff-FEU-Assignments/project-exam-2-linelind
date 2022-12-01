@@ -7,7 +7,7 @@ import MyPosts from "./MyPosts";
 import MyFollowing from "./MyFollowings";
 import MyFollowers from "./MyFollowers";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
 function MyProfileMenu() {
   const [counted, setCounted] = useState(null);

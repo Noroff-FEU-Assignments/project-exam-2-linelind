@@ -5,6 +5,8 @@ import { useContext } from "react";
 import FeedPage from "./FeedPage";
 
 export default function LoginPage() {
+  document.title = "PlotTwist | Login";
+
   const [auth] = useContext(AuthContext);
 
   if (auth) {

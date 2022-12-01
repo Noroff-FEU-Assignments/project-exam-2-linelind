@@ -9,8 +9,8 @@ import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
 
-export default function ProfileInfo() {
-  const [myprofile, setMyprofile] = useState([]);
+export default function ProfileDisplay() {
+  const [userInfo, setUserInfo] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,38 +18,33 @@ export default function ProfileInfo() {
   const [auth] = useContext(AuthContext);
 
   useEffect(function () {
-    async function getProfile() {
+    async function getUserInfo() {
       try {
         const response = await urlAxios.get("/social/profiles/" + auth.name);
-        setMyprofile(response.data);
+        setUserInfo(response.data);
       } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
       }
     }
-    getProfile();
+    getUserInfo();
   }, []);
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
   return (
-    <div className='profileHeaderContainer'>
-      <Banner styles='banner' media={myprofile.banner} alt={myprofile.name} />
-
-      <div className='profileInfoContainer'>
-        <div className='userBasicsContainer'>
-          <Avatar styles={"avatar"} media={myprofile.avatar} alt={myprofile.name} />
-          <div className='profileNameContainer'>
-            <Heading title={myprofile.name} />
-            <p>{myprofile.email}</p>
-          </div>
+    <div>
+      <Link to='/myprofile'>
+        {/*         <Banner styles='banner' media={userInfo.banner} alt={userInfo.name} />
+         */}{" "}
+        <Avatar styles={"avatar"} media={userInfo.avatar} alt={userInfo.name} />
+        <div className='profileNameContainer'>
+          <Heading title={userInfo.name} />
+          <p>{userInfo.email}</p>
         </div>
-        <Link to={`/myprofile/edit/${myprofile.name}`}>
-          <button className='editBtn'>Edit profile</button>
-        </Link>
-      </div>
+      </Link>
     </div>
   );
 }

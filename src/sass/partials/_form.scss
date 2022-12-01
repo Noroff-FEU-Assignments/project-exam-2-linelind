@@ -3,12 +3,11 @@
   flex-direction: column;
   padding: 50px;
   margin: 20px;
-  border: $border;
   background-color: getColour(white);
+  box-shadow: $shadow;
 
   @media (max-width: $small-width) {
     max-width: 90%;
-    border: $border-thin;
     padding: 20px !important;
   }
 

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
 
 export default function ProfileFollowing() {
   const [profileFollowing, setProfileFollowing] = useState([]);
@@ -17,21 +17,28 @@ export default function ProfileFollowing() {
   const [auth] = useContext(AuthContext);
 
   const urlAxios = useAxios();
-  const { name } = useParams();
+  /* const { name } = useParams(); */
 
-  useEffect(function () {
-    async function getFollowing() {
-      try {
-        const response = await urlAxios.get("/social/profiles/" + name + "?_following=true");
-        setProfileFollowing(response.data.following);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
+  let location = useLocation();
+
+  useEffect(
+    function () {
+      async function getFollowing() {
+        const name = location.pathname.split("/").pop();
+
+        try {
+          const response = await urlAxios.get("/social/profiles/" + name + "?_following=true");
+          setProfileFollowing(response.data.following);
+        } catch (error) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    getFollowing();
-  }, []);
+      getFollowing();
+    },
+    [location]
+  );
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;

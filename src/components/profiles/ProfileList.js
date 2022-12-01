@@ -5,7 +5,8 @@ import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
-import ErrorMessage from "../layout/ErrorMessage";
+import ErrorMessage from "../common/ErrorMessage";
+import UniqueKey from "../common/UniqueKey";
 
 export default function ProfileList() {
   const [profiles, setProfiles] = useState([]);
@@ -54,7 +55,7 @@ export default function ProfileList() {
         {searchInput.length > 1
           ? filteredResults.map((profile) => {
               return (
-                <Link to={`/profile/${profile.name}`} key={profile.name}>
+                <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
                   <div className='profileCard ProfileListCard'>
                     <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
                     <div>
@@ -66,7 +67,7 @@ export default function ProfileList() {
             })
           : profiles.map((profile) => {
               return (
-                <Link to={`/profile/${profile.name}`} key={profile.name}>
+                <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
                   <div className='profileCard ProfileListCard'>
                     <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
                     <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />

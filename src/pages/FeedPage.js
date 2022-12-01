@@ -6,6 +6,8 @@ import { useContext } from "react";
 import Heading from "../components/common/Heading";
 
 export default function FeedPage() {
+  document.title = "PlotTwist | Feed";
+
   const [auth] = useContext(AuthContext);
 
   if (!auth) {
@@ -13,7 +15,7 @@ export default function FeedPage() {
   } else {
     return (
       <div className='pageContainer'>
-        <Heading title={`How's it going` + auth.name + `?`} styling='feedTitle' />
+        <Heading title={`How's it going` + " " + auth.name + `?`} styling='feedTitle' />
 
         <CreatePost />
         <FeedMenu />
