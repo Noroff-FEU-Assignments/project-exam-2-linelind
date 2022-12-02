@@ -5,6 +5,8 @@ import useAxios from "../../hooks/useAxios";
 import ProfilePosts from "./ProfilePosts";
 import ProfileFollowers from "./ProfileFollowers";
 import ProfileFollowing from "./ProfileFollowings";
+import FollowButton from "../follow/FollowButton";
+
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
 
@@ -25,7 +27,7 @@ function ProfileMenu() {
         const name = location.pathname.split("/").pop();
 
         try {
-          const result = await urlAxios.get("/social/profiles/" + name);
+          const result = await urlAxios.get(`/social/profiles/${name}?_following=true&_followers=true`);
           setCounted(result.data._count);
         } catch (error) {
           setError(true);

@@ -19,6 +19,10 @@ nav {
     margin: auto;
   }
 
+  .navLinksContainer a {
+    margin-right: 25px;
+  }
+
   .logOutBtn,
   .logInBtn {
     margin-right: 20px;
@@ -28,8 +32,71 @@ nav {
     color: getColour(white);
   }
 
-  .fa-user {
+  .fa-user,
+  .fa-bars {
     font-size: 28px;
+  }
+
+  .fa-user:hover {
+    color: getColour(black) !important;
+  }
+
+  a:hover {
+    color: getColour(green) !important;
+  }
+
+  .close,
+  .fa-bars {
+    cursor: pointer !important;
+  }
+
+  .navMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 40px;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    background-color: getColour(white);
+    top: 0px;
+    right: 0px;
+    box-shadow: $shadow;
+    z-index: 100;
+    animation: animateright 0.6s;
+
+    @keyframes animateright {
+      0% {
+        right: -330px;
+        opacity: 0;
+      }
+      100% {
+        right: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  .navMobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: $border;
+    margin-bottom: 30px;
+
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 }
 

@@ -1,12 +1,11 @@
-import CreatePost from "../components/posts/CreatePost";
-import PostList from "../components/posts/PostList";
 import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
 import Heading from "../components/common/Heading";
+import ProfileList from "../components/profiles/ProfileList";
 
-export default function FeedPage() {
-  document.title = "PlotTwist | Feed";
+export default function ProfileListPage() {
+  document.title = "PlotTwist | Profiles";
 
   const [auth] = useContext(AuthContext);
 
@@ -15,10 +14,8 @@ export default function FeedPage() {
   } else {
     return (
       <div className='pageContainer'>
-        <Heading title={`How's it going` + " " + auth.name + `?`} styling='feedTitle' />
-
-        <CreatePost />
-        <PostList />
+        <Heading title='Profiles' styling='feedTitle' />
+        <ProfileList />
       </div>
     );
   }
