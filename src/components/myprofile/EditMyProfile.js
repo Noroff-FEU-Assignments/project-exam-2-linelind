@@ -10,8 +10,8 @@ import ErrorMessage from "../common/ErrorMessage";
 import Breadcrumb from "../layout/Breadcrumb";
 
 const schema = yup.object().shape({
-  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
-  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a valid image url", excludeEmptyString: true }),
+  banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a jpg/jpeg/png image url", excludeEmptyString: true }),
+  avatar: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a jpg/jpeg/png image url", excludeEmptyString: true }),
 });
 
 export default function EditMyProfile() {
