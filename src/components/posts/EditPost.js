@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import DeletePostButton from "./DeletePostButton";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
+import Breadcrumb from "../layout/Breadcrumb";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
@@ -105,6 +107,8 @@ export default function EditPost() {
 
   return (
     <div className='pageContainer'>
+      <Breadcrumb path='feed' title='Posts' />
+
       <form onSubmit={handleSubmit(editPost)} className='form editPostForm'>
         {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}
         {updateError && (

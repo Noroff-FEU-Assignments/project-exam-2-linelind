@@ -40,7 +40,7 @@ function NavBar() {
       {(() => {
         if (window.innerWidth > 500) {
           return (
-            <nav>
+            <nav className='navBar'>
               <div className='navContainer'>
                 <div className='navLinksContainer'>
                   <Link to='/feed' className='logo'>
@@ -71,7 +71,7 @@ function NavBar() {
           );
         } else {
           return (
-            <nav>
+            <nav className='navBar'>
               <div className='navContainer'>
                 <div className='navLinksContainer'>
                   <Link to='/feed' className='logo'>

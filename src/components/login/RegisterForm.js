@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
@@ -44,13 +45,22 @@ export default function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
+  const history = useNavigate();
+
   async function onSubmit(data) {
     setSubmitted(true);
 
     try {
       const response = await axios.post(url, data);
-      setUpdated(true);
-      setRegisterError(false);
+
+      if (response.status === 200) {
+        setUpdated(true);
+        setRegisterError(false);
+
+        setTimeout(() => {
+          history(`/`);
+        }, 1500);
+      }
     } catch (error) {
       setRegisterError(true);
     } finally {

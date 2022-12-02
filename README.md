@@ -49,6 +49,7 @@ The app will usually start on port 3000. Use `localhost:3000` to view the projec
 You can create your own account, or you may use this login if you want:
 
 Username: pugsy@stud.noroff.no
+
 Password: helloworld
 
 ---

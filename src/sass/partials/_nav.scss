@@ -1,4 +1,4 @@
-nav {
+.navBar {
   background-color: getColour(white);
   padding: 10px 30px;
   box-shadow: $shadow;
@@ -99,6 +99,23 @@ nav {
     }
   }
 }
+
+// breadcrumb
+
+.navBreadcrumb {
+  width: 80%;
+  background-color: none !important;
+  box-shadow: none !important;
+  margin-top: 20px;
+  z-index: 1;
+
+  .active,
+  a:hover {
+    color: getColour(green);
+  }
+}
+
+// Tabs
 
 .navTabsProfile {
   width: 80%;
