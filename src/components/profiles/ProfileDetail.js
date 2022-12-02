@@ -15,9 +15,8 @@ import ErrorMessage from "../common/ErrorMessage";
 
 export default function ProfileDetail() {
   const [profiledetail, setProfiledetail] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [followers, setFollowers] = useState([]);
-  const [followings, setFollowings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const [auth] = useContext(AuthContext);
@@ -30,10 +29,9 @@ export default function ProfileDetail() {
     function () {
       async function getProfileDetail() {
         try {
-          const result = await urlAxios.get(`/social/profiles/${name}?_following=true&_followers=true`);
+          const result = await urlAxios.get(`/social/profiles/${name}?_followers=true`);
           setProfiledetail(result.data);
           setFollowers(result.data.followers);
-          setFollowings(result.data.following);
         } catch (error) {
           setError(error);
         } finally {
