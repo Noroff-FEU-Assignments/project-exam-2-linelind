@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
@@ -16,7 +16,6 @@ export default function ProfileFollowers() {
 
   const [auth] = useContext(AuthContext);
 
-  /* const { name } = useParams(); */
   const urlAxios = useAxios();
 
   let location = useLocation();

@@ -57,6 +57,7 @@ export default function ProfileList() {
               return (
                 <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
                   <div className='profileCard ProfileListCard'>
+                    <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
                     <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
                     <div>
                       <Heading size={2} title={profile.name} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
@@ -17,15 +17,7 @@ export default function ProfileDetail() {
   const [followings, setFollowings] = useState([]);
   const [error, setError] = useState(null);
 
-  // let history = useNavigate();
-
   let location = useLocation();
-
-  // const { name } = useParams();
-
-  // if (!name) {
-  //   history("/feed");
-  // }
 
   const urlAxios = useAxios();
 

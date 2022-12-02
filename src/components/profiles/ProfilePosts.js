@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
@@ -19,8 +19,6 @@ export default function ProfilePosts() {
   const [error, setError] = useState(null);
 
   const urlAxios = useAxios();
-
-  /*  const { name } = useParams(); */
 
   let location = useLocation();
 

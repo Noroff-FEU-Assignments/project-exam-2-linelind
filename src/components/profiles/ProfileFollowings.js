@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
@@ -17,7 +17,6 @@ export default function ProfileFollowing() {
   const [auth] = useContext(AuthContext);
 
   const urlAxios = useAxios();
-  /* const { name } = useParams(); */
 
   let location = useLocation();
 
