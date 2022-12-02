@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Heading from "../common/Heading";
@@ -30,9 +31,11 @@ function NavBar() {
     };
   }, [windowWidth]);
 
+  const history = useNavigate();
+
   function logout() {
     setAuth(null);
-    window.location.reload();
+    history(`/`);
   }
 
   return (
@@ -46,7 +49,6 @@ function NavBar() {
                   <Link to='/feed' className='logo'>
                     PlotTwist
                   </Link>
-
                   <Link to='/feed'>Posts</Link>
                   <Link to='/profiles'>Profiles</Link>
                 </div>
@@ -89,7 +91,7 @@ function NavBar() {
                     <Link to='/' className='cta logInBtn'>
                       Login
                     </Link>
-                  )}{" "}
+                  )}
                   <div className='navMobile hidden'>
                     <div className='navMobileHeader'>
                       <Heading title='Menu' size={2} />

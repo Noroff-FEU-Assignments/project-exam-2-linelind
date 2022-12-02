@@ -5,8 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { API_BASE } from "../../constant/api";
-
-const url = API_BASE + "/social/auth/register";
+import Breadcrumb from "../layout/Breadcrumb";
 
 const schema = yup.object().shape({
   name: yup
@@ -45,6 +44,7 @@ export default function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
+  const url = API_BASE + "/social/auth/register";
   const history = useNavigate();
 
   async function onSubmit(data) {
@@ -52,15 +52,12 @@ export default function RegisterForm() {
 
     try {
       const response = await axios.post(url, data);
+      setUpdated(true);
+      setRegisterError(false);
 
-      if (response.status === 200) {
-        setUpdated(true);
-        setRegisterError(false);
-
-        setTimeout(() => {
-          history(`/`);
-        }, 1500);
-      }
+      setTimeout(() => {
+        history(`/`);
+      }, 1500);
     } catch (error) {
       setRegisterError(true);
     } finally {
@@ -69,39 +66,43 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
-      {registerError && (
-        <div className='errorMessage'>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>
-      )}
-      {updated && <div className='successMessage'>Welcome to our community!</div>}
-      <p className='logo logInLogo'>PlotTwist</p>
-      <label>
-        Name *
-        <input {...register("name")} />
-        {errors.name && <span>{errors.name.message}</span>}
-      </label>
-      <label>
-        Email *
-        <input {...register("email")} />
-        {errors.email && <span>{errors.email.message}</span>}
-      </label>
-      <label>
-        Password *
-        <input {...register("password")} type='password' />
-        {errors.password && <span>{errors.password.message}</span>}
-      </label>
-      <label>
-        Add avatar image by url
-        <input {...register("avatar")} />
-        {errors.avatar && <span>{errors.avatar.message}</span>}
-      </label>
-      <label>
-        Add banner image by url
-        <input {...register("banner")} />
-        {errors.banner && <span>{errors.banner.message}</span>}
-      </label>
+    <>
+      <Breadcrumb path='/' title='Login' />
 
-      <button className='cta registerBtn'>Register</button>
-    </form>
+      <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
+        {registerError && (
+          <div className='errorMessage'>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>
+        )}
+        {updated && <div className='successMessage'>Welcome to our community!</div>}
+        <p className='logo logInLogo'>PlotTwist</p>
+        <label>
+          Name *
+          <input {...register("name")} />
+          {errors.name && <span>{errors.name.message}</span>}
+        </label>
+        <label>
+          Email *
+          <input {...register("email")} />
+          {errors.email && <span>{errors.email.message}</span>}
+        </label>
+        <label>
+          Password *
+          <input {...register("password")} type='password' />
+          {errors.password && <span>{errors.password.message}</span>}
+        </label>
+        <label>
+          Add avatar image by url
+          <input {...register("avatar")} />
+          {errors.avatar && <span>{errors.avatar.message}</span>}
+        </label>
+        <label>
+          Add banner image by url
+          <input {...register("banner")} />
+          {errors.banner && <span>{errors.banner.message}</span>}
+        </label>
+
+        <button className='cta registerBtn'>Register</button>
+      </form>
+    </>
   );
 }

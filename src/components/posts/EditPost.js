@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
@@ -107,7 +106,7 @@ export default function EditPost() {
 
   return (
     <div className='pageContainer'>
-      <Breadcrumb path='feed' title='Posts' />
+      <Breadcrumb path='/feed' title='Posts' />
 
       <form onSubmit={handleSubmit(editPost)} className='form editPostForm'>
         {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}
