@@ -1,11 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import ProfilePosts from "./ProfilePosts";
 import ProfileFollowers from "./ProfileFollowers";
 import ProfileFollowing from "./ProfileFollowings";
-import FollowButton from "../follow/FollowButton";
 
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
@@ -14,8 +13,6 @@ function ProfileMenu() {
   const [counted, setCounted] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  /*   const { name } = useParams();*/
 
   let location = useLocation();
 
