@@ -36,6 +36,7 @@
   .tagsContainer {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     .tagItem {
       color: getColour(green);

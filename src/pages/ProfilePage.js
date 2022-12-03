@@ -15,7 +15,6 @@ export default function ProfilePage() {
   } else {
     return (
       <div className='profileContainer pageContainer '>
-        <ProfileDetail />
         <ProfileMenu />
       </div>
     );

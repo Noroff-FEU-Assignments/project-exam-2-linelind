@@ -1,31 +1,44 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
+import FollowButton from "../follow/FollowButton";
+import UnfollowButton from "../follow/UnfollowButton";
+import Avatar from "../common/Avatar";
+import Banner from "../common/Banner";
+import Heading from "../common/Heading";
 import ProfilePosts from "./ProfilePosts";
-import ProfileFollowers from "./ProfileFollowers";
-import ProfileFollowing from "./ProfileFollowings";
-
-import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
+import Loader from "../layout/Loader";
 
-function ProfileMenu() {
+export default function ProfileMenu() {
+  const [profiledetail, setProfiledetail] = useState(null);
   const [counted, setCounted] = useState(null);
+  const [profileFollowing, setProfileFollowing] = useState([]);
+  const [followers, setFollowers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   let location = useLocation();
+
+  const name = location.pathname.split("/").pop();
+
+  const [auth] = useContext(AuthContext);
 
   const urlAxios = useAxios();
 
   useEffect(
     function () {
       async function getCount() {
-        const name = location.pathname.split("/").pop();
-
         try {
-          const result = await urlAxios.get(`/social/profiles/${name}?_following=true&_followers=true`);
-          setCounted(result.data._count);
+          const response = await urlAxios.get(`/social/profiles/${name}?_following=true&_followers=true`);
+          setProfiledetail(response.data);
+          setCounted(response.data._count);
+          setProfileFollowing(response.data.following);
+          setFollowers(response.data.followers);
         } catch (error) {
           setError(true);
         } finally {
@@ -34,14 +47,44 @@ function ProfileMenu() {
       }
       getCount();
     },
-    [location.pathname]
+    [location]
   );
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
+  let isFollowing = false;
+  followers.map((follower) => {
+    if (follower.name === auth.name) {
+      isFollowing = true;
+    }
+  });
+
+  let followUnfollowButton;
+
+  if (isFollowing === true) {
+    followUnfollowButton = <UnfollowButton name={name} />;
+  } else {
+    followUnfollowButton = <FollowButton name={name} />;
+  }
+
   return (
     <>
+      <div className='profileHeaderContainer' key={profiledetail.name}>
+        <Banner styles='banner' media={profiledetail.banner} alt={profiledetail.name} />
+        <div className='profileInfoContainer'>
+          <div className='userBasicsContainer'>
+            <Avatar styles={"avatar"} media={profiledetail.avatar} alt={profiledetail.name} />
+            <div className='profileNameContainer'>
+              <Heading title={profiledetail.name} />
+              <p>{profiledetail.email}</p>
+            </div>
+          </div>
+          <div>
+            <div>{followUnfollowButton}</div>
+          </div>
+        </div>
+      </div>
       <ul className='nav nav-tabs navTabsProfile' id='myTab' role='tablist'>
         <li className='nav-item' role='presentation'>
           <button
@@ -88,14 +131,72 @@ function ProfileMenu() {
           <ProfilePosts />
         </div>
         <div className='tab-pane fade' id='following-tab-pane' role='tabpanel' aria-labelledby='following-tab' tabIndex='0'>
-          <ProfileFollowing />
+          {(() => {
+            if (profileFollowing.length === 0) {
+              return <p>This user is not following anyone yet.</p>;
+            } else {
+              return (
+                <div className='followListContainer'>
+                  {profileFollowing.map((following) => {
+                    if (following.name === auth.name) {
+                      return (
+                        <Link to={`/myprofile`} key={following.name}>
+                          <div className='profileCard followCard'>
+                            <Avatar styles={"avatar avatarSmall"} media={following.avatar} alt={following.name} />
+                            <Heading size={2} title={following.name} />
+                          </div>
+                        </Link>
+                      );
+                    } else {
+                      return (
+                        <Link to={`/profile/${following.name}`} key={following.name}>
+                          <div className='profileCard followCard'>
+                            <Avatar styles={"avatar avatarSmall"} media={following.avatar} alt={following.name} />
+                            <Heading size={2} title={following.name} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  })}
+                </div>
+              );
+            }
+          })()}
         </div>
         <div className='tab-pane fade' id='followers-tab-pane' role='tabpanel' aria-labelledby='followers-tab' tabIndex='0'>
-          <ProfileFollowers />
+          {(() => {
+            if (followers.length === 0) {
+              return <p>No followers to show.</p>;
+            } else {
+              return (
+                <div className='followListContainer'>
+                  {followers.map((follower) => {
+                    if (follower.name === auth.name) {
+                      return (
+                        <Link to={`/myprofile`} key={follower.name}>
+                          <div className='profileCard followCard'>
+                            <Avatar styles={"avatar avatarSmall"} media={follower.avatar} alt={follower.name} />
+                            <Heading size={2} title={follower.name} />
+                          </div>
+                        </Link>
+                      );
+                    } else {
+                      return (
+                        <Link to={`/profile/${follower.name}`} key={follower.name}>
+                          <div className='profileCard followCard'>
+                            <Avatar styles={"avatar avatarSmall"} media={follower.avatar} alt={follower.name} />
+                            <Heading size={2} title={follower.name} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  })}
+                </div>
+              );
+            }
+          })()}
         </div>
       </div>
     </>
   );
 }
-
-export default ProfileMenu;
