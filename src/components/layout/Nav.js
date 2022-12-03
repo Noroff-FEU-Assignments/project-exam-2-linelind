@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +15,7 @@ function navMobile() {
 
 function NavBar() {
   const [auth, setAuth] = useContext(AuthContext);
+  const [show, setShow] = useState(false);
   const [windowWidth, setWindowWidth] = useState({
     windowWidth: window.innerWidth,
   });
@@ -33,9 +36,13 @@ function NavBar() {
 
   const history = useNavigate();
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function logout() {
     setAuth(null);
     history(`/`);
+    setShow(false);
   }
 
   return (
@@ -55,7 +62,7 @@ function NavBar() {
                 <div className='navElementsContainer'>
                   {auth ? (
                     <>
-                      <button onClick={logout} className='cta logOutBtn hoverBtn'>
+                      <button onClick={handleShow} className='cta logOutBtn hoverBtn'>
                         Log out
                       </button>
                     </>
@@ -83,7 +90,7 @@ function NavBar() {
                 <div className='navElementsContainer'>
                   {auth ? (
                     <>
-                      <button onClick={logout} className='cta logOutBtn'>
+                      <button onClick={handleShow} className='cta logOutBtn'>
                         Log out
                       </button>
                     </>
@@ -110,6 +117,20 @@ function NavBar() {
           );
         }
       })()}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>You are about to log out</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to log out?</Modal.Body>
+        <Modal.Footer>
+          <Button className='cta cancelBtn' onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button className='cta deleteBtnSmall' onClick={logout}>
+            Log out
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

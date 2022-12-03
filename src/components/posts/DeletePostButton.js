@@ -39,7 +39,7 @@ export default function DeletePostButton({ id }) {
         <Modal.Body>Are you sure you want to delete the post?</Modal.Body>
         <Modal.Footer>
           <Button className='cta cancelBtn' onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button className='cta deleteBtnSmall' onClick={handleDelete}>
             Delete
