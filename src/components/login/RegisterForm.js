@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { API_BASE } from "../../constant/api";
-import Breadcrumb from "../layout/Breadcrumb";
+import BreadcrumbNav from "../layout/BreadcrumbNav";
 
 const schema = yup.object().shape({
   name: yup
@@ -67,7 +67,7 @@ export default function RegisterForm() {
 
   return (
     <>
-      <Breadcrumb path='/' title='Login' />
+      <BreadcrumbNav path='/' title='Login' />
 
       <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
         {registerError && (

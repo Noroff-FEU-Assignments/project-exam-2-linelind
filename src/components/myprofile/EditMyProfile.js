@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
-import Breadcrumb from "../layout/Breadcrumb";
+import BreadcrumbNav from "../layout/BreadcrumbNav";
 
 const schema = yup.object().shape({
   banner: yup.string().matches(/(http[s]?:\/\/.*\.)(jpg|jpeg|png)/i, { message: "Please enter a jpg/jpeg/png image url", excludeEmptyString: true }),
@@ -98,7 +98,7 @@ export default function EditMyProfile() {
 
   return (
     <div className='pageContainer'>
-      <Breadcrumb path='/myprofile' title='My profile' />
+      <BreadcrumbNav path='/myprofile' title='My profile' />
 
       <form onSubmit={handleSubmit(onSubmit)} className='form editProfileForm'>
         {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}

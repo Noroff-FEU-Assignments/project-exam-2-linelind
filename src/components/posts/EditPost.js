@@ -8,7 +8,7 @@ import useAxios from "../../hooks/useAxios";
 import DeletePostButton from "./DeletePostButton";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
-import Breadcrumb from "../layout/Breadcrumb";
+import BreadcrumbNav from "../layout/BreadcrumbNav";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please give your post a title"),
@@ -106,7 +106,7 @@ export default function EditPost() {
 
   return (
     <div className='pageContainer'>
-      <Breadcrumb path='/feed' title='Posts' />
+      <BreadcrumbNav path='/feed' title='Posts' />
 
       <form onSubmit={handleSubmit(editPost)} className='form editPostForm'>
         {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}
