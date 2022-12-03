@@ -94,7 +94,9 @@ p {
 .deleteBtn,
 .loginBtn,
 .newAccountBtn,
-.editProfileBtn {
+.editProfileBtn,
+.cancelBtn,
+.deleteBtnSmall {
   font-size: 14px !important;
 
   @media (max-width: $small-width) {
@@ -167,5 +169,17 @@ label,
     @media (max-width: $medium-width) {
       font-size: 16px !important;
     }
+  }
+}
+
+.modal-title {
+  @media (max-width: $medium-width) {
+    font-size: 14px !important;
+  }
+}
+
+.modal-body {
+  @media (max-width: $medium-width) {
+    font-size: 12px !important;
   }
 }

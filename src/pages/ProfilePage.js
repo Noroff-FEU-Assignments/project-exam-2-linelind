@@ -1,6 +1,6 @@
-import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import ProfileMenu from "../components/profiles/ProfileMenu";
 
 export default function ProfilePage() {
@@ -9,7 +9,7 @@ export default function ProfilePage() {
   const [auth] = useContext(AuthContext);
 
   if (!auth) {
-    return <LoginPage />;
+    return <Navigate replace to='/' />;
   } else {
     return (
       <div className='profileContainer pageContainer '>

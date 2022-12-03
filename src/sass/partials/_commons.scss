@@ -48,14 +48,6 @@
   }
 }
 
-.editBtn,
-.unfollowBtn {
-  border: $border-thin;
-  background-color: getColour(white);
-  padding: 5px 10px;
-  color: getColour(green);
-}
-
 .cta {
   border-radius: 2px;
   background-color: getColour(green);
@@ -64,8 +56,23 @@
   color: getColour(white);
 }
 
+.editBtn,
+.unfollowBtn,
+.cancelBtn,
+.cancelBtn:hover {
+  border: $border-thin;
+  background-color: getColour(white);
+  padding: 5px 10px;
+  color: getColour(green);
+}
+
+.deleteBtnSmall,
+.deleteBtnSmall:hover {
+  background-color: getColour(black);
+}
+
 .hoverBtn:hover {
-  box-shadow: $shadow-bottom;
+  box-shadow: $shadow-bottom !important;
 }
 
 .hidden {

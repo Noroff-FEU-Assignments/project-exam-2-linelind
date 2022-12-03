@@ -1,6 +1,6 @@
-import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import Heading from "../components/common/Heading";
 import ProfileList from "../components/profiles/ProfileList";
 
@@ -10,7 +10,7 @@ export default function ProfileListPage() {
   const [auth] = useContext(AuthContext);
 
   if (!auth) {
-    return <LoginPage />;
+    return <Navigate replace to='/' />;
   } else {
     return (
       <div className='pageContainer'>
