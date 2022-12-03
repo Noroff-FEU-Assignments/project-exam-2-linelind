@@ -33,7 +33,7 @@ export default function ReactButton() {
 
   return (
     <form onSubmit={handleSubmit(handleReact)} className='reactionContainer'>
-      <input type='hidden' {...register("symbol")} value={"🧡"} />
+      <input type='hidden' {...register("symbol")} value={"🧡"} aria-label='React to post' />
       <button className='btnReact'>🧡</button>
     </form>
   );

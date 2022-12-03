@@ -50,14 +50,14 @@ export default function LoginForm() {
     <form onSubmit={handleSubmit(onSubmit)} className='form loginForm'>
       {loginError && <div className='errorMessage'>Well this is awkward. Quick, try again, and we can pretend this error never happened.</div>}
       <p className='logo logInLogo'>PlotTwist</p>
-      <label>
+      <label id='email'>
         Email
-        <input {...register("email")} />
+        <input {...register("email")} id='email' />
         {errors.email && <span>{errors.email.message}</span>}
       </label>
-      <label>
+      <label id='password'>
         Password
-        <input {...register("password")} type='password' />
+        <input {...register("password")} type='password' id='password' />
         {errors.password && <span>{errors.password.message}</span>}
       </label>
       <div className='loginBtnContainer'>

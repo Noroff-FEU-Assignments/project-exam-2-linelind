@@ -108,14 +108,14 @@ export default function EditMyProfile() {
           </div>
         )}
         <h1 className='editHeading'>Edit media</h1>
-        <label>
+        <label id='banner'>
           Banner
-          <input {...register("banner")} defaultValue={profilemedia.banner} />
+          <input {...register("banner")} defaultValue={profilemedia.banner} id='banner' />
           {errors.banner && <span>{errors.banner.message}</span>}
         </label>
-        <label>
+        <label id='avatar'>
           Avatar
-          <input {...register("avatar")} defaultValue={profilemedia.avatar} />
+          <input {...register("avatar")} defaultValue={profilemedia.avatar} id='avatar' />
           {errors.avatar && <span>{errors.avatar.message}</span>}
         </label>
         <button className='cta editProfileBtn hoverBtn'>Update profile</button>

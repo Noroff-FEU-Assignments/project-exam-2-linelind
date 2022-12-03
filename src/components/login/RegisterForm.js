@@ -75,29 +75,29 @@ export default function RegisterForm() {
         )}
         {updated && <div className='successMessage'>Welcome to our community!</div>}
         <p className='logo logInLogo'>PlotTwist</p>
-        <label>
+        <label id='name'>
           Name *
-          <input {...register("name")} />
+          <input {...register("name")} id='name' />
           {errors.name && <span>{errors.name.message}</span>}
         </label>
-        <label>
+        <label id='email'>
           Email *
-          <input {...register("email")} />
+          <input {...register("email")} id='email' />
           {errors.email && <span>{errors.email.message}</span>}
         </label>
-        <label>
+        <label id='password'>
           Password *
-          <input {...register("password")} type='password' />
+          <input {...register("password")} type='password' id='password' />
           {errors.password && <span>{errors.password.message}</span>}
         </label>
-        <label>
+        <label id='avatar'>
           Add avatar image by url
-          <input {...register("avatar")} />
+          <input {...register("avatar")} id='avatar' />
           {errors.avatar && <span>{errors.avatar.message}</span>}
         </label>
-        <label>
+        <label id='banner'>
           Add banner image by url
-          <input {...register("banner")} />
+          <input {...register("banner")} id='banner' />
           {errors.banner && <span>{errors.banner.message}</span>}
         </label>
 

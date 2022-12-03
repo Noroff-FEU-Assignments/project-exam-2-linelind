@@ -116,22 +116,22 @@ export default function EditPost() {
           </div>
         )}
         <h1 className='editHeading'>Edit post</h1>
-        <label>
+        <label id='title'>
           Title
-          <input {...register("title")} defaultValue={post.title} />
+          <input {...register("title")} defaultValue={post.title} id='title' />
           {errors.title && <span>{errors.title.message}</span>}
         </label>
-        <label>
+        <label id='body'>
           Body
-          <textarea {...register("body")} defaultValue={post.body} />
+          <textarea {...register("body")} defaultValue={post.body} id='body' />
         </label>
-        <label>
+        <label id='media'>
           Media
-          <input {...register("media")} defaultValue={post.media} />
+          <input {...register("media")} defaultValue={post.media} id='media' />
         </label>
-        <label>
+        <label id='tags'>
           Tags
-          <input {...register("tags")} defaultValue={post.tags} />
+          <input {...register("tags")} defaultValue={post.tags} id='tags' />
         </label>
         <button className='cta updatePostBtn hoverBtn'>Update</button>
         <div className='deleteBtnContainer'>
