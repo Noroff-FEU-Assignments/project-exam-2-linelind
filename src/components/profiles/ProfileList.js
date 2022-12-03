@@ -49,7 +49,7 @@ export default function ProfileList() {
   return (
     <>
       <div className='searchContainer'>
-        <input className='search' placeholder='Search profile' onChange={(e) => searchItems(e.target.value.trim())} />
+        <input className='search' aria-label='Search' placeholder='Search profile' onChange={(e) => searchItems(e.target.value.trim())} />
       </div>
       <div className='profileListContainer'>
         {searchInput.length > 1
