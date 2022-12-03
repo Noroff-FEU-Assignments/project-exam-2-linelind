@@ -61,9 +61,9 @@ export default function LoginForm() {
         {errors.password && <span>{errors.password.message}</span>}
       </label>
       <div className='loginBtnContainer'>
-        <button className='cta loginBtn'>Log in</button>
+        <button className='cta loginBtn hoverBtn'>Log in</button>
       </div>
-      <Link to='/register' className='cta newAccountBtn'>
+      <Link to='/register' className='cta newAccountBtn hoverBtn'>
         Create new account
       </Link>
     </form>

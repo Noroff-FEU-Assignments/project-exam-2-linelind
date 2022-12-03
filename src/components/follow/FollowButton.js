@@ -18,7 +18,7 @@ export default function FollowButton(props) {
   }
 
   return (
-    <button onClick={handleFollow} className='cta'>
+    <button onClick={handleFollow} className='cta hoverBtn'>
       Follow
     </button>
   );

@@ -55,12 +55,12 @@ function NavBar() {
                 <div className='navElementsContainer'>
                   {auth ? (
                     <>
-                      <button onClick={logout} className='cta logOutBtn'>
+                      <button onClick={logout} className='cta logOutBtn hoverBtn'>
                         Log out
                       </button>
                     </>
                   ) : (
-                    <Link to='/' className='cta logInBtn'>
+                    <Link to='/' className='cta logInBtn hoverBtn'>
                       Login
                     </Link>
                   )}

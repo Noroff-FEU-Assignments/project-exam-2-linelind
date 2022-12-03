@@ -1,4 +1,3 @@
-import ProfileInfo from "../components/myprofile/MyProfileInfo";
 import LoginPage from "./LoginPage";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
@@ -14,7 +13,6 @@ export default function ProfilePage() {
   } else {
     return (
       <div className='profileContainer pageContainer '>
-        <ProfileInfo />
         <MyProfileMenu />
       </div>
     );

@@ -41,7 +41,7 @@ export default function CommentButton() {
         <textarea {...register("body")} placeholder='write your comment' />
         {errors.body && <span>{errors.body.message}</span>}
       </label>
-      <button className='cta commentBtn'>Comment</button>
+      <button className='cta commentBtn hoverBtn'>Comment</button>
     </form>
   );
 }

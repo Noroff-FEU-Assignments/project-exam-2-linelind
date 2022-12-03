@@ -133,7 +133,7 @@ export default function EditPost() {
           Tags
           <input {...register("tags")} defaultValue={post.tags} />
         </label>
-        <button className='cta updatePostBtn'>Update</button>
+        <button className='cta updatePostBtn hoverBtn'>Update</button>
         <div className='deleteBtnContainer'>
           <DeletePostButton id={post.id} />
         </div>

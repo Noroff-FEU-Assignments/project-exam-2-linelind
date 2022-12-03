@@ -104,13 +104,13 @@ export default function RegisterForm() {
           <input {...register("tags")} placeholder='tags' />
         </label>
         <div className='createBtnContainer'>
-          <div className='addImageBtn' onClick={displayImage}>
+          <div className='addImageBtn hoverBtn' onClick={displayImage}>
             Add image
           </div>
-          <div className='addTagsBtn' onClick={displayTags}>
+          <div className='addTagsBtn hoverBtn' onClick={displayTags}>
             Add tags
           </div>
-          <button className='cta createPostBtn'>Post</button>
+          <button className='cta createPostBtn hoverBtn'>Post</button>
         </div>
       </form>
     </div>

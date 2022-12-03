@@ -118,7 +118,7 @@ export default function EditMyProfile() {
           <input {...register("avatar")} defaultValue={profilemedia.avatar} />
           {errors.avatar && <span>{errors.avatar.message}</span>}
         </label>
-        <button className='cta editProfileBtn'>Update profile</button>
+        <button className='cta editProfileBtn hoverBtn'>Update profile</button>
       </form>
     </div>
   );

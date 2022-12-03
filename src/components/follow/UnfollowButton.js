@@ -19,7 +19,7 @@ export default function UnfollowButton(props) {
   }
 
   return (
-    <button onClick={handleUnfollow} className='unfollowBtn'>
+    <button onClick={handleUnfollow} className='unfollowBtn hoverBtn'>
       Unfollow
     </button>
   );

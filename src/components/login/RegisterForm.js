@@ -101,7 +101,7 @@ export default function RegisterForm() {
           {errors.banner && <span>{errors.banner.message}</span>}
         </label>
 
-        <button className='cta registerBtn'>Register</button>
+        <button className='cta registerBtn hoverBtn'>Register</button>
       </form>
     </>
   );

@@ -64,7 +64,7 @@ export default function PostDetail() {
               </div>
             </Link>
             <Link to={`/post/edit/${postdetail.id}`}>
-              <button className='editBtn editBtnDetails'>Edit post</button>
+              <button className='editBtn editBtnDetails hoverBtn'>Edit post</button>
             </Link>
           </div>
           <div>

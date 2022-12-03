@@ -64,6 +64,10 @@
   color: getColour(white);
 }
 
+.hoverBtn:hover {
+  box-shadow: $shadow-bottom;
+}
+
 .hidden {
   display: none !important;
 }

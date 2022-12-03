@@ -58,19 +58,21 @@ Password: helloworld
 
 The following steps have been taken to ensure an accessible solution that can be used by as many as possible.
 
-- Headings are used in a logical hierarchy.
+- Headings are used in a logical hierarchy, with every page starting with an H1.
 
-- All text have a contrast of 4.5:1 or highter.
+- All text have a contrast of 4.5:1 or higher.
 
 - Side titles are appropriate and describe the content of the page.
 
-- Images have and alternative text.
+- All images have an alternative text.
+
+- Layout fit different screen sizes, ensuring readability across devices.
 
 ---
 
 ## To sum up the steps of the project
 
-The steps of the project is a reflection of experience learned over the last two years. Any relevant files (competitor research, personas, style tile, report ..) can be found under assets in this repo.
+The steps of the project is a reflection of experience learned over the last two years. Any relevant files (competitor research, personas, style tile, report ..) can be found under assets in this repo, as well as in the appropriate card in Trello.
 
 ### Planning
 

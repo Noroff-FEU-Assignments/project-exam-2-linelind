@@ -116,7 +116,7 @@ export default function PostList() {
                   </div>
                 </Link>
                 <Link to={`/post/edit/${post.id}`}>
-                  <button className='editBtn'>Edit post</button>
+                  <button className='editBtn hoverBtn'>Edit post</button>
                 </Link>
               </div>
               <Link to={`/post/${post.id}`}>
