@@ -10,12 +10,17 @@ import Avatar from "../common/Avatar";
 import Banner from "../common/Banner";
 import Loader from "../layout/Loader";
 import ErrorMessage from "../common/ErrorMessage";
+import Modal from "react-bootstrap/Modal";
+import FallbackAvatar from "../../images/fallbackavatar.jpg";
+import FallbackBanner from "../../images/fallbackbanner.jpg";
 
 function MyProfileMenu() {
   const [myprofile, setMyprofile] = useState([]);
   const [counted, setCounted] = useState(null);
   const [myfollowers, setMyfollowers] = useState([]);
   const [myfollowing, setMyfollowing] = useState([]);
+  const [showAvatar, setShowAvatar] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -45,10 +50,14 @@ function MyProfileMenu() {
   return (
     <>
       <div className='profileHeaderContainer'>
-        <Banner styles='banner' media={myprofile.banner} alt={myprofile.name} />
+        <div className='imageModalHover imageModalHoverBanner' onClick={() => setShowBanner(true)}>
+          <Banner styles='banner' media={myprofile.banner} alt={myprofile.name} />
+        </div>
         <div className='profileInfoContainer'>
           <div className='userBasicsContainer'>
-            <Avatar styles={"avatar"} media={myprofile.avatar} alt={myprofile.name} />
+            <div className='imageModalHover imageModalHoverAvatar' onClick={() => setShowAvatar(true)}>
+              <Avatar styles={"avatar"} media={myprofile.avatar} alt={myprofile.name} />
+            </div>
             <div className='profileNameContainer'>
               <Heading title={myprofile.name} />
               <p>{myprofile.email}</p>
@@ -149,6 +158,30 @@ function MyProfileMenu() {
           })()}
         </div>
       </div>
+      <Modal size='lg' show={showAvatar} onHide={() => setShowAvatar(false)} aria-labelledby='modal-sizes-title-lg'>
+        <Modal.Header closeButton>
+          <Modal.Title id='modal-sizes-title-lg'>View avatar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img
+            src={myprofile.avatar !== "" && myprofile.avatar !== null ? myprofile.avatar : FallbackAvatar}
+            alt={myprofile.name + `'s avatar`}
+            className='modalImage'
+          />
+        </Modal.Body>
+      </Modal>
+      <Modal size='lg' show={showBanner} onHide={() => setShowBanner(false)} aria-labelledby='modal-sizes-title-lg'>
+        <Modal.Header closeButton>
+          <Modal.Title id='modal-sizes-title-lg'>View banner</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img
+            src={myprofile.banner !== "" && myprofile.banner !== null ? myprofile.banner : FallbackBanner}
+            alt={myprofile.name + `'s banner`}
+            className='modalImage'
+          />
+        </Modal.Body>
+      </Modal>
     </>
   );
 }

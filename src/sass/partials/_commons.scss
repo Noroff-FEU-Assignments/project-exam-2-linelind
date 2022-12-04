@@ -116,3 +116,34 @@
     color: getColour(green) !important;
   }
 }
+
+.modalImage {
+  width: 100%;
+}
+
+.imageModalHover {
+  position: relative;
+}
+
+.imageModalHoverAvatar:before,
+.imageModalHoverBanner:before {
+  display: block;
+  content: " ";
+  position: absolute;
+  z-index: 100;
+  background: #3434343b;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.imageModalHoverAvatar:before {
+  border-radius: 100%;
+}
+
+.imageModalHover:hover:before {
+  opacity: 1;
+  cursor: pointer;
+}

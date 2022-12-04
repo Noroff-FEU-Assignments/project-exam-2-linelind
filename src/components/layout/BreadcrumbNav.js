@@ -13,7 +13,7 @@ export default function BreadcrumbNav(props) {
 }
 
 Breadcrumb.propTypes = {
-  path: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  current: PropTypes.string.isRequired,
+  path: PropTypes.string,
+  title: PropTypes.string,
+  current: PropTypes.string,
 };

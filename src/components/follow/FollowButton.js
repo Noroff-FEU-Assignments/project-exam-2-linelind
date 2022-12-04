@@ -10,7 +10,6 @@ export default function FollowButton(props) {
   async function handleFollow() {
     try {
       const response = await urlAxios.put(`/social/profiles/${props.name}/follow`);
-      console.log(response);
       window.location.reload();
     } catch (error) {
       setError(error);

@@ -10,8 +10,6 @@ export default function UnfollowButton(props) {
   async function handleUnfollow() {
     try {
       const response = await urlAxios.put(`/social/profiles/${props.name}/unfollow`);
-      console.log(response);
-
       window.location.reload();
     } catch (error) {
       setError(error);
