@@ -6,7 +6,7 @@ export default function BreadcrumbNav(props) {
     <Breadcrumb className='navBreadcrumb'>
       <Breadcrumb.Item href={`${props.path}`}>{props.title}</Breadcrumb.Item>
       <Breadcrumb.Item active className='breadcrumb-item active'>
-        Edit
+        {props.current}
       </Breadcrumb.Item>
     </Breadcrumb>
   );
@@ -15,4 +15,5 @@ export default function BreadcrumbNav(props) {
 Breadcrumb.propTypes = {
   path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  current: PropTypes.string.isRequired,
 };

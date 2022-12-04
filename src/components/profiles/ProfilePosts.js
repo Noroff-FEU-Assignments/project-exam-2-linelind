@@ -59,9 +59,6 @@ export default function ProfilePosts() {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
-  const date = profileposts.created;
-  const formatDate = moment(date).startOf("hour").fromNow();
-
   if (profileposts.length === 0) {
     return <p>This user has not posted anything yet.</p>;
   } else {
@@ -75,7 +72,7 @@ export default function ProfilePosts() {
                   <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={post.author.name} />
                   <div>
                     <Heading size={2} title={post.author.name} styling='postAuthor' />
-                    <p className='date'>{formatDate}</p>
+                    <p className='date'>{moment(post.created).startOf("hour").fromNow()}</p>
                   </div>
                 </Link>
               </div>

@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import FeedPage from "./pages/FeedPage";
 import ProfileListPage from "./pages/ProfileListPage";
-import PostDetail from "./components/posts/PostDetail";
+import PostDetailPage from "./pages/PostDetailPage";
 import EditPost from "./components/posts/EditPost";
 import ProfilePage from "./pages/ProfilePage";
 import MyProfilePage from "./pages/MyProfilePage";
@@ -25,7 +25,7 @@ function App() {
             <Route path='/register' exact element={<RegisterPage />} />
             <Route path='/feed' exact element={<FeedPage />} />
             <Route path='/profiles' exact element={<ProfileListPage />} />
-            <Route path='/post/:id' element={<PostDetail />} />
+            <Route path='/post/:id' element={<PostDetailPage />} />
             <Route path='/post/edit/:id' element={<EditPost />} />
             <Route path='/profile/:name' element={<ProfilePage />} />
             <Route path='/myprofile' exact element={<MyProfilePage />} />

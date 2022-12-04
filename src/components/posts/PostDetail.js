@@ -48,9 +48,6 @@ export default function PostDetail() {
   if (loading) return <Loader />;
   if (error) return <div className='errorMessage'>Oh no, something went wrong.</div>;
 
-  const date = postdetail.created;
-  const formatDate = moment(date).startOf("hour").fromNow();
-
   if (postdetail.author.email === auth.email) {
     return (
       <div className='pageContainer' key={postdetail.id}>
@@ -60,7 +57,7 @@ export default function PostDetail() {
               <Avatar styles={"avatar avatarSmall"} media={postdetail.author.avatar} alt={postdetail.author.name} />
               <div>
                 <Heading size={2} title={postdetail.author.name} styling='postAuthor' />
-                <p className='date'>{formatDate}</p>
+                <p className='date'>{moment(postdetail.created).startOf("hour").fromNow()}</p>
               </div>
             </Link>
             <Link to={`/post/edit/${postdetail.id}`}>
@@ -94,7 +91,6 @@ export default function PostDetail() {
           </div>
           <div className='commentsContainer'>
             {postdetail.comments.map((comment) => {
-              const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
                 <div className='comment' key={comment.id}>
                   <p>{comment.body}</p>
@@ -103,7 +99,7 @@ export default function PostDetail() {
                       <Avatar styles={"avatar avatarTiny"} media={comment.author.avatar} alt={comment.owner} />
                       <div>
                         <p className='commentOwner'>Written by {comment.owner}</p>
-                        <p className='date'>{formatCreated}</p>
+                        <p className='date'>{moment(comment.created).startOf("hour").fromNow()}</p>
                       </div>
                     </div>
                   </Link>
@@ -123,7 +119,7 @@ export default function PostDetail() {
               <Avatar styles={"avatar avatarSmall"} media={postdetail.author.avatar} alt={postdetail.author.name} />
               <div>
                 <Heading size={2} title={postdetail.author.name} styling='postAuthor' />
-                <p className='date'>{formatDate}</p>
+                <p className='date'>{moment(postdetail.created).startOf("hour").fromNow()}</p>
               </div>
             </Link>
           </div>
@@ -154,7 +150,6 @@ export default function PostDetail() {
           </div>
           <div className='commentsContainer'>
             {postdetail.comments.map((comment) => {
-              const formatCreated = moment(comment.created).startOf("hour").fromNow();
               return (
                 <div className='comment' key={comment.id}>
                   <p>{comment.body}</p>
@@ -163,7 +158,7 @@ export default function PostDetail() {
                       <Avatar styles={"avatar avatarTiny"} media={comment.author.avatar} alt={comment.owner} />
                       <div>
                         <p className='commentOwner'>Written by {comment.owner}</p>
-                        <p className='date'>{formatCreated}</p>
+                        <p className='date'>{moment(comment.created).startOf("hour").fromNow()}</p>
                       </div>
                     </div>
                   </Link>

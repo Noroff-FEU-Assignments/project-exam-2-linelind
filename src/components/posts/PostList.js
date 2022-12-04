@@ -42,9 +42,6 @@ export default function PostList() {
     posts.media = null;
   }
 
-  const date = posts.created;
-  const formatDate = moment(date).startOf("hour").fromNow();
-
   return (
     <div>
       {posts.map((post) => {
@@ -56,7 +53,7 @@ export default function PostList() {
                   <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={post.author.name} />
                   <div>
                     <Heading size={2} title={post.author.name} styling='postAuthor' />
-                    <p className='date'>{formatDate}</p>
+                    <p className='date'>{moment(post.created).startOf("hour").fromNow()}</p>
                   </div>
                 </Link>
               </div>
@@ -112,7 +109,7 @@ export default function PostList() {
                   <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={post.author.name} />
                   <div>
                     <Heading size={2} title={post.author.name} styling='postAuthor' />
-                    <p className='date'>{formatDate}</p>
+                    <p className='date'>{moment(post.created).startOf("hour").fromNow()}</p>
                   </div>
                 </Link>
                 <Link to={`/post/edit/${post.id}`}>

@@ -37,8 +37,8 @@ export default function CommentButton() {
 
   return (
     <form onSubmit={handleSubmit(handleComment)} className='commentContainer'>
-      <label id='comment'>
-        <textarea {...register("body")} placeholder='write your comment' id='comment' />
+      <label>
+        <textarea {...register("body")} placeholder='Write a comment' aria-label='Comment on post' />
         {errors.body && <span>{errors.body.message}</span>}
       </label>
       <button className='cta commentBtn hoverBtn'>Comment</button>

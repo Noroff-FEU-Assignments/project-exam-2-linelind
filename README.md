@@ -1,4 +1,4 @@
-# The final PlotTwist
+# PlotTwist
 
 This is my submission for Project Exam 2.
 The project consists of a social media platform built with the [Noroff API, Social Endpoints](https://noroff-api-docs.netlify.app/).

@@ -1,8 +1,8 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 import LoginForm from "../components/login/LoginForm";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
-import FeedPage from "./FeedPage";
 
 export default function LoginPage() {
   document.title = "PlotTwist | Login";
@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [auth] = useContext(AuthContext);
 
   if (auth) {
-    return <FeedPage />;
+    return <Navigate replace to='/feed' />;
   } else {
     return (
       <div className='pageContainer'>

@@ -106,7 +106,7 @@ export default function EditPost() {
 
   return (
     <div className='pageContainer'>
-      <BreadcrumbNav path='/feed' title='Posts' />
+      <BreadcrumbNav path='/feed' title='Feed' current='Edit' />
 
       <form onSubmit={handleSubmit(editPost)} className='form editPostForm'>
         {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}

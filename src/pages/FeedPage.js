@@ -4,6 +4,7 @@ import { useContext } from "react";
 import Heading from "../components/common/Heading";
 import CreatePost from "../components/posts/CreatePost";
 import PostList from "../components/posts/PostList";
+import BackToTop from "../components/layout/BackToTop";
 
 export default function FeedPage() {
   document.title = "PlotTwist | Feed";
@@ -18,6 +19,7 @@ export default function FeedPage() {
         <Heading title={`How's it going` + " " + auth.name + `?`} styling='feedTitle' />
         <CreatePost />
         <PostList />
+        <BackToTop />
       </div>
     );
   }

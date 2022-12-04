@@ -36,9 +36,6 @@ export default function MyPosts() {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage />;
 
-  const date = myposts.created;
-  const formatDate = moment(date).startOf("hour").fromNow();
-
   if (myposts.length === 0) {
     return <p>You have not posted anything yet.</p>;
   } else {
@@ -52,7 +49,7 @@ export default function MyPosts() {
                   <Avatar styles={"avatar avatarSmall"} media={post.author.avatar} alt={auth.name} />
                   <div>
                     <Heading size={2} title={auth.name} styling='postAuthor' />
-                    <p className='date'>{formatDate}</p>
+                    <p className='date'>{moment(post.created).startOf("hour").fromNow()}</p>
                   </div>
                 </Link>
                 <Link to={`/post/edit/${post.id}`}>

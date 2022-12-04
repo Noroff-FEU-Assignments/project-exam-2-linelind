@@ -98,7 +98,7 @@ export default function EditMyProfile() {
 
   return (
     <div className='pageContainer'>
-      <BreadcrumbNav path='/myprofile' title='My profile' />
+      <BreadcrumbNav path='/myprofile' title='My profile' current='Edit' />
 
       <form onSubmit={handleSubmit(onSubmit)} className='form editProfileForm'>
         {updated && <div className='successMessage'>Aaand it's updated! Yeehaw!</div>}

@@ -90,18 +90,18 @@ export default function RegisterForm() {
       <form onSubmit={handleSubmit(createPost)} className='createFormInputs'>
         {postError && <div className='errorMessage'>That did not go to plan. Please try again.</div>}
         <label>
-          <input {...register("title")} placeholder='title' aria-label='New post title' />
+          <input {...register("title")} placeholder='Post title' aria-label='New post title' />
           {errors.title && <span>{errors.title.message}</span>}
         </label>
         <label>
-          <textarea {...register("body")} placeholder='body' aria-label='New post body' />
+          <textarea {...register("body")} placeholder='Post body' aria-label='New post body' />
         </label>
         <label id='imageLabel' className='hidden'>
-          <input {...register("media")} placeholder='media' aria-label='New post image' />
+          <input {...register("media")} placeholder='Add media' aria-label='New post image' />
           {errors.media && <span>{errors.media.message}</span>}
         </label>
         <label id='tagsLabel' className='hidden'>
-          <input {...register("tags")} placeholder='tags' aria-label='New post tags' />
+          <input {...register("tags")} placeholder='Add tags' aria-label='New post tags' />
         </label>
         <div className='createBtnContainer'>
           <div className='addImageBtn hoverBtn' onClick={displayImage}>

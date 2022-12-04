@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { API_BASE } from "../../constant/api";
-import BreadcrumbNav from "../layout/BreadcrumbNav";
 
 const schema = yup.object().shape({
   name: yup
@@ -66,43 +65,37 @@ export default function RegisterForm() {
   }
 
   return (
-    <>
-      <BreadcrumbNav path='/' title='Login' />
+    <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
+      {registerError && <div className='errorMessage'>Well this is awkward. Quick, try again, and we'll pretend this error never happened.</div>}
+      {updated && <div className='successMessage'>Welcome to our community!</div>}
+      <p className='logo logInLogo'>PlotTwist</p>
+      <label id='name'>
+        Name *
+        <input {...register("name")} id='name' />
+        {errors.name && <span>{errors.name.message}</span>}
+      </label>
+      <label id='email'>
+        Email *
+        <input {...register("email")} id='email' />
+        {errors.email && <span>{errors.email.message}</span>}
+      </label>
+      <label id='password'>
+        Password *
+        <input {...register("password")} type='password' id='password' />
+        {errors.password && <span>{errors.password.message}</span>}
+      </label>
+      <label id='avatar'>
+        Add avatar image by url
+        <input {...register("avatar")} id='avatar' />
+        {errors.avatar && <span>{errors.avatar.message}</span>}
+      </label>
+      <label id='banner'>
+        Add banner image by url
+        <input {...register("banner")} id='banner' />
+        {errors.banner && <span>{errors.banner.message}</span>}
+      </label>
 
-      <form onSubmit={handleSubmit(onSubmit)} className='form registerForm'>
-        {registerError && (
-          <div className='errorMessage'>Well this is awkward. Quick, try again, and hopefully we can pretend like this error never happened.</div>
-        )}
-        {updated && <div className='successMessage'>Welcome to our community!</div>}
-        <p className='logo logInLogo'>PlotTwist</p>
-        <label id='name'>
-          Name *
-          <input {...register("name")} id='name' />
-          {errors.name && <span>{errors.name.message}</span>}
-        </label>
-        <label id='email'>
-          Email *
-          <input {...register("email")} id='email' />
-          {errors.email && <span>{errors.email.message}</span>}
-        </label>
-        <label id='password'>
-          Password *
-          <input {...register("password")} type='password' id='password' />
-          {errors.password && <span>{errors.password.message}</span>}
-        </label>
-        <label id='avatar'>
-          Add avatar image by url
-          <input {...register("avatar")} id='avatar' />
-          {errors.avatar && <span>{errors.avatar.message}</span>}
-        </label>
-        <label id='banner'>
-          Add banner image by url
-          <input {...register("banner")} id='banner' />
-          {errors.banner && <span>{errors.banner.message}</span>}
-        </label>
-
-        <button className='cta registerBtn hoverBtn'>Register</button>
-      </form>
-    </>
+      <button className='cta registerBtn hoverBtn'>Register</button>
+    </form>
   );
 }
