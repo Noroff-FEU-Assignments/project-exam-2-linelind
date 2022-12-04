@@ -206,7 +206,6 @@ export default function ProfileMenu() {
           })()}
         </div>
       </div>
-
       <Modal size='lg' show={showAvatar} onHide={() => setShowAvatar(false)} aria-labelledby='modal-sizes-title-lg'>
         <Modal.Header closeButton>
           <Modal.Title id='modal-sizes-title-lg'>View avatar</Modal.Title>

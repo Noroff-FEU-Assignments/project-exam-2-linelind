@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
 import Heading from "../common/Heading";
 import Avatar from "../common/Avatar";
 import Banner from "../common/Banner";
@@ -16,6 +18,7 @@ export default function ProfileList() {
   const [error, setError] = useState(null);
 
   const urlProfiles = useAxios();
+  const [auth] = useContext(AuthContext);
 
   useEffect(function () {
     async function getProfiles() {
@@ -54,30 +57,58 @@ export default function ProfileList() {
       <div className='profileListContainer'>
         {searchInput.length > 1
           ? filteredResults.map((profile) => {
-              return (
-                <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
-                  <div className='profileCard ProfileListCard'>
-                    <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
-                    <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
-                    <div>
-                      <Heading size={2} title={profile.name} />
+              if (profile.name !== auth.name) {
+                return (
+                  <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
+                    <div className='profileCard ProfileListCard'>
+                      <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
+                      <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
+                      <div>
+                        <Heading size={2} title={profile.name} />
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              );
+                  </Link>
+                );
+              } else {
+                return (
+                  <Link to={`/myprofile`} key={UniqueKey(profile.name)}>
+                    <div className='profileCard ProfileListCard'>
+                      <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
+                      <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
+                      <div>
+                        <Heading size={2} title={profile.name} />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              }
             })
           : profiles.map((profile) => {
-              return (
-                <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
-                  <div className='profileCard ProfileListCard'>
-                    <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
-                    <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
-                    <div>
-                      <Heading size={2} title={profile.name} />
+              if (profile.name !== auth.name) {
+                return (
+                  <Link to={`/profile/${profile.name}`} key={UniqueKey(profile.name)}>
+                    <div className='profileCard ProfileListCard'>
+                      <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
+                      <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
+                      <div>
+                        <Heading size={2} title={profile.name} />
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              );
+                  </Link>
+                );
+              } else {
+                return (
+                  <Link to={`/myprofile`} key={UniqueKey(profile.name)}>
+                    <div className='profileCard ProfileListCard'>
+                      <Banner styles='bannerSmall' media={profile.banner} alt={profile.name} />
+                      <Avatar styles={"avatar"} media={profile.avatar} alt={profile.name} />
+                      <div>
+                        <Heading size={2} title={profile.name} />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              }
             })}
       </div>
     </>
